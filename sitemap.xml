@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>http://example.com/link/index.html</loc>
     
     <lastmod>2022-01-03</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/link/index.html</loc>
+    <loc>http://example.com/categories/index.html</loc>
     
     <lastmod>2022-01-03</lastmod>
     
