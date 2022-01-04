@@ -3,11 +3,11 @@
   <title>dajunHuang的小站</title>
   
   
-  <link href="https://dajunhuang.github.io/atom.xml" rel="self"/>
+  <link href="https://www.djhuang.top/atom.xml" rel="self"/>
   
-  <link href="https://dajunhuang.github.io/"/>
+  <link href="https://www.djhuang.top/"/>
   <updated>2022-01-03T16:00:00.000Z</updated>
-  <id>https://dajunhuang.github.io/</id>
+  <id>https://www.djhuang.top/</id>
   
   <author>
     <name>dajunHuang</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Markdown基本语法</title>
-    <link href="https://dajunhuang.github.io/2022/01/03/markdown/"/>
-    <id>https://dajunhuang.github.io/2022/01/03/markdown/</id>
+    <link href="https://www.djhuang.top/2022/01/03/markdown/"/>
+    <id>https://www.djhuang.top/2022/01/03/markdown/</id>
     <published>2022-01-02T16:00:00.000Z</published>
     <updated>2022-01-03T16:00:00.000Z</updated>
     
@@ -30,10 +30,10 @@
     
     
     
-    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
+    <category term="杂物" scheme="https://www.djhuang.top/categories/%E6%9D%82%E7%89%A9/"/>
     
     
-    <category term="Markdown" scheme="https://dajunhuang.github.io/tags/Markdown/"/>
+    <category term="Markdown" scheme="https://www.djhuang.top/tags/Markdown/"/>
     
   </entry>
   
