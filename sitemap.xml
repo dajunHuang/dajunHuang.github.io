@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dajunhuang.github.io/2022/01/03/markdown/</loc>
+    
+    <lastmod>2022-01-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/2022/01/05/20220105/</loc>
+    
+    <lastmod>2022-01-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://dajunhuang.github.io/about/index.html</loc>
     
     <lastmod>2022-01-04</lastmod>
@@ -37,19 +55,10 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://dajunhuang.github.io/2022/01/03/markdown/</loc>
-    
-    <lastmod>2022-01-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://dajunhuang.github.io/</loc>
-    <lastmod>2022-01-04</lastmod>
+    <lastmod>2022-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -57,7 +66,14 @@
   
   <url>
     <loc>https://dajunhuang.github.io/tags/Markdown/</loc>
-    <lastmod>2022-01-04</lastmod>
+    <lastmod>2022-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/tags/%E6%9C%AC%E7%AB%99/</loc>
+    <lastmod>2022-01-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -66,7 +82,14 @@
   
   <url>
     <loc>https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/</loc>
-    <lastmod>2022-01-04</lastmod>
+    <lastmod>2022-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/categories/%E6%97%A5%E5%BF%97/</loc>
+    <lastmod>2022-01-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
