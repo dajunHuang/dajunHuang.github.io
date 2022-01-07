@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/06/STM1/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/06/STM1CLK/</loc>
     
     <lastmod>2022-01-06</lastmod>
     
@@ -11,7 +11,16 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/07/STM2/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/07/STM2IO/</loc>
+    
+    <lastmod>2022-01-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/2022/01/07/STM3NVIC/</loc>
     
     <lastmod>2022-01-06</lastmod>
     
@@ -119,6 +128,13 @@
   
   <url>
     <loc>https://dajunhuang.github.io/tags/Markdown/</loc>
+    <lastmod>2022-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/tags/%E4%B8%AD%E6%96%AD/</loc>
     <lastmod>2022-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
