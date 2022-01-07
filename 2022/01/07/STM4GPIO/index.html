@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>STM32学习笔记（四）GPIO | dajunHuang的小站</title><meta name="keywords" content="STM32,GPIO"><meta name="author" content="dajunHuang"><meta name="copyright" content="dajunHuang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这几天先把之前学到一半的东西搬到站上，记录的同时也算复习了XD。  GPIO初始化&amp;#8195;&amp;#8195;为了使用GPIO，首先要使用void RCC_APB2PeriphClockCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)函数使能GPIO时钟，比如使能GPIOA时钟方法是： 1RCC_APB2PeriphClockCmd(R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32学习笔记（四）GPIO">
+<meta property="og:url" content="https://dajunhuang.github.io/2022/01/07/STM4GPIO/index.html">
+<meta property="og:site_name" content="dajunHuang的小站">
+<meta property="og:description" content="这几天先把之前学到一半的东西搬到站上，记录的同时也算复习了XD。  GPIO初始化&amp;#8195;&amp;#8195;为了使用GPIO，首先要使用void RCC_APB2PeriphClockCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)函数使能GPIO时钟，比如使能GPIOA时钟方法是： 1RCC_APB2PeriphClockCmd(R">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dajunhuang.github.io/2022/01/07/STM4GPIO/GPIO.png">
+<meta property="article:published_time" content="2022-01-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-06T16:00:00.000Z">
+<meta property="article:author" content="dajunHuang">
+<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="GPIO">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dajunhuang.github.io/2022/01/07/STM4GPIO/GPIO.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://dajunhuang.github.io/2022/01/07/STM4GPIO/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'STM32学习笔记（四）GPIO',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-07 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="dajunHuang的小站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/StardustPaimon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">dajunHuang的小站</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">STM32学习笔记（四）GPIO</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-06T16:00:00.000Z" title="发表于 2022-01-07 00:00:00">2022-01-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-06T16:00:00.000Z" title="更新于 2022-01-07 00:00:00">2022-01-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="STM32学习笔记（四）GPIO"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><blockquote>
+<p>这几天先把之前学到一半的东西搬到站上，记录的同时也算复习了XD。</p>
+</blockquote>
+<h1 id="GPIO初始化"><a href="#GPIO初始化" class="headerlink" title="GPIO初始化"></a>GPIO初始化</h1><p>&#8195;&#8195;为了使用GPIO，首先要使用<code>void RCC_APB2PeriphClockCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)</code>函数使能GPIO时钟，比如使能GPIOA时钟方法是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;在固件库开发中，操作寄存器<code>CRH</code>和<code>CRL</code>来配置IO口的模式和速度是通过GPIO初始化函数<code>void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)</code>完成，这个函数有两个参数，第一个参数是用来指定GPIO，取值范围为GPIOA~GPIOG。第二个参数为初始化参数结构体指针，结构体类型为<code>GPIO_InitTypeDef</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typedef struct</span><br><span class="line">&#123; </span><br><span class="line">    uint16_t GPIO_Pin; </span><br><span class="line">    GPIOSpeed_TypeDef GPIO_Speed; </span><br><span class="line">    GPIOMode_TypeDef GPIO_Mode; </span><br><span class="line">&#125;GPIO_InitTypeDef;</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;通过初始化结构体初始化GPIO的常用格式是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GPIO_InitTypeDef GPIO_InitStructure; </span><br><span class="line">GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; //LED0--&gt;PB.5 端口配置 </span><br><span class="line">GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; //推挽输出 </span><br><span class="line">GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;//速度 50MHz </span><br><span class="line">GPIO_Init(GPIOB, &amp;GPIO_InitStructure);//根据设定参数配置 GPIO</span><br></pre></td></tr></table></figure>
+<h2 id="GPIO-Mode"><a href="#GPIO-Mode" class="headerlink" title="GPIO_Mode"></a>GPIO_Mode</h2><p>&#8195;&#8195;<code>GPIO_Mode</code>是用来设置对应IO端口的输出输入模式，8个模式是通过一个枚举类型定义的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef enum &#123; </span><br><span class="line">    GPIO_Mode_AIN = 0x0, //模拟输入 </span><br><span class="line">    GPIO_Mode_IN_FLOATING = 0x04, //浮空输入 </span><br><span class="line">    GPIO_Mode_IPD = 0x28, //下拉输入 </span><br><span class="line">    GPIO_Mode_IPU = 0x48, //上拉输入 </span><br><span class="line">    GPIO_Mode_Out_OD = 0x14, //开漏输出 </span><br><span class="line">    GPIO_Mode_Out_PP = 0x10, //通用推挽输出 </span><br><span class="line">    GPIO_Mode_AF_OD = 0x1C, //复用开漏输出 </span><br><span class="line">    GPIO_Mode_AF_PP = 0x18 //复用推挽 </span><br><span class="line">&#125;GPIOMode_TypeDef;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>上拉输入：上拉就是把电位拉高，比如拉到Vcc。上拉就是将不确定的信号通过一个电阻嵌位在高电平电阻同时起限流作用弱强只是上拉电阻的阻值不同，没有什么严格区分。</li>
+<li>下拉输入：就是把电压拉低，拉到GND。与上拉原理相似。</li>
+<li>浮空输入：浮空）就是逻辑器件的输入引脚即不接高电平，也不接低电平。由于逻辑器件的内部结构，当它输入引脚悬空时，相当于该引脚接了高电平。一般实际运用时，引脚不建议悬空，易受干扰。通俗讲就是让管脚什么都不接，浮空着。</li>
+<li>模拟输入：模拟输入是指传统方式的输入。数字输入是输入PCM数字信号，即0，1的二进制数字信号，通过数模转换，转换成模拟信号，经前级放大进入功率放大器，功率放大器还是模拟的。</li>
+<li>推挽输出:可以输出高，低电平，连接数字器件。推挽结构一般是指两个三极管分别受两互补信号的控制，总是在一个三极管导通的时候另一个截止。高低电平由IC的电源低定。</li>
+<li>开漏输出:输出端相当于三极管的集电极。要得到高电平状态需要上拉电阻才行。适合于做电流型的驱动，其吸收电流的能力强，一般20mA以内。</li>
+<li>复用输出：可以理解为GPIO口被用作第二功能时的配置情况。端口必须配置成复用功能输出模式（推挽或开漏）。<h2 id="GPIO-Speed"><a href="#GPIO-Speed" class="headerlink" title="GPIO_Speed"></a>GPIO_Speed</h2><code>GPIO_Speed</code>是IO口速度，有三个可选值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef enum &#123; </span><br><span class="line">    GPIO_Speed_10MHz = 1, </span><br><span class="line">    GPIO_Speed_2MHz, </span><br><span class="line">    GPIO_Speed_50MHz </span><br><span class="line">&#125;GPIOSpeed_TypeDef;</span><br></pre></td></tr></table></figure>
+<h1 id="GPIO库函数"><a href="#GPIO库函数" class="headerlink" title="GPIO库函数"></a>GPIO库函数</h1><h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2>&#8195;&#8195;在固件库中操作<code>IDR</code>寄存器读取IO端口数据是通过<code>uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)</code>函数实现的，比如我要读GPIOA.5的电平状态，那么方法是：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_5);</span><br></pre></td></tr></table></figure>
+&#8195;&#8195;返回值是1(Bit_SET)或者0(Bit_RESET)。<h2 id="输出数据"><a href="#输出数据" class="headerlink" title="输出数据"></a>输出数据</h2>&#8195;&#8195;在STM32固件库中，通过<code>BSRR</code>和<code>BRR</code>寄存器设置GPIO端口输出是通过函数<code>void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)</code>和函数<code>void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)</code>来完成的。在多数情况下，我们都是采用这两个函数来设置GPIO端口的输入和输出状态。比如我们要设置GPIOB.5输出1，那么方法为：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO_SetBits(GPIOB, GPIO_Pin_5);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>综上，GPIO操作步骤为：</p>
+<ol>
+<li>使能IO口时钟。 </li>
+<li>初始化IO参数。 </li>
+<li>操作IO。</li>
+</ol>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/STM32/">STM32</a><a class="post-meta__tags" href="/tags/GPIO/">GPIO</a></div><div class="post_share"><div class="social-share" data-image="/2022/01/07/STM4GPIO/GPIO.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/01/07/STM3NVIC/"><img class="prev-cover" src="/2022/01/07/STM3NVIC/e493af5b7313de2e2c19c0743242e676.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">STM32学习笔记（三）中断优先级管理</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/06/STM1CLK/"><img class="next-cover" src="/2022/01/06/STM1CLK/Annotation2022-01-07110008.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">STM32学习笔记（一）STM32时钟系统</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/StardustPaimon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dajunHuang</div><div class="author-info__description">软工专业本科生，目标考研，爱好Vocaloid、OSU、Galgame。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dajunHuang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:djhuang_1@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这里是dajunHuang的小站，我会在这里发学习日志、感想、碎碎念等内容。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GPIO%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">GPIO初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GPIO-Mode"><span class="toc-number">1.1.</span> <span class="toc-text">GPIO_Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPIO-Speed"><span class="toc-number">1.2.</span> <span class="toc-text">GPIO_Speed</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPIO%E5%BA%93%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">GPIO库函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-number">2.1.</span> <span class="toc-text">读取数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="toc-number">2.2.</span> <span class="toc-text">输出数据</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/07/STM2IO/" title="STM32学习笔记（二）端口复用和重映射"><img src="/2022/01/07/STM2IO/20180626200548986.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STM32学习笔记（二）端口复用和重映射"/></a><div class="content"><a class="title" href="/2022/01/07/STM2IO/" title="STM32学习笔记（二）端口复用和重映射">STM32学习笔记（二）端口复用和重映射</a><time datetime="2022-01-06T16:00:00.000Z" title="发表于 2022-01-07 00:00:00">2022-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/07/STM3NVIC/" title="STM32学习笔记（三）中断优先级管理"><img src="/2022/01/07/STM3NVIC/e493af5b7313de2e2c19c0743242e676.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STM32学习笔记（三）中断优先级管理"/></a><div class="content"><a class="title" href="/2022/01/07/STM3NVIC/" title="STM32学习笔记（三）中断优先级管理">STM32学习笔记（三）中断优先级管理</a><time datetime="2022-01-06T16:00:00.000Z" title="发表于 2022-01-07 00:00:00">2022-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/07/STM4GPIO/" title="STM32学习笔记（四）GPIO"><img src="/2022/01/07/STM4GPIO/GPIO.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STM32学习笔记（四）GPIO"/></a><div class="content"><a class="title" href="/2022/01/07/STM4GPIO/" title="STM32学习笔记（四）GPIO">STM32学习笔记（四）GPIO</a><time datetime="2022-01-06T16:00:00.000Z" title="发表于 2022-01-07 00:00:00">2022-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/06/STM1CLK/" title="STM32学习笔记（一）STM32时钟系统"><img src="/2022/01/06/STM1CLK/Annotation2022-01-07110008.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STM32学习笔记（一）STM32时钟系统"/></a><div class="content"><a class="title" href="/2022/01/06/STM1CLK/" title="STM32学习笔记（一）STM32时钟系统">STM32学习笔记（一）STM32时钟系统</a><time datetime="2022-01-05T16:00:00.000Z" title="发表于 2022-01-06 00:00:00">2022-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/05/20220105/" title="建站想法与此后规划"><img src="/2022/01/05/20220105/QQ%E5%9B%BE%E7%89%8720220105193742.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="建站想法与此后规划"/></a><div class="content"><a class="title" href="/2022/01/05/20220105/" title="建站想法与此后规划">建站想法与此后规划</a><time datetime="2022-01-04T16:00:00.000Z" title="发表于 2022-01-05 00:00:00">2022-01-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By dajunHuang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

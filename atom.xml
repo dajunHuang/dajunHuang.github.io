@@ -71,6 +71,35 @@
   </entry>
   
   <entry>
+    <title>STM32学习笔记（四）GPIO</title>
+    <link href="https://dajunhuang.github.io/2022/01/07/STM4GPIO/"/>
+    <id>https://dajunhuang.github.io/2022/01/07/STM4GPIO/</id>
+    <published>2022-01-06T16:00:00.000Z</published>
+    <updated>2022-01-06T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>这几天先把之前学到一半的东西搬到站上，记录的同时也算复习了XD。</p></blockquote><h1 id="GPIO初始化"><a href="#GPIO初始化" class="headerlink" title="GPIO初始化"></a>GPIO初始化</h1><p>&#8195;&#8195;为了使用GPIO，首先要使用<code>void RCC_APB2PeriphClockCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)</code>函数使能GPIO时钟，比如使能GPIOA时钟方法是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;在固件库开发中，操作寄存器<code>CRH</code>和<code>CRL</code>来配置IO口的模式和速度是通过GPIO初始化函数<code>void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)</code>完成，这个函数有两个参数，第一个参数是用来指定GPIO，取值范围为GPIOA~GPIOG。第二个参数为初始化参数结构体指针，结构体类型为<code>GPIO_InitTypeDef</code>：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typedef struct</span><br><span class="line">&#123; </span><br><span class="line">    uint16_t GPIO_Pin; </span><br><span class="line">    GPIOSpeed_TypeDef GPIO_Speed; </span><br><span class="line">    GPIOMode_TypeDef GPIO_Mode; </span><br><span class="line">&#125;GPIO_InitTypeDef;</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;通过初始化结构体初始化GPIO的常用格式是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GPIO_InitTypeDef GPIO_InitStructure; </span><br><span class="line">GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; //LED0--&gt;PB.5 端口配置 </span><br><span class="line">GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; //推挽输出 </span><br><span class="line">GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;//速度 50MHz </span><br><span class="line">GPIO_Init(GPIOB, &amp;GPIO_InitStructure);//根据设定参数配置 GPIO</span><br></pre></td></tr></table></figure><h2 id="GPIO-Mode"><a href="#GPIO-Mode" class="headerlink" title="GPIO_Mode"></a>GPIO_Mode</h2><p>&#8195;&#8195;<code>GPIO_Mode</code>是用来设置对应IO端口的输出输入模式，8个模式是通过一个枚举类型定义的：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef enum &#123; </span><br><span class="line">    GPIO_Mode_AIN = 0x0, //模拟输入 </span><br><span class="line">    GPIO_Mode_IN_FLOATING = 0x04, //浮空输入 </span><br><span class="line">    GPIO_Mode_IPD = 0x28, //下拉输入 </span><br><span class="line">    GPIO_Mode_IPU = 0x48, //上拉输入 </span><br><span class="line">    GPIO_Mode_Out_OD = 0x14, //开漏输出 </span><br><span class="line">    GPIO_Mode_Out_PP = 0x10, //通用推挽输出 </span><br><span class="line">    GPIO_Mode_AF_OD = 0x1C, //复用开漏输出 </span><br><span class="line">    GPIO_Mode_AF_PP = 0x18 //复用推挽 </span><br><span class="line">&#125;GPIOMode_TypeDef;</span><br></pre></td></tr></table></figure><ol><li>上拉输入：上拉就是把电位拉高，比如拉到Vcc。上拉就是将不确定的信号通过一个电阻嵌位在高电平电阻同时起限流作用弱强只是上拉电阻的阻值不同，没有什么严格区分。</li><li>下拉输入：就是把电压拉低，拉到GND。与上拉原理相似。</li><li>浮空输入：浮空）就是逻辑器件的输入引脚即不接高电平，也不接低电平。由于逻辑器件的内部结构，当它输入引脚悬空时，相当于该引脚接了高电平。一般实际运用时，引脚不建议悬空，易受干扰。通俗讲就是让管脚什么都不接，浮空着。</li><li>模拟输入：模拟输入是指传统方式的输入。数字输入是输入PCM数字信号，即0，1的二进制数字信号，通过数模转换，转换成模拟信号，经前级放大进入功率放大器，功率放大器还是模拟的。</li><li>推挽输出:可以输出高，低电平，连接数字器件。推挽结构一般是指两个三极管分别受两互补信号的控制，总是在一个三极管导通的时候另一个截止。高低电平由IC的电源低定。</li><li>开漏输出:输出端相当于三极管的集电极。要得到高电平状态需要上拉电阻才行。适合于做电流型的驱动，其吸收电流的能力强，一般20mA以内。</li><li>复用输出：可以理解为GPIO口被用作第二功能时的配置情况。端口必须配置成复用功能输出模式（推挽或开漏）。<h2 id="GPIO-Speed"><a href="#GPIO-Speed" class="headerlink" title="GPIO_Speed"></a>GPIO_Speed</h2><code>GPIO_Speed</code>是IO口速度，有三个可选值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef enum &#123; </span><br><span class="line">    GPIO_Speed_10MHz = 1, </span><br><span class="line">    GPIO_Speed_2MHz, </span><br><span class="line">    GPIO_Speed_50MHz </span><br><span class="line">&#125;GPIOSpeed_TypeDef;</span><br></pre></td></tr></table></figure><h1 id="GPIO库函数"><a href="#GPIO库函数" class="headerlink" title="GPIO库函数"></a>GPIO库函数</h1><h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2>&#8195;&#8195;在固件库中操作<code>IDR</code>寄存器读取IO端口数据是通过<code>uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)</code>函数实现的，比如我要读GPIOA.5的电平状态，那么方法是：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_5);</span><br></pre></td></tr></table></figure>&#8195;&#8195;返回值是1(Bit_SET)或者0(Bit_RESET)。<h2 id="输出数据"><a href="#输出数据" class="headerlink" title="输出数据"></a>输出数据</h2>&#8195;&#8195;在STM32固件库中，通过<code>BSRR</code>和<code>BRR</code>寄存器设置GPIO端口输出是通过函数<code>void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)</code>和函数<code>void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)</code>来完成的。在多数情况下，我们都是采用这两个函数来设置GPIO端口的输入和输出状态。比如我们要设置GPIOB.5输出1，那么方法为：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO_SetBits(GPIOB, GPIO_Pin_5);</span><br></pre></td></tr></table></figure></li></ol><p>综上，GPIO操作步骤为：</p><ol><li>使能IO口时钟。 </li><li>初始化IO参数。 </li><li>操作IO。</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;这几天先把之前学到一半的东西搬到站上，记录的同时也算复习了XD。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;GPIO初始化&quot;&gt;&lt;a href=&quot;#GPIO初始化&quot; class=&quot;headerlink&quot; title=&quot;GPIO初始化&quot;&gt;&lt;/</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
+    
+    <category term="GPIO" scheme="https://dajunhuang.github.io/tags/GPIO/"/>
+    
+  </entry>
+  
+  <entry>
     <title>STM32学习笔记（一）STM32时钟系统</title>
     <link href="https://dajunhuang.github.io/2022/01/06/STM1CLK/"/>
     <id>https://dajunhuang.github.io/2022/01/06/STM1CLK/</id>
