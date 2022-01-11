@@ -6,7 +6,7 @@
   <link href="https://dajunhuang.github.io/atom.xml" rel="self"/>
   
   <link href="https://dajunhuang.github.io/"/>
-  <updated>2022-01-09T16:00:00.000Z</updated>
+  <updated>2022-01-10T16:00:00.000Z</updated>
   <id>https://dajunhuang.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>STM32 CMSIS与标准固件库文件解析汇总</title>
+    <link href="https://dajunhuang.github.io/2022/01/11/STM32F10x_StdPeriph_Lib/"/>
+    <id>https://dajunhuang.github.io/2022/01/11/STM32F10x_StdPeriph_Lib/</id>
+    <published>2022-01-10T16:00:00.000Z</published>
+    <updated>2022-01-10T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="startup-stm32f10x-hd-s"><a href="#startup-stm32f10x-hd-s" class="headerlink" title="startup_stm32f10x_hd.s"></a>startup_stm32f10x_hd.s</h1><p>&#8194;&#8194;STM32F10x High Density Devices vector table for MDK-ARM toolchain.<br>&#8194;&#8194;<a href="https://blog.csdn.net/wqx521/article/details/50925553">STM32启动文件——startup_stm32f10x_hd.s</a></p><h1 id="core-cm3-h、core-cm3-c"><a href="#core-cm3-h、core-cm3-c" class="headerlink" title="core_cm3.h、core_cm3.c"></a>core_cm3.h、core_cm3.c</h1><p>&#8194;&#8194;CMSIS Cortex-M3 Core Peripheral Access Layer File.<br>&#8194;&#8194;<a href="https://blog.csdn.net/fuyunliushuizjf/article/details/42389171">core_cm3.c解析</a></p><h1 id="system-stm32f10x-h、system-stm32f10x-c"><a href="#system-stm32f10x-h、system-stm32f10x-c" class="headerlink" title="system_stm32f10x.h、system_stm32f10x.c"></a>system_stm32f10x.h、system_stm32f10x.c</h1><p>CMSIS Cortex-M3 Device Peripheral Access Layer System File.</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">* 1.  This file provides two functions and one global variable to be called from </span><br><span class="line">*     user application:</span><br><span class="line">*      - SystemInit(): Setups the system clock (System clock source, PLL Multiplier</span><br><span class="line">*                      factors, AHB/APBx prescalers and Flash settings). </span><br><span class="line">*                      This function is called at startup just after reset and </span><br><span class="line">*                      before branch to main program. This call is made inside</span><br><span class="line">*                      the &quot;startup_stm32f10x_xx.s&quot; file.</span><br><span class="line">*</span><br><span class="line">*      - SystemCoreClock variable: Contains the core clock (HCLK), it can be used</span><br><span class="line">*                                  by the user application to setup the SysTick </span><br><span class="line">*                                  timer or configure other parameters.</span><br><span class="line">*                                     </span><br><span class="line">*      - SystemCoreClockUpdate(): Updates the variable SystemCoreClock and must</span><br><span class="line">*                                 be called whenever the core clock is changed</span><br><span class="line">*                                 during program execution.</span><br><span class="line">*</span><br><span class="line">* 2. After each device reset the HSI (8 MHz) is used as system clock source.</span><br><span class="line">*    Then SystemInit() function is called, in &quot;startup_stm32f10x_xx.s&quot; file, to</span><br><span class="line">*    configure the system clock before to branch to main program.</span><br><span class="line">*</span><br><span class="line">* 3. If the system clock source selected by user fails to startup, the SystemInit()</span><br><span class="line">*    function will do nothing and HSI still used as system clock source. User can </span><br><span class="line">*    add some code to deal with this issue inside the SetSysClock() function.</span><br><span class="line">*</span><br><span class="line">* 4. The default value of HSE crystal is set to 8 MHz (or 25 MHz, depedning on</span><br><span class="line">*    the product used), refer to &quot;HSE_VALUE&quot; define in &quot;stm32f10x.h&quot; file. </span><br><span class="line">*    When HSE is used as system clock source, directly or through PLL, and you</span><br><span class="line">*    are using different crystal you have to adapt the HSE value to your own</span><br><span class="line">*    configuration.</span><br></pre></td></tr></table></figure><h1 id="stm32f10x-conf-h"><a href="#stm32f10x-conf-h" class="headerlink" title="stm32f10x_conf.h"></a>stm32f10x_conf.h</h1><p>&#8194;&#8194;Library configuration file.<br>&#8194;&#8194;<a href="https://blog.csdn.net/tanguohua_666/article/details/88087309">stm32f10x_conf.h是个什么东东？</a></p><h1 id="stm32f10x-h"><a href="#stm32f10x-h" class="headerlink" title="stm32f10x.h"></a>stm32f10x.h</h1><p>&#8194;&#8194;CMSIS Cortex-M3 Device Peripheral Access Layer Header File.<br>&#8194;&#8194;<a href="https://www.cnblogs.com/caihongsheng/p/3513279.html">stm32f10x.h文件分析理解</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;startup-stm32f10x-hd-s&quot;&gt;&lt;a href=&quot;#startup-stm32f10x-hd-s&quot; class=&quot;headerlink&quot; title=&quot;startup_stm32f10x_hd.s&quot;&gt;&lt;/a&gt;startup_stm32f10x_hd</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
+    
+  </entry>
   
   <entry>
     <title>STM32学习笔记（十）DMA</title>
@@ -71,7 +95,7 @@
   </entry>
   
   <entry>
-    <title>《Loopers》带来的思考</title>
+    <title>《Loopers》思获</title>
     <link href="https://dajunhuang.github.io/2022/01/09/Loopers/"/>
     <id>https://dajunhuang.github.io/2022/01/09/Loopers/</id>
     <published>2022-01-08T16:00:00.000Z</published>
@@ -91,8 +115,6 @@
     
     
     <category term="Galgame" scheme="https://dajunhuang.github.io/tags/Galgame/"/>
-    
-    <category term="Loopers" scheme="https://dajunhuang.github.io/tags/Loopers/"/>
     
   </entry>
   
@@ -227,9 +249,31 @@
     
     <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
     
-    <category term="端口复用" scheme="https://dajunhuang.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/"/>
+  </entry>
+  
+  <entry>
+    <title>STM32学习笔记（三）NVIC</title>
+    <link href="https://dajunhuang.github.io/2022/01/07/STM3NVIC/"/>
+    <id>https://dajunhuang.github.io/2022/01/07/STM3NVIC/</id>
+    <published>2022-01-06T16:00:00.000Z</published>
+    <updated>2022-01-06T16:00:00.000Z</updated>
     
-    <category term="AFIO" scheme="https://dajunhuang.github.io/tags/AFIO/"/>
+    <content type="html"><![CDATA[<p>&#8195;&#8195;CM3内核支持256个中断，其中包含了16个内核中断和240个外部中断，并且具有256级的可编程中断设置。但STM32只用了它的一部分。STM32有84个中断，包括16个内核中断和68个可屏蔽中断，具有16级可编程的中断优先级。STM32的68个可屏蔽中断，在STM32F103系列上面，又只有60个。</p><h1 id="STM32的中断分组"><a href="#STM32的中断分组" class="headerlink" title="STM32的中断分组"></a>STM32的中断分组</h1><p>&#8195;&#8195;STM32将中断分为5个组，组0-4，分配关系如下图所示：<br><img src="/2022/01/07/STM3NVIC/group.png"><br>&#8195;&#8195;这里需要注意两点：第一，如果两个中断的抢占优先级和响应优先级都是一样的话，则看哪个中断先发生就先执行；第二，高优先级的抢占优先级是可以打断正在进行的低抢占优先级中断的。而抢占优先级相同的中断，高优先级的响应优先级不可以打断低响应优先级的中断。<br>&#8195;&#8195;中断优先级分组函数是<code>NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup)</code>，例如：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);</span><br></pre></td></tr></table></figure><p>设置整个系统的中断优先级分组值为2，就确定了一共为2位抢占优先级，2位响应优先级。</p><h1 id="中断初始化"><a href="#中断初始化" class="headerlink" title="中断初始化"></a>中断初始化</h1><p>&#8195;&#8195;中断初始化函数为<code>void NVIC_Init(NVIC_InitTypeDef* NVIC_InitStruct)</code>，其中<code>NVIC_InitTypeDef</code>是一个结构体，结构体的成员变量如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123; </span><br><span class="line">    uint8_t NVIC_IRQChannel; </span><br><span class="line">    uint8_t NVIC_IRQChannelPreemptionPriority; </span><br><span class="line">    uint8_t NVIC_IRQChannelSubPriority; </span><br><span class="line">    FunctionalState NVIC_IRQChannelCmd; </span><br><span class="line">&#125; NVIC_InitTypeDef;</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;<code>NVIC_InitTypeDef</code>结构体中间有三个成员变量，这三个成员变量的作用是：<br>&#8195;&#8195;<code>NVIC_IRQChannel</code>：定义初始化的是哪个中断，这个我们可以在<code>stm32f10x.h</code> 中找到 每个中断对应的名字。例如<code>USART1_IRQn</code>。<br>&#8195;&#8195;<code>NVIC_IRQChannelPreemptionPriority</code>：定义这个中断的抢占优先级别。<code>NVIC_IRQChannelSubPriority</code>：定义这个中断的子优先级别。<br>&#8195;&#8195;<code>NVIC_IRQChannelCmd</code>：该中断是否使能。<br>&#8195;&#8195;比如我们要使能串口1的中断，同时设置抢占优先级为1，子优先级位2，初始化的方法是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NVIC_InitTypeDef NVIC_InitStructure; </span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;//串口1中断 </span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;//抢占优先级为1 </span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;//子优先级位2</span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; //IRQ通道使能 </span><br><span class="line">NVIC_Init(&amp;NVIC_InitStructure); //根据上面指定的参数初始化NVIC寄存器</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;综上中断优先级配置的步骤：</p><ol><li>系统运行开始的时候设置中断分组。调用函数<code>NVIC_PriorityGroupConfig()</code>确定组号，也就是确定抢占优先级和子优先级的分配位数。;</li><li>设置所用到的中断的中断优先级别。对中断调用函数<code>NVIC_Init()</code>以初始化;</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&amp;#8195;&amp;#8195;CM3内核支持256个中断，其中包含了16个内核中断和240个外部中断，并且具有256级的可编程中断设置。但STM32只用了它的一部分。STM32有84个中断，包括16个内核中断和68个可屏蔽中断，具有16级可编程的中断优先级。STM32的68个</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
+    
+    <category term="NVIC" scheme="https://dajunhuang.github.io/tags/NVIC/"/>
     
   </entry>
   
@@ -263,32 +307,6 @@
   </entry>
   
   <entry>
-    <title>STM32学习笔记（三）中断优先级管理</title>
-    <link href="https://dajunhuang.github.io/2022/01/07/STM3NVIC/"/>
-    <id>https://dajunhuang.github.io/2022/01/07/STM3NVIC/</id>
-    <published>2022-01-06T16:00:00.000Z</published>
-    <updated>2022-01-06T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>&#8195;&#8195;CM3内核支持256个中断，其中包含了16个内核中断和240个外部中断，并且具有256级的可编程中断设置。但STM32只用了它的一部分。STM32有84个中断，包括16个内核中断和68个可屏蔽中断，具有16级可编程的中断优先级。STM32的68个可屏蔽中断，在STM32F103系列上面，又只有60个。</p><h1 id="STM32的中断分组"><a href="#STM32的中断分组" class="headerlink" title="STM32的中断分组"></a>STM32的中断分组</h1><p>&#8195;&#8195;STM32将中断分为5个组，组0-4，分配关系如下图所示：<br><img src="/2022/01/07/STM3NVIC/group.png"><br>&#8195;&#8195;这里需要注意两点：第一，如果两个中断的抢占优先级和响应优先级都是一样的话，则看哪个中断先发生就先执行；第二，高优先级的抢占优先级是可以打断正在进行的低抢占优先级中断的。而抢占优先级相同的中断，高优先级的响应优先级不可以打断低响应优先级的中断。<br>&#8195;&#8195;中断优先级分组函数是<code>NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup)</code>，例如：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);</span><br></pre></td></tr></table></figure><p>设置整个系统的中断优先级分组值为2，就确定了一共为2位抢占优先级，2位响应优先级。</p><h1 id="中断初始化"><a href="#中断初始化" class="headerlink" title="中断初始化"></a>中断初始化</h1><p>&#8195;&#8195;中断初始化函数为<code>void NVIC_Init(NVIC_InitTypeDef* NVIC_InitStruct)</code>，其中<code>NVIC_InitTypeDef</code>是一个结构体，结构体的成员变量如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123; </span><br><span class="line">    uint8_t NVIC_IRQChannel; </span><br><span class="line">    uint8_t NVIC_IRQChannelPreemptionPriority; </span><br><span class="line">    uint8_t NVIC_IRQChannelSubPriority; </span><br><span class="line">    FunctionalState NVIC_IRQChannelCmd; </span><br><span class="line">&#125; NVIC_InitTypeDef;</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;<code>NVIC_InitTypeDef</code>结构体中间有三个成员变量，这三个成员变量的作用是：<br>&#8195;&#8195;<code>NVIC_IRQChannel</code>：定义初始化的是哪个中断，这个我们可以在<code>stm32f10x.h</code> 中找到 每个中断对应的名字。例如<code>USART1_IRQn</code>。<br>&#8195;&#8195;<code>NVIC_IRQChannelPreemptionPriority</code>：定义这个中断的抢占优先级别。<code>NVIC_IRQChannelSubPriority</code>：定义这个中断的子优先级别。<br>&#8195;&#8195;<code>NVIC_IRQChannelCmd</code>：该中断是否使能。<br>&#8195;&#8195;比如我们要使能串口1的中断，同时设置抢占优先级为1，子优先级位2，初始化的方法是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NVIC_InitTypeDef NVIC_InitStructure; </span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;//串口1中断 </span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;//抢占优先级为1 </span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;//子优先级位2</span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; //IRQ通道使能 </span><br><span class="line">NVIC_Init(&amp;NVIC_InitStructure); //根据上面指定的参数初始化NVIC寄存器</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;综上中断优先级配置的步骤：</p><ol><li>系统运行开始的时候设置中断分组。调用函数<code>NVIC_PriorityGroupConfig()</code>确定组号，也就是确定抢占优先级和子优先级的分配位数。;</li><li>设置所用到的中断的中断优先级别。对中断调用函数<code>NVIC_Init()</code>以初始化;</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&amp;#8195;&amp;#8195;CM3内核支持256个中断，其中包含了16个内核中断和240个外部中断，并且具有256级的可编程中断设置。但STM32只用了它的一部分。STM32有84个中断，包括16个内核中断和68个可屏蔽中断，具有16级可编程的中断优先级。STM32的68个</summary>
-      
-    
-    
-    
-    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
-    
-    <category term="NVIC" scheme="https://dajunhuang.github.io/tags/NVIC/"/>
-    
-  </entry>
-  
-  <entry>
     <title>STM32学习笔记（一）STM32时钟系统</title>
     <link href="https://dajunhuang.github.io/2022/01/06/STM1CLK/"/>
     <id>https://dajunhuang.github.io/2022/01/06/STM1CLK/</id>
@@ -309,8 +327,6 @@
     
     
     <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
-    
-    <category term="CLK" scheme="https://dajunhuang.github.io/tags/CLK/"/>
     
   </entry>
   
