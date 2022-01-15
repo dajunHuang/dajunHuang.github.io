@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/09/STM8PWM/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/08/STM7TIM/</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/08/STM7TIM/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/09/STM8PWM/</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -225,13 +225,6 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/Galgame/</loc>
-    <lastmod>2022-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://dajunhuang.github.io/tags/STM32/</loc>
     <lastmod>2022-01-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -253,6 +246,13 @@
   </url>
   
   <url>
+    <loc>https://dajunhuang.github.io/tags/Galgame/</loc>
+    <lastmod>2022-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://dajunhuang.github.io/tags/NVIC/</loc>
     <lastmod>2022-01-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -267,14 +267,14 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/EXTI/</loc>
+    <loc>https://dajunhuang.github.io/tags/TIM/</loc>
     <lastmod>2022-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/TIM/</loc>
+    <loc>https://dajunhuang.github.io/tags/EXTI/</loc>
     <lastmod>2022-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -304,14 +304,14 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/categories/%E8%AF%84%E8%AE%BA/</loc>
+    <loc>https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://dajunhuang.github.io/categories/%E8%AF%84%E8%AE%BA/</loc>
     <lastmod>2022-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
