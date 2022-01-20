@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CMake学习笔记（一）CMake基础 | dajunHuang的小站</title><meta name="keywords" content="编译,linux,CMake"><meta name="author" content="dajunHuang"><meta name="copyright" content="dajunHuang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="make、Makefile和CMake&amp;#8195;&amp;#8195;Makefile关系到了整个工程的编译规则。一个工程中的源文件不计其数,并且按类型、功能、模块分别放在若干个目录中,Makefile定义了一系列的规则来指定,哪些文件需要先编译,哪些文件需要后编译,哪些文件需要重新编译,甚至于进行更复杂的功能操作。Makefile带来的好处就是——“自动化编译”,一旦写好,只需要一个make命令,整">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMake学习笔记（一）CMake基础">
+<meta property="og:url" content="https://dajunhuang.github.io/2022/01/20/linux_cmake1/index.html">
+<meta property="og:site_name" content="dajunHuang的小站">
+<meta property="og:description" content="make、Makefile和CMake&amp;#8195;&amp;#8195;Makefile关系到了整个工程的编译规则。一个工程中的源文件不计其数,并且按类型、功能、模块分别放在若干个目录中,Makefile定义了一系列的规则来指定,哪些文件需要先编译,哪些文件需要后编译,哪些文件需要重新编译,甚至于进行更复杂的功能操作。Makefile带来的好处就是——“自动化编译”,一旦写好,只需要一个make命令,整">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dajunhuang.github.io/2022/01/20/linux_cmake1/cmake_logo_slider.png">
+<meta property="article:published_time" content="2022-01-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-19T16:00:00.000Z">
+<meta property="article:author" content="dajunHuang">
+<meta property="article:tag" content="编译">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="CMake">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dajunhuang.github.io/2022/01/20/linux_cmake1/cmake_logo_slider.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://dajunhuang.github.io/2022/01/20/linux_cmake1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CMake学习笔记（一）CMake基础',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-20 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/Kimbiedark.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="dajunHuang的小站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/StardustPaimon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">dajunHuang的小站</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">CMake学习笔记（一）CMake基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-19T16:00:00.000Z" title="发表于 2022-01-20 00:00:00">2022-01-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-19T16:00:00.000Z" title="更新于 2022-01-20 00:00:00">2022-01-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CMake学习笔记（一）CMake基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="make、Makefile和CMake"><a href="#make、Makefile和CMake" class="headerlink" title="make、Makefile和CMake"></a>make、Makefile和CMake</h1><p>&#8195;&#8195;Makefile关系到了整个工程的编译规则。一个工程中的源文件不计其数,并且按类型、功能、模块分别放在若干个目录中,Makefile定义了一系列的规则来指定,哪些文件需要先编译,哪些文件需要后编译,哪些文件需要重新编译,甚至于进行更复杂的功能操作。Makefile带来的好处就是——“自动化编译”,一旦写好,只需要一个<code>make</code>命令,整个工程完全自动编译,极大的提高了软件开发的效率。<br>&#8195;&#8195;<code>make</code>是一个命令工具,是一个解释Makefile中指令的命令工具,一般来说,大多数的IDE都有这个命令,比如Delphi的<code>make</code>,Visual C++的<code>nmake</code>,Linux下GNU的<code>make</code>。可见,Makefile都成为了一种在工程方面的编译方法。<br>&#8195;&#8195;<code>CMake</code>是一个跨平台的编译工具，能够输出各种各样的Makefile或者project文件。例如，如果一个项目需要在Windows上用VS编译，在Linux上用<code>make</code>编译，在OS X上用X CODE，那么按以前的做法是在整个项目文件里看三个目录，分别放置VS的sln文件，Linux的Makefile，OS X的X CODE，然后让不同需求的人到相应的目录用自己需要的工程文件。有了CMake以后，就不需要这三个目录了，只要有一个给CMake读的文件，然后CMake的UI上会需要用户选择目标平台，这样CMake就会生成目标平台上的工程文件。<br>&#8195;&#8195;CMake并不直接构建出最终的软件，而是生成标准的Makefile文件或者Visual Studio项目文件，然后再使用make或者Visual Studio进行编译。</p>
+<h1 id="最小的CMakeLists-txt"><a href="#最小的CMakeLists-txt" class="headerlink" title="最小的CMakeLists.txt"></a>最小的CMakeLists.txt</h1><p>&#8195;&#8195;一个最简单的<code>CMakeLists.txt</code>只包含三行代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Set the minimum version of CMake that can be used To find the cmake version run $ cmake --version</span><br><span class="line">cmake_minimum_required(VERSION 3.5)</span><br><span class="line"></span><br><span class="line"># Set the project name and version</span><br><span class="line">project (hello_cmake VERSION 1.0)</span><br><span class="line"></span><br><span class="line"># Add an executable</span><br><span class="line">add_executable(hello_cmake main.cpp)</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;<code>cmake_minimum_required</code>用来确定支持的CMake的最小版本。<br>&#8195;&#8195;<code>project</code>设置CMake工程名和版本号。同时用工程名创建一个<code>$&#123;PROJECT_NAME&#125;</code>变量。<br>&#8195;&#8195;<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/v3.22/command/add_executable.html?highlight=add_exe"><code>add_executable</code></a>确定要使用那些文件生成可执行文件，函数的第一个参数是生成可执行文件的名字，可以使用变量。如<code>add_executable($&#123;PROJECT_NAME&#125; main.cpp)</code>在上例中表示生成名为<code>hello_cmake</code>的可执行文件。</p>
+<h1 id="include目录"><a href="#include目录" class="headerlink" title="include目录"></a>include目录</h1><p>&#8195;&#8195;当有多个<code>include</code>目录时，可以使用<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/v3.22/command/target_include_directories.html?highlight=target_include_directoried"><code>target_include_directories</code></a>让编译器在编译目标文件时包含这些路径，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target_include_directories(target</span><br><span class="line">    PRIVATE</span><br><span class="line">        $&#123;PROJECT_SOURCE_DIR&#125;/include</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;其中<code>target</code>必须由<code>add_executable</code>或<code>add_libray</code>创建且不能是别名目标。<code>PRIVATE</code>、<code>PUNLIC</code>、<code>INTERFACE</code>用来确定紧跟的参数的作用域。<code>PRIVATE</code>和<code>PUBLIC</code>用参数填充<code>target</code>的<code>INCLUDE_DIRECTORIES</code>变量，<code>PUBLIC</code>和<code>INTERFACE</code>用参数填充<code>target</code>的<code>INTERFACE_INCLUDE_DIRECTORIES</code>变量。如果<code>target</code>是<code>library</code>文件，<code>INTERFACE</code>表示参数只添加到所有链接此<code>library</code>的<code>target</code>的include路径中，<code>PUBLIC</code>表示参数添加到<code>library</code>的include路径和所有包含此<code>library</code>的<code>target</code>的include路径中。</p>
+<h1 id="使用库文件"><a href="#使用库文件" class="headerlink" title="使用库文件"></a>使用库文件</h1><h2 id="创建库文件"><a href="#创建库文件" class="headerlink" title="创建库文件"></a>创建库文件</h2><p>&#8195;&#8195;<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/v3.22/command/add_library.html?highlight=add#command:add_library"><code>add_library</code></a>函数用源文件创建库文件，下例用<code>Hello.cpp</code>创建名为<code>hello_library</code>的静态库文件，库文件的后缀由平台确定。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add_library(hello_library STATIC </span><br><span class="line">    src/Hello.cpp</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;创建的库文件类型可能是<code>STATIC</code>、<code>SHARED</code>或<code>MODULE</code>。静态库是目标文件的合集，在编译过程中被载入可执行程序，动态库在可执行程序运行时才载入内存，在编译过程中仅简单的引用。如果没有指定创建什么类型的库文件，默认创建静态库并依据<code>BUILD_SHARED_LIBS</code>的值决定生成是否创建动态库。库文件生成的位置可以通过变量<code>ARCHIVE_OUTPUT_DIRECTORY</code>、<code>LIBRARY_OUTPUT_DIRECTORY</code>、和<code>RUNTIME_OUTPUT_DIRECTORY</code>修改。</p>
+<h2 id="引入库文件"><a href="#引入库文件" class="headerlink" title="引入库文件"></a>引入库文件</h2><p>&#8195;&#8195;在创建可执行文件时使用<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/v3.22/command/target_link_libraries.html?highlight=target_link#command:target_link_libraries"><code>target_link_libraries</code></a>函数告诉编译器使用那些库文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">add_executable(hello_binary</span><br><span class="line">    src/main.cpp</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">target_link_libraries( hello_binary</span><br><span class="line">    PRIVATE</span><br><span class="line">        hello_library</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;第一个参数<code>target</code>必须由<code>add_executable</code>或<code>add_libray</code>创建且不能是别名目标。<code>PUBLIC</code>、<code>INTERFACE</code>、<code>PRIVATE</code>用法和<code>target_include_directories</code>中类似用来确定链接的依赖性。用来链接的对象参数可以是：库文件目标名、库文件的完整路径或文件名。函数中的<code>PUBLIC</code>、<code>PRIVATE</code>、<code>INTERFACE</code>关键字用来确定链接的依赖性和链接的接口，跟在<code>PUBLIC</code>和<code>PRIVATE</code>后的对象被链接到<code>target</code>、跟在<code>PUBLIC</code>和<code>INTERFACE</code>后的对象被加入链接接口。</p>
+<h1 id="编译定义和选项"><a href="#编译定义和选项" class="headerlink" title="编译定义和选项"></a>编译定义和选项</h1><p>&#8195;&#8195;为目标编译过程添加预定义的函数是<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/v3.0/command/target_compile_definitions.html?highlight=target_compile_definitions"><code>target_compile_definitions</code></a>，使用方法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">target_compile_definitions(cmake_examples_compile_flags </span><br><span class="line">    PRIVATE EX3</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;第一个参数<code>target</code>必须由<code>add_executable</code>或<code>add_libray</code>创建且不能是别名目标。<code>PRIVATE</code>和<code>PUBLIC</code>用参数填充<code>target</code>的<code>COMPILE_DEFINITIONS</code>变量，<code>PUBLIC</code>和<code>INTERFACE</code>用参数填充<code>target</code>的<code>INTERFACE_COMPILE_DEFINITIONS</code>变量。如果<code>target</code>是库，并且已经选择了定义的作用域是<code>PUBLIC</code>或者<code>INTERFACE</code>，则该定义也将包含在链接该<code>target</code>的任何可执行文件中。<br>&#8195;&#8195;类似地，可以用<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/command/target_compile_options.html#:~:text=The%20final%20set%20of%20compile%20or%20link%20options,set%20of%20options%20is%20de-duplicated%20to%20avoid%20repetition."><code>target_compile_options</code></a>函数给shell传递选项参数。</p>
+<h1 id="目标的属性"><a href="#目标的属性" class="headerlink" title="目标的属性"></a>目标的属性</h1><p>&#8195;&#8195;在把源文件便以为二进制目标时，需要用到目标的<code>INCLUDE_DIRECTORIES</code>、<code>COMPILE_DEFINITIONS</code>和<code>COMPILE_OPTIONS</code>属性而<code>target_include_directories</code>、<code>target_compile_definitions</code>和<code>target_compile_options</code>函数确定了这些参数，此外这几个函数还确定<code>INTERFACE_INCLUDE_DIRECTORIES</code>、 <code>INTERFACE_COMPILE_DEFINITIONS</code>和<code>INTERFACE_COMPILE_OPTIONS</code>参数，因为它们有<code>PRIVATE</code>、<code>INTERFACE</code>和<code>PUBLIC的</code>参数可以选择。<br>&#8195;&#8195;<code>INTERFACE_INCLUDE_DIRECTORIES</code>，<code>INTERFACE_COMPILE_DEFINITIONS</code>和<code>INTERFACE_COMPILE_OPTIONS</code>被称作<code>Usage Requirements</code>。一个<code>target</code>的<code>Usage Requirements</code>可以传播给它的依赖者，<code>target_link_libraries</code>函数用<code>PRIVATE</code>、<code>INTERFACE</code>和<code>PUBLIC</code>关键字控制这种传播。<br>&#8195;&#8195;如果被依赖者只用来实现一个library的内容，那么在<code>target_link_libraries</code>函数里就要用<code>PRIVATE</code>关键字，如果被依赖者只是被加到library的头文件里，就要用<code>INTERFACE</code>关键字，如果两个功能都要实现，就要用<code>PUBLIC</code>关键字，类似的逻辑在本篇文章中已经出现过很多次。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target_link_libraries(archiveExtras</span><br><span class="line">  PUBLIC archive</span><br><span class="line">  PRIVATE serialization</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>&#8195;&#8195;目录结构如下图所示：</p>
+<img src="/2022/01/20/linux_cmake1/image-20220120194840050.png" alt="image-20220120194840050" style="zoom:67%;">
+&#8195;&#8195;CMakeLists.txt：
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required (VERSION 3.0)</span><br><span class="line">project (demo)</span><br><span class="line">add_executable (main src/main.c)</span><br><span class="line">add_library(func1_lib SHARED src/func1.c )</span><br><span class="line">add_library(func2_lib SHARED src/func2.c)</span><br><span class="line"></span><br><span class="line">target_include_directories(func1_lib PUBLIC $&#123;PROJECT_SOURCE_DIR&#125;/inc2)</span><br><span class="line">target_include_directories(main PRIVATE $&#123;PROJECT_SOURCE_DIR&#125;/inc1)</span><br><span class="line"></span><br><span class="line">target_link_libraries(func1_lib PUBLIC func2_lib)</span><br><span class="line">target_link_libraries(main PRIVATE func1_lib)</span><br><span class="line"></span><br><span class="line">target_compile_definitions(func1_lib PUBLIC FUNC1)</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;main.c：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;func2.h&quot;</span><br><span class="line">#include &quot;func1.h&quot;</span><br><span class="line">int main()&#123;</span><br><span class="line">    func1();</span><br><span class="line">    func2();</span><br><span class="line">#ifdef FUNC1</span><br><span class="line">    printf(&quot;DEFINED&quot;);</span><br><span class="line">#endif</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;func1.h：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func1();</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;func1.c：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &quot;func2.h&quot;</span><br><span class="line">void func1()&#123;</span><br><span class="line">    printf(&quot;func1&quot;);</span><br><span class="line">    func2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;func2.h：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void func2();</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;func2.c：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void func2()&#123;</span><br><span class="line">    printf(&quot;func2&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&#8195;&#8195;现在使用CMake后程序正常编译，输出结果：<br><img src="/2022/01/20/linux_cmake1/image-20220120204241923.png" alt="image-20220120204241923"></p>
+<p>&#8195;&#8195;<strong>此时：</strong></p>
+<ol>
+<li><p>如果将<code>CMakeLists.txt</code>第6行的<code>PRIVATE</code>改为<code>PUBLIC</code>，编译器提示找不到<code>func2.h</code>。这是因为<code>main.c</code>获取<code>func2.h</code>的途径是<code>func1_lib</code>——因为<code>mian</code>链接了<code>func1_lib</code>，而<code>func1_1</code>以<code>PUBLIC</code>的方式得到了<code>fun2.h</code>的路径，所以<code>main</code>也能得到<code>fun2.h</code>的路径。如果<code>func1_1</code>以<code>PRIVATE</code>的方式得到<code>fun2.h</code>的路径，就不能传播给<code>main</code>，会提示找不到<code>func2.h</code>。<br><img src="/2022/01/20/linux_cmake1/image-20220120203906138.png" alt="image-20220120203906138"></p>
+</li>
+<li><p>如果将<code>CMakeLists.txt</code>第8行的<code>PRIVATE</code>改为<code>PUBLIC</code>，编译器提示<code>func2</code>函数未定义。这是因为<code>main</code>是通过<code>func1_lib</code>来获取<code>func2_lib</code>的，当<code>func1_lib</code>不再通过<code>PUBLIC</code>关键字把<code>func2_lib</code>传播到<code>main</code>，<code>main</code>中的<code>func2</code>自然就未定义了。<br><img src="/2022/01/20/linux_cmake1/image-20220120204349142.png" alt="image-20220120204349142"></p>
+</li>
+<li><p>如果将<code>CMakeLists.txt</code>最后一行的<code>PRIVATE</code>改为<code>PUBLIC</code>，输出改变。道理很简单，也是因为定义不再能从<code>func1_lib</code>传到<code>main</code>。</p>
+</li>
+</ol>
+<p><img src="/2022/01/20/linux_cmake1/image-20220120205021923.png" alt="image-20220120205021923"></p>
+<p><strong>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/whahu1989/article/details/82078563">Linux下CMake简明教程</a>、<a target="_blank" rel="noopener" href="https://www.cnblogs.com/king-lps/p/7761621.html">cmake介绍</a>、<a target="_blank" rel="noopener" href="https://github.com/ttroy50/cmake-examples">ttroy50/cmake-examples</a>、跟我一起写Makefile(PDF重制版)-陈皓-2021年02月06日、<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/v3.0/index.html">CMake Reference Documentation</a>。</strong></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91/">编译</a><a class="post-meta__tags" href="/tags/linux/">linux</a><a class="post-meta__tags" href="/tags/CMake/">CMake</a></div><div class="post_share"><div class="social-share" data-image="/2022/01/20/linux_cmake1/cmake_logo_slider.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/01/19/c_compile/"><img class="next-cover" src="/2022/01/19/c_compile/image-20220119154958034.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C语言编译过程</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/StardustPaimon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dajunHuang</div><div class="author-info__description">软工专业本科生，目标考研，爱好Vocaloid、OSU、Galgame。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dajunHuang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:djhuang_1@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这里是dajunHuang的小站，我会在这里发学习日志、感想、碎碎念等内容。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#make%E3%80%81Makefile%E5%92%8CCMake"><span class="toc-number">1.</span> <span class="toc-text">make、Makefile和CMake</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%9A%84CMakeLists-txt"><span class="toc-number">2.</span> <span class="toc-text">最小的CMakeLists.txt</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#include%E7%9B%AE%E5%BD%95"><span class="toc-number">3.</span> <span class="toc-text">include目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%BA%93%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">使用库文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%BA%93%E6%96%87%E4%BB%B6"><span class="toc-number">4.1.</span> <span class="toc-text">创建库文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E5%BA%93%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.</span> <span class="toc-text">引入库文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%AE%9A%E4%B9%89%E5%92%8C%E9%80%89%E9%A1%B9"><span class="toc-number">5.</span> <span class="toc-text">编译定义和选项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">6.</span> <span class="toc-text">目标的属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">7.</span> <span class="toc-text">示例</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/20/linux_cmake1/" title="CMake学习笔记（一）CMake基础"><img src="/2022/01/20/linux_cmake1/cmake_logo_slider.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CMake学习笔记（一）CMake基础"/></a><div class="content"><a class="title" href="/2022/01/20/linux_cmake1/" title="CMake学习笔记（一）CMake基础">CMake学习笔记（一）CMake基础</a><time datetime="2022-01-19T16:00:00.000Z" title="发表于 2022-01-20 00:00:00">2022-01-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/19/c_compile/" title="C语言编译过程"><img src="/2022/01/19/c_compile/image-20220119154958034.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言编译过程"/></a><div class="content"><a class="title" href="/2022/01/19/c_compile/" title="C语言编译过程">C语言编译过程</a><time datetime="2022-01-18T16:00:00.000Z" title="发表于 2022-01-19 00:00:00">2022-01-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/17/github_git/" title="Git使用方法"><img src="/2022/01/17/github_git/git.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git使用方法"/></a><div class="content"><a class="title" href="/2022/01/17/github_git/" title="Git使用方法">Git使用方法</a><time datetime="2022-01-16T16:00:00.000Z" title="发表于 2022-01-17 00:00:00">2022-01-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/15/linux_command/" title="linux指令（持续添加）"><img src="/2022/01/15/linux_command/l1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux指令（持续添加）"/></a><div class="content"><a class="title" href="/2022/01/15/linux_command/" title="linux指令（持续添加）">linux指令（持续添加）</a><time datetime="2022-01-14T16:00:00.000Z" title="发表于 2022-01-15 00:00:00">2022-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/15/linux_vim/" title="linux vi和vim使用"><img src="/2022/01/15/linux_vim/l1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux vi和vim使用"/></a><div class="content"><a class="title" href="/2022/01/15/linux_vim/" title="linux vi和vim使用">linux vi和vim使用</a><time datetime="2022-01-14T16:00:00.000Z" title="发表于 2022-01-15 00:00:00">2022-01-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By dajunHuang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
