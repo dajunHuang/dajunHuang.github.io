@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>The Mythical Man-Month Reading Notes | dajunHuang的小站</title><meta name="keywords" content="软件工程"><meta name="author" content="dajunHuang"><meta name="copyright" content="dajunHuang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="The Tar PitLarge-system programming has over the past decade been such a tar pit, and many great and powerful beasts have thrashed violently in it.No one thing seems to cause the difficulty - any part">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Mythical Man-Month Reading Notes">
+<meta property="og:url" content="https://dajunhuang.github.io/2022/01/22/The%20Mythical%20Man-Month/index.html">
+<meta property="og:site_name" content="dajunHuang的小站">
+<meta property="og:description" content="The Tar PitLarge-system programming has over the past decade been such a tar pit, and many great and powerful beasts have thrashed violently in it.No one thing seems to cause the difficulty - any part">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dajunhuang.github.io/2022/01/22/The%20Mythical%20Man-Month/cover.png">
+<meta property="article:published_time" content="2022-01-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-21T16:00:00.000Z">
+<meta property="article:author" content="dajunHuang">
+<meta property="article:tag" content="软件工程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dajunhuang.github.io/2022/01/22/The%20Mythical%20Man-Month/cover.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://dajunhuang.github.io/2022/01/22/The%20Mythical%20Man-Month/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'The Mythical Man-Month Reading Notes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-22 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/Kimbiedark.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="dajunHuang的小站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/StardustPaimon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">dajunHuang的小站</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">The Mythical Man-Month Reading Notes</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-21T16:00:00.000Z" title="发表于 2022-01-22 00:00:00">2022-01-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-21T16:00:00.000Z" title="更新于 2022-01-22 00:00:00">2022-01-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="The Mythical Man-Month Reading Notes"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="The-Tar-Pit"><a href="#The-Tar-Pit" class="headerlink" title="The Tar Pit"></a>The Tar Pit</h1><p>Large-system programming has over the past decade been such a tar pit, and many great and powerful beasts have thrashed violently in it.<br>No one thing seems to cause the difficulty - any particular paw can be pulled away. But the accumulation of simultaneous and interacting factors brings slower and slower motion.</p>
+<h2 id="The-Programming-Systems-Product"><a href="#The-Programming-Systems-Product" class="headerlink" title="The Programming Systems Product"></a>The Programming Systems Product</h2><img src="/2022/01/22/The%20Mythical%20Man-Month/image-20220122195717668.png" alt="image-20220122195717668" style="zoom:45%;">
+
+<p>In the upper left of Fig. 1.1 is a program. It is complete in itself, ready to be run by the author on the system on which it was developed. That is the thing commonly produced in garages, and that is the object the individual programmer uses in estimating productivity.<br>Moving down across the horizontal boundary, a program becomes a programming product. This is a program that can be run,tested, repaired, and extended by anybody.<br>Moving across the vertical boundary, a program becomes a component in a programming system. This is a collection of interacting programs, coordinated in function and disciplined in format, so that the assemblage constitutes an entire facility for large tasks.<br>In the lower right-hand corner of Fig. 1.1 stands the programming systems product. This differs from the simple program in all of the above ways. It costs nine times as much. But it is the truly useful object, the intended product of most system programming efforts.</p>
+<h2 id="The-Joys-of-the-Craft"><a href="#The-Joys-of-the-Craft" class="headerlink" title="The Joys of the Craft"></a>The Joys of the Craft</h2><p>First is the sheer joy of making things.<br>Second is the pleasure of making things that are useful to other people.<br>Third is the fascination of fashioning complex puzzle-like objects of interlocking moving parts and watching them work in subtle cycles, playing out the consequences of principles built in from the beginning.<br>Fourth is the joy of always learning<br>Finally, there is the delight of working in such a tractable medium. </p>
+<h2 id="The-Woes-of-the-Craft"><a href="#The-Woes-of-the-Craft" class="headerlink" title="The Woes of the Craft"></a>The Woes of the Craft</h2><p>First, one must perform perfectly.<br>Next, other people set one’s objectives, provide one’s resources, and furnish one’s information.<br>The dependence upon others has a particular case that is especially painful for the system programmer.<br>The next woe is that designing grand concepts is fun; finding nitty little bugs is just work.<br>The last woe, and sometimes the last straw, is that the product over which one has labored so long appears to be obsolete upon (or before) completion.</p>
+<h1 id="The-Mythical-Man-Month"><a href="#The-Mythical-Man-Month" class="headerlink" title="The Mythical Man-Month"></a>The Mythical Man-Month</h1><p>More software projects have gone awry for lack of calendar time than for all other causes combined. <strong>Why?</strong><br>First, our techniques of estimating are poorly developed.<br>Second, our estimating techniques fallaciously confuse effort with progress?<br>Third, because we are uncertain of our estimates, software managers often lack the courteous stubbornness of Antoine’s chef.<br>Fourth, schedule progress is poorly monitored.<br>Fifth, when schedule slippage is recognized, the natural (and traditional) response is to add manpower.</p>
+<h2 id="Optimism"><a href="#Optimism" class="headerlink" title="Optimism"></a>Optimism</h2><p>So the first false assumption that underlies the scheduling of systems programming is that all will go well, that each task will hike only as long as it “ought” to take.<br>The pervasiveness of optimism among programmers deserves more than a flip analysis.<br>The programmer builds from pure thought-stuff: concepts and very flexible representations thereof. Because the medium is tractable, we expect few difficulties in implementation; hence our pervasive optimism. </p>
+<h2 id="The-Man-Month"><a href="#The-Man-Month" class="headerlink" title="The Man-Month"></a>The Man-Month</h2><p>Cost does indeed vary as the product of the number of men and the number of months. Progress does not. Hence the man-month as a unit for measuring the size of a job is a dangerous and deceptive myth.<br>Men and months are interchangeable commodities only when a task can be partitioned among many workers with no communication among them.<br>When a task cannot be partitioned because of sequential constraints, the application of more effort has no effect on the schedule.<br>In tasks that can be partitioned but which require communication among the subtasks, the effort of communication must be added to the amount of work to be done.<br>The added burden of communication is made up of two parts, training and intercommunication. </p>
+<h2 id="System-Test"><a href="#System-Test" class="headerlink" title="System Test"></a>System Test</h2><p>Because of optimism, we usually expect the number of bugs to be smaller than it turns out to be. Therefore testing is usually the most mis-scheduled part of programming.<br>software task: 1/3 planning, 1/6 coding, 1/4 component test and early system test, 1/4 system test, all components in hand.<br>few allowed one-half of the projected schedule for testing, but that most did indeed spend half of the actual schedule for that purpose.<br>Failure to allow enough time for system test, in particular, is peculiarly disastrous.<br>Furthermore, delay at this point has unusually severe financial, as well as psychological, repercussions.<br>It is therefore very important to allow enough system test time in the original schedule.</p>
+<h2 id="Gutless-Estimating"><a href="#Gutless-Estimating" class="headerlink" title="Gutless Estimating"></a>Gutless Estimating</h2><p> the urgency of the patron may govern the scheduled completion of the task, but it cannot govern the actual completion.<br>It is very difficult to make a vigorous, plausible, and job risking defense of an estimate that is derived by no quantitative method, supported by little data, and certified chiefly by the hunches of the managers.<br>Until estimating is on a sounder basis, individual managers will need to …… with the assurance that their poor hunches are better than wish derived estimates.</p>
+<h2 id="Regenerative-Schedule-Disaster"><a href="#Regenerative-Schedule-Disaster" class="headerlink" title="Regenerative Schedule Disaster"></a>Regenerative Schedule Disaster</h2><img src="/2022/01/22/The%20Mythical%20Man-Month/image-20220122210446094.png" alt="image-20220122210446094" style="zoom:50%;">
+
+<p>Adding manpower to a late software project makes it later.<br>The maximum number of men depends upon the number of independent subtasks. From these two quantities one can derive schedules using fewer men and more months. (The only risk is product obsolescence.) </p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></div><div class="post_share"><div class="social-share" data-image="/2022/01/22/The%20Mythical%20Man-Month/cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/01/22/STM11FSMC/"><img class="prev-cover" src="/2022/01/22/STM11FSMC/FSMC.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">STM32学习笔记（十一）FSMC</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/20/linux_cmake1/"><img class="next-cover" src="/2022/01/20/linux_cmake1/cmake_logo_slider.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CMake学习笔记（一）CMake基础</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/StardustPaimon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dajunHuang</div><div class="author-info__description">软工专业本科生，目标考研，爱好Vocaloid、OSU、Galgame。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dajunHuang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:djhuang_1@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这里是dajunHuang的小站，我会在这里发学习日志、感想、碎碎念等内容。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-Tar-Pit"><span class="toc-number">1.</span> <span class="toc-text">The Tar Pit</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Programming-Systems-Product"><span class="toc-number">1.1.</span> <span class="toc-text">The Programming Systems Product</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Joys-of-the-Craft"><span class="toc-number">1.2.</span> <span class="toc-text">The Joys of the Craft</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Woes-of-the-Craft"><span class="toc-number">1.3.</span> <span class="toc-text">The Woes of the Craft</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-Mythical-Man-Month"><span class="toc-number">2.</span> <span class="toc-text">The Mythical Man-Month</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimism"><span class="toc-number">2.1.</span> <span class="toc-text">Optimism</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Man-Month"><span class="toc-number">2.2.</span> <span class="toc-text">The Man-Month</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System-Test"><span class="toc-number">2.3.</span> <span class="toc-text">System Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gutless-Estimating"><span class="toc-number">2.4.</span> <span class="toc-text">Gutless Estimating</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Regenerative-Schedule-Disaster"><span class="toc-number">2.5.</span> <span class="toc-text">Regenerative Schedule Disaster</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/22/STM11FSMC/" title="STM32学习笔记（十一）FSMC"><img src="/2022/01/22/STM11FSMC/FSMC.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STM32学习笔记（十一）FSMC"/></a><div class="content"><a class="title" href="/2022/01/22/STM11FSMC/" title="STM32学习笔记（十一）FSMC">STM32学习笔记（十一）FSMC</a><time datetime="2022-01-21T16:00:00.000Z" title="发表于 2022-01-22 00:00:00">2022-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/22/The%20Mythical%20Man-Month/" title="The Mythical Man-Month Reading Notes"><img src="/2022/01/22/The%20Mythical%20Man-Month/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="The Mythical Man-Month Reading Notes"/></a><div class="content"><a class="title" href="/2022/01/22/The%20Mythical%20Man-Month/" title="The Mythical Man-Month Reading Notes">The Mythical Man-Month Reading Notes</a><time datetime="2022-01-21T16:00:00.000Z" title="发表于 2022-01-22 00:00:00">2022-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/20/linux_cmake1/" title="CMake学习笔记（一）CMake基础"><img src="/2022/01/20/linux_cmake1/cmake_logo_slider.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CMake学习笔记（一）CMake基础"/></a><div class="content"><a class="title" href="/2022/01/20/linux_cmake1/" title="CMake学习笔记（一）CMake基础">CMake学习笔记（一）CMake基础</a><time datetime="2022-01-19T16:00:00.000Z" title="发表于 2022-01-20 00:00:00">2022-01-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/19/c_compile/" title="C语言编译过程"><img src="/2022/01/19/c_compile/image-20220119154958034.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言编译过程"/></a><div class="content"><a class="title" href="/2022/01/19/c_compile/" title="C语言编译过程">C语言编译过程</a><time datetime="2022-01-18T16:00:00.000Z" title="发表于 2022-01-19 00:00:00">2022-01-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/17/github_git/" title="Git使用方法"><img src="/2022/01/17/github_git/git.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git使用方法"/></a><div class="content"><a class="title" href="/2022/01/17/github_git/" title="Git使用方法">Git使用方法</a><time datetime="2022-01-16T16:00:00.000Z" title="发表于 2022-01-17 00:00:00">2022-01-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By dajunHuang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
