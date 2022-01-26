@@ -6,7 +6,7 @@
   <link href="https://dajunhuang.github.io/atom.xml" rel="self"/>
   
   <link href="https://dajunhuang.github.io/"/>
-  <updated>2022-01-22T16:00:00.000Z</updated>
+  <updated>2022-01-25T16:00:00.000Z</updated>
   <id>https://dajunhuang.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录</title>
+    <link href="https://dajunhuang.github.io/2022/01/26/1alala/"/>
+    <id>https://dajunhuang.github.io/2022/01/26/1alala/</id>
+    <published>2022-01-25T16:00:00.000Z</published>
+    <updated>2022-01-25T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>2022年1月26日，在火车上想起来又是只带了数位板没带笔。被小红姐留在她家到1月30号。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;2022年1月26日，在火车上想起来又是只带了数位板没带笔。被小红姐留在她家到1月30号。&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="日志" scheme="https://dajunhuang.github.io/categories/%E6%97%A5%E5%BF%97/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>STM32学习笔记（十一）FSMC</title>
@@ -501,32 +524,6 @@
     
     
     <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>STM32学习笔记（三）NVIC</title>
-    <link href="https://dajunhuang.github.io/2022/01/07/STM3NVIC/"/>
-    <id>https://dajunhuang.github.io/2022/01/07/STM3NVIC/</id>
-    <published>2022-01-06T16:00:00.000Z</published>
-    <updated>2022-01-06T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>&#8195;&#8195;CM3内核支持256个中断，其中包含了16个内核中断和240个外部中断，并且具有256级的可编程中断设置。但STM32只用了它的一部分。STM32有84个中断，包括16个内核中断和68个可屏蔽中断，具有16级可编程的中断优先级。STM32的68个可屏蔽中断，在STM32F103系列上面，又只有60个。</p><h1 id="STM32的中断分组"><a href="#STM32的中断分组" class="headerlink" title="STM32的中断分组"></a>STM32的中断分组</h1><p>&#8195;&#8195;STM32将中断分为5个组，组0-4，分配关系如下图所示：<br><img src="/2022/01/07/STM3NVIC/group.png"><br>&#8195;&#8195;这里需要注意两点：第一，如果两个中断的抢占优先级和响应优先级都是一样的话，则看哪个中断先发生就先执行；第二，高优先级的抢占优先级是可以打断正在进行的低抢占优先级中断的。而抢占优先级相同的中断，高优先级的响应优先级不可以打断低响应优先级的中断。<br>&#8195;&#8195;中断优先级分组函数是<code>NVIC_PriorityGroupConfig(uint32_t NVIC_PriorityGroup)</code>，例如：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);</span><br></pre></td></tr></table></figure><p>设置整个系统的中断优先级分组值为2，就确定了一共为2位抢占优先级，2位响应优先级。</p><h1 id="中断初始化"><a href="#中断初始化" class="headerlink" title="中断初始化"></a>中断初始化</h1><p>&#8195;&#8195;中断初始化函数为<code>void NVIC_Init(NVIC_InitTypeDef* NVIC_InitStruct)</code>，其中<code>NVIC_InitTypeDef</code>是一个结构体，结构体的成员变量如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123; </span><br><span class="line">    uint8_t NVIC_IRQChannel; </span><br><span class="line">    uint8_t NVIC_IRQChannelPreemptionPriority; </span><br><span class="line">    uint8_t NVIC_IRQChannelSubPriority; </span><br><span class="line">    FunctionalState NVIC_IRQChannelCmd; </span><br><span class="line">&#125; NVIC_InitTypeDef;</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;<code>NVIC_InitTypeDef</code>结构体中间有三个成员变量，这三个成员变量的作用是：<br>&#8195;&#8195;<code>NVIC_IRQChannel</code>：定义初始化的是哪个中断，这个我们可以在<code>stm32f10x.h</code> 中找到 每个中断对应的名字。例如<code>USART1_IRQn</code>。<br>&#8195;&#8195;<code>NVIC_IRQChannelPreemptionPriority</code>：定义这个中断的抢占优先级别。<code>NVIC_IRQChannelSubPriority</code>：定义这个中断的子优先级别。<br>&#8195;&#8195;<code>NVIC_IRQChannelCmd</code>：该中断是否使能。<br>&#8195;&#8195;比如我们要使能串口1的中断，同时设置抢占优先级为1，子优先级位2，初始化的方法是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NVIC_InitTypeDef NVIC_InitStructure; </span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;//串口1中断 </span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;//抢占优先级为1 </span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;//子优先级位2</span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; //IRQ通道使能 </span><br><span class="line">NVIC_Init(&amp;NVIC_InitStructure); //根据上面指定的参数初始化NVIC寄存器</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;综上中断优先级配置的步骤：</p><ol><li>系统运行开始的时候设置中断分组。调用函数<code>NVIC_PriorityGroupConfig()</code>确定组号，也就是确定抢占优先级和子优先级的分配位数。;</li><li>设置所用到的中断的中断优先级别。对中断调用函数<code>NVIC_Init()</code>以初始化;</li></ol><p><strong>参考：正点原子STM32F1开发指南-库函数版本_V3.3、STM32中文参考手册_V10</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&amp;#8195;&amp;#8195;CM3内核支持256个中断，其中包含了16个内核中断和240个外部中断，并且具有256级的可编程中断设置。但STM32只用了它的一部分。STM32有84个中断，包括16个内核中断和68个可屏蔽中断，具有16级可编程的中断优先级。STM32的68个</summary>
-      
-    
-    
-    
-    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
-    
-    <category term="NVIC" scheme="https://dajunhuang.github.io/tags/NVIC/"/>
     
   </entry>
   
