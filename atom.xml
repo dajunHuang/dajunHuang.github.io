@@ -6,7 +6,7 @@
   <link href="https://dajunhuang.github.io/atom.xml" rel="self"/>
   
   <link href="https://dajunhuang.github.io/"/>
-  <updated>2022-01-25T16:00:00.000Z</updated>
+  <updated>2022-01-26T16:00:00.000Z</updated>
   <id>https://dajunhuang.github.io/</id>
   
   <author>
@@ -17,19 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>红</title>
+    <link href="https://dajunhuang.github.io/2022/01/27/20220127/"/>
+    <id>https://dajunhuang.github.io/2022/01/27/20220127/</id>
+    <published>2022-01-26T16:00:00.000Z</published>
+    <updated>2022-01-26T16:00:00.000Z</updated>
+    
+    
+    
+    
+    <category term="日志" scheme="https://dajunhuang.github.io/categories/%E6%97%A5%E5%BF%97/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>记录</title>
     <link href="https://dajunhuang.github.io/2022/01/26/1alala/"/>
     <id>https://dajunhuang.github.io/2022/01/26/1alala/</id>
     <published>2022-01-25T16:00:00.000Z</published>
     <updated>2022-01-25T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>2022年1月26日，在火车上想起来又是只带了数位板没带笔。被小红姐留在她家到1月30号。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="二零二二年"><a href="#二零二二年" class="headerlink" title="二零二二年"></a>二零二二年</h1><h2 id="一月"><a href="#一月" class="headerlink" title="一月"></a>一月</h2><p>26日，在火车上想起来又是只带了数位板没带笔。在小红姐家留着。</p><p>27日，和一家人出去买东西，感慨很多。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;2022年1月26日，在火车上想起来又是只带了数位板没带笔。被小红姐留在她家到1月30号。&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;h1 id=&quot;二零二二年&quot;&gt;&lt;a href=&quot;#二零二二年&quot; class=&quot;headerlink&quot; title=&quot;二零二二年&quot;&gt;&lt;/a&gt;二零二二年&lt;/h1&gt;&lt;h2 id=&quot;一月&quot;&gt;&lt;a href=&quot;#一月&quot; class=&quot;headerlink&quot; title=&quot;一月&quot;&gt;&lt;/a&gt;一</summary>
       
     
     
@@ -69,7 +83,7 @@
   </entry>
   
   <entry>
-    <title>The Mythical Man-Month Reading Notes</title>
+    <title>《The Mythical Man-Month》 Reading Notes</title>
     <link href="https://dajunhuang.github.io/2022/01/22/The%20Mythical%20Man-Month/"/>
     <id>https://dajunhuang.github.io/2022/01/22/The%20Mythical%20Man-Month/</id>
     <published>2022-01-21T16:00:00.000Z</published>
@@ -112,9 +126,9 @@
     <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="编译" scheme="https://dajunhuang.github.io/tags/%E7%BC%96%E8%AF%91/"/>
-    
     <category term="linux" scheme="https://dajunhuang.github.io/tags/linux/"/>
+    
+    <category term="编译" scheme="https://dajunhuang.github.io/tags/%E7%BC%96%E8%AF%91/"/>
     
     <category term="CMake" scheme="https://dajunhuang.github.io/tags/CMake/"/>
     
@@ -172,30 +186,6 @@
   </entry>
   
   <entry>
-    <title>linux指令（持续添加）</title>
-    <link href="https://dajunhuang.github.io/2022/01/15/linux_command/"/>
-    <id>https://dajunhuang.github.io/2022/01/15/linux_command/</id>
-    <published>2022-01-14T16:00:00.000Z</published>
-    <updated>2022-01-15T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# ls [-aAdfFhilnrRSt] 文件名或目录名称..</span><br><span class="line">[root@study ~]# ls [--color=&#123;never,auto,always&#125;] 文件名或目录名称..</span><br><span class="line">[root@study ~]# ls [--full-time] 文件名或目录名称..</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-a</code>：显示全部的文件，包括隐藏文件（开头为 . 的文件）也一起罗列出来，这是最常用的选项之一。<br>&#8195;&#8195;<code>-A</code>：显示全部的文件，连同隐藏文件，但不包括 . 与 .. 这两个目录。<br>&#8195;&#8195;<code>-d</code>：仅列出目录本身，而不是列出目录内的文件数据。<br>&#8195;&#8195;<code>-f</code>：ls 默认会以文件名排序，使用<code>-f</code>选项会直接列出结果，而不进行排序。<br>&#8195;&#8195;<code>-F</code>：在文件或目录名后加上文件类型的指示符号，例如，* 代表可运行文件，/ 代表目录，= 代表 socket 文件，| 代表 FIFO 文件。<br>&#8195;&#8195;<code>-h</code>：以人们易读的方式显示文件或目录大小，如 1KB、234MB、2GB 等。<br>&#8195;&#8195;<code>-i</code>：显示 inode 节点信息。<br>&#8195;&#8195;<code>-l</code>：使用长格式列出文件和目录信息。<br>&#8195;&#8195;<code>-n</code>：以 UID 和 GID 分别代替文件用户名和群组名显示出来。<br>&#8195;&#8195;<code>-r</code>：将排序结果反向输出，比如，若原本文件名由小到大，反向则为由大到小。<br>&#8195;&#8195;<code>-R</code>：连同子目录内容一起列出来，等於将该目录下的所有文件都显示出来。<br>&#8195;&#8195;<code>-S</code>：以文件容量大小排序，而不是以文件名排序。<br>&#8195;&#8195;<code>-t</code>：以时间排序，而不是以文件名排序。<br>&#8195;&#8195;<code>--color=never</code>：never 表示不依据文件特性给予颜色显示。<br>&#8195;&#8195;<code>--color=always</code>：always 表示显示颜色，ls默认采用这种方式。<br>&#8195;&#8195;<code>--color=auto</code>：auto 表示让系统自行依据配置来判断是否给予颜色。<br>&#8195;&#8195;<code>--full-time</code>：以完整时间模式 （包含年、月、日、时、分）输出<br>&#8195;&#8195;<code>--time=&#123;atime,ctime&#125;</code>：输出 access 时间或改变权限属性时间（ctime），而不是内容变更时间。</p><h1 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# cp [-adfilprsu] 来源文件（source） 目标文件（destination）</span><br><span class="line">[root@study ~]# cp [options] source1 source2 source3 .... directory</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-a</code>：相当于<code>-d</code>、<code>-p</code>、<code>-r</code>选项的集合，这几个选项我们一一介绍；<br>&#8195;&#8195;<code>-d</code>：如果源文件为软链接（对硬链接无效），则复制出的目标文件也为软链接；<br>&#8195;&#8195;<code>-i</code>：询问，如果目标文件已经存在，则会询问是否覆盖；<br>&#8195;&#8195;<code>-l</code>：把目标文件建立为源文件的硬链接文件，而不是复制源文件；<br>&#8195;&#8195;<code>-s</code>：把目标文件建立为源文件的软链接文件，而不是复制源文件；<br>&#8195;&#8195;<code>-p</code>：复制后目标文件保留源文件的属性（包括所有者、所属组、权限和时间）；<br>&#8195;&#8195;<code>-r</code>：递归复制，用于复制目录；<br>&#8195;&#8195;<code>-u</code>：若目标文件比源文件有差异，则使用该选项可以更新目标文件，此选项可用于对文件的升级和备用。<br>&#8195;&#8195;<code>--preserve=all</code> ：除了<code>-p</code>的权限相关参数外，还加入 SELinux 的属性, links, xattr 等也复制了。<br>&#8195;&#8195;最后需要注意的，如果来源文件有两个以上，则最后一个目的文件一定要是“目录”才行！</p><h1 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# rm [-fir] 文件或目录</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-f</code>：就是 force 的意思，忽略不存在的文件，不会出现警告讯息；<br>&#8195;&#8195;<code>-i</code>：互动模式，在删除前会询问使用者是否动作<br>&#8195;&#8195;<code>-r</code>：递回删除啊！最常用在目录的删除了！这是非常危险的选项！！！</p><h1 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# mv [-fiu] source destination</span><br><span class="line">[root@study ~]# mv [options] source1 source2 source3 .... directory</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-f</code>：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；<br>&#8195;&#8195;<code>-i</code>：若目标文件 （destination） 已经存在时，就会询问是否覆盖！<br>&#8195;&#8195;<code>-u</code>：若目标文件已经存在，且 source 比较新，才会更新 （update）</p><h1 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep [-acinv] [--color=auto] &#x27;搜寻字串&#x27; filename</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-a</code>：将 binary 文件以 text 文件的方式搜寻数据<br>&#8195;&#8195;<code>-c</code>：计算找到 ‘搜寻字串’ 的次数<br>&#8195;&#8195;<code>-i</code>：忽略大小写的不同，所以大小写视为相同<br>&#8195;&#8195;<code>-n</code>：顺便输出行号<br>&#8195;&#8195;<code>-v</code>：反向选择，亦即显示出没有 ‘搜寻字串’ 内容的那一行！<br>&#8195;&#8195;<code>-A</code>：后面可加数字，为 after 的意思，除了列出该行外，后续的 n 行也列出来；<br>&#8195;&#8195;<code>-B</code>：后面可加数字，为 befer 的意思，除了列出该行外，前面的 n 行也列出来；<br>&#8195;&#8195;<code>--color=auto</code>：可以将找到的关键字部分加上颜色的显示喔！</p><h1 id="read"><a href="#read" class="headerlink" title="read"></a>read</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ read [-pt] variable</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-p</code>：后面可以接提示字符！<br>&#8195;&#8195;<code>-t</code>：后面可以接等待的“秒数”。</p><h1 id="declare"><a href="#declare" class="headerlink" title="declare"></a>declare</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ declare [-aixr] variable</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;-a：将后面名为 variable 的变量定义成为阵列 （array） 类型<br>&#8195;&#8195;-i：将后面名为 variable 的变量定义成为整数数字 （integer） 类型<br>&#8195;&#8195;-x：用法与 export 一样，就是将后面的 variable 变成环境变量；<br>&#8195;&#8195;-r：将变量设置成为 readonly 类型，该变量不可被更改内容，也不能 unset</p><p><strong>参考：<a href="http://c.biancheng.net/linux_tutorial/">Linux学习教程，Linux入门教程（超详细）</a>、鸟哥的 Linux 私房菜：基础学习篇 第四版</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;ls&quot;&gt;&lt;a href=&quot;#ls&quot; class=&quot;headerlink&quot; title=&quot;ls&quot;&gt;&lt;/a&gt;ls&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;s</summary>
-      
-    
-    
-    
-    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="Linux" scheme="https://dajunhuang.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>linux vi和vim使用</title>
     <link href="https://dajunhuang.github.io/2022/01/15/linux_vim/"/>
     <id>https://dajunhuang.github.io/2022/01/15/linux_vim/</id>
@@ -208,6 +198,30 @@
       
       
     <summary type="html">&lt;h1 id=&quot;vi使用&quot;&gt;&lt;a href=&quot;#vi使用&quot; class=&quot;headerlink&quot; title=&quot;vi使用&quot;&gt;&lt;/a&gt;vi使用&lt;/h1&gt;&lt;p&gt;&amp;#8195;&amp;#8195;vi共分为三种模式，分别是“一般指令模式”、“编辑模式”与“命令行命令模式”，这三种工作模式可随</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Linux" scheme="https://dajunhuang.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux指令（持续添加）</title>
+    <link href="https://dajunhuang.github.io/2022/01/15/linux_command/"/>
+    <id>https://dajunhuang.github.io/2022/01/15/linux_command/</id>
+    <published>2022-01-14T16:00:00.000Z</published>
+    <updated>2022-01-15T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# ls [-aAdfFhilnrRSt] 文件名或目录名称..</span><br><span class="line">[root@study ~]# ls [--color=&#123;never,auto,always&#125;] 文件名或目录名称..</span><br><span class="line">[root@study ~]# ls [--full-time] 文件名或目录名称..</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-a</code>：显示全部的文件，包括隐藏文件（开头为 . 的文件）也一起罗列出来，这是最常用的选项之一。<br>&#8195;&#8195;<code>-A</code>：显示全部的文件，连同隐藏文件，但不包括 . 与 .. 这两个目录。<br>&#8195;&#8195;<code>-d</code>：仅列出目录本身，而不是列出目录内的文件数据。<br>&#8195;&#8195;<code>-f</code>：ls 默认会以文件名排序，使用<code>-f</code>选项会直接列出结果，而不进行排序。<br>&#8195;&#8195;<code>-F</code>：在文件或目录名后加上文件类型的指示符号，例如，* 代表可运行文件，/ 代表目录，= 代表 socket 文件，| 代表 FIFO 文件。<br>&#8195;&#8195;<code>-h</code>：以人们易读的方式显示文件或目录大小，如 1KB、234MB、2GB 等。<br>&#8195;&#8195;<code>-i</code>：显示 inode 节点信息。<br>&#8195;&#8195;<code>-l</code>：使用长格式列出文件和目录信息。<br>&#8195;&#8195;<code>-n</code>：以 UID 和 GID 分别代替文件用户名和群组名显示出来。<br>&#8195;&#8195;<code>-r</code>：将排序结果反向输出，比如，若原本文件名由小到大，反向则为由大到小。<br>&#8195;&#8195;<code>-R</code>：连同子目录内容一起列出来，等於将该目录下的所有文件都显示出来。<br>&#8195;&#8195;<code>-S</code>：以文件容量大小排序，而不是以文件名排序。<br>&#8195;&#8195;<code>-t</code>：以时间排序，而不是以文件名排序。<br>&#8195;&#8195;<code>--color=never</code>：never 表示不依据文件特性给予颜色显示。<br>&#8195;&#8195;<code>--color=always</code>：always 表示显示颜色，ls默认采用这种方式。<br>&#8195;&#8195;<code>--color=auto</code>：auto 表示让系统自行依据配置来判断是否给予颜色。<br>&#8195;&#8195;<code>--full-time</code>：以完整时间模式 （包含年、月、日、时、分）输出<br>&#8195;&#8195;<code>--time=&#123;atime,ctime&#125;</code>：输出 access 时间或改变权限属性时间（ctime），而不是内容变更时间。</p><h1 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# cp [-adfilprsu] 来源文件（source） 目标文件（destination）</span><br><span class="line">[root@study ~]# cp [options] source1 source2 source3 .... directory</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-a</code>：相当于<code>-d</code>、<code>-p</code>、<code>-r</code>选项的集合，这几个选项我们一一介绍；<br>&#8195;&#8195;<code>-d</code>：如果源文件为软链接（对硬链接无效），则复制出的目标文件也为软链接；<br>&#8195;&#8195;<code>-i</code>：询问，如果目标文件已经存在，则会询问是否覆盖；<br>&#8195;&#8195;<code>-l</code>：把目标文件建立为源文件的硬链接文件，而不是复制源文件；<br>&#8195;&#8195;<code>-s</code>：把目标文件建立为源文件的软链接文件，而不是复制源文件；<br>&#8195;&#8195;<code>-p</code>：复制后目标文件保留源文件的属性（包括所有者、所属组、权限和时间）；<br>&#8195;&#8195;<code>-r</code>：递归复制，用于复制目录；<br>&#8195;&#8195;<code>-u</code>：若目标文件比源文件有差异，则使用该选项可以更新目标文件，此选项可用于对文件的升级和备用。<br>&#8195;&#8195;<code>--preserve=all</code> ：除了<code>-p</code>的权限相关参数外，还加入 SELinux 的属性, links, xattr 等也复制了。<br>&#8195;&#8195;最后需要注意的，如果来源文件有两个以上，则最后一个目的文件一定要是“目录”才行！</p><h1 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# rm [-fir] 文件或目录</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-f</code>：就是 force 的意思，忽略不存在的文件，不会出现警告讯息；<br>&#8195;&#8195;<code>-i</code>：互动模式，在删除前会询问使用者是否动作<br>&#8195;&#8195;<code>-r</code>：递回删除啊！最常用在目录的删除了！这是非常危险的选项！！！</p><h1 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# mv [-fiu] source destination</span><br><span class="line">[root@study ~]# mv [options] source1 source2 source3 .... directory</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-f</code>：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；<br>&#8195;&#8195;<code>-i</code>：若目标文件 （destination） 已经存在时，就会询问是否覆盖！<br>&#8195;&#8195;<code>-u</code>：若目标文件已经存在，且 source 比较新，才会更新 （update）</p><h1 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ grep [-acinv] [--color=auto] &#x27;搜寻字串&#x27; filename</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-a</code>：将 binary 文件以 text 文件的方式搜寻数据<br>&#8195;&#8195;<code>-c</code>：计算找到 ‘搜寻字串’ 的次数<br>&#8195;&#8195;<code>-i</code>：忽略大小写的不同，所以大小写视为相同<br>&#8195;&#8195;<code>-n</code>：顺便输出行号<br>&#8195;&#8195;<code>-v</code>：反向选择，亦即显示出没有 ‘搜寻字串’ 内容的那一行！<br>&#8195;&#8195;<code>-A</code>：后面可加数字，为 after 的意思，除了列出该行外，后续的 n 行也列出来；<br>&#8195;&#8195;<code>-B</code>：后面可加数字，为 befer 的意思，除了列出该行外，前面的 n 行也列出来；<br>&#8195;&#8195;<code>--color=auto</code>：可以将找到的关键字部分加上颜色的显示喔！</p><h1 id="read"><a href="#read" class="headerlink" title="read"></a>read</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ read [-pt] variable</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;<code>-p</code>：后面可以接提示字符！<br>&#8195;&#8195;<code>-t</code>：后面可以接等待的“秒数”。</p><h1 id="declare"><a href="#declare" class="headerlink" title="declare"></a>declare</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[dmtsai@study ~]$ declare [-aixr] variable</span><br></pre></td></tr></table></figure><p>选项与参数：<br>&#8195;&#8195;-a：将后面名为 variable 的变量定义成为阵列 （array） 类型<br>&#8195;&#8195;-i：将后面名为 variable 的变量定义成为整数数字 （integer） 类型<br>&#8195;&#8195;-x：用法与 export 一样，就是将后面的 variable 变成环境变量；<br>&#8195;&#8195;-r：将变量设置成为 readonly 类型，该变量不可被更改内容，也不能 unset</p><p><strong>参考：<a href="http://c.biancheng.net/linux_tutorial/">Linux学习教程，Linux入门教程（超详细）</a>、鸟哥的 Linux 私房菜：基础学习篇 第四版</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;ls&quot;&gt;&lt;a href=&quot;#ls&quot; class=&quot;headerlink&quot; title=&quot;ls&quot;&gt;&lt;/a&gt;ls&lt;/h1&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;s</summary>
       
     
     
@@ -500,30 +514,6 @@
     <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
     
     <category term="TIM" scheme="https://dajunhuang.github.io/tags/TIM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>STM32学习笔记（二）端口复用和重映射</title>
-    <link href="https://dajunhuang.github.io/2022/01/07/STM2IO/"/>
-    <id>https://dajunhuang.github.io/2022/01/07/STM2IO/</id>
-    <published>2022-01-06T16:00:00.000Z</published>
-    <updated>2022-01-10T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="端口复用"><a href="#端口复用" class="headerlink" title="端口复用"></a>端口复用</h1><p>&#8195;&#8195;STM32有很多的内置外设，这些外设的外部引脚都是与GPIO复用的。也就是说，一个GPIO如果可以复用为内置外设的功能引脚，那么当这个GPIO作为内置外设使用的时候，就叫做复用。<br>&#8195;&#8195;STM32F103xx芯片资料中给出了每个引脚的详细资料，PA9和PA10引脚的条目如下所示：<br><img src="/2022/01/07/STM2IO/chong.png"><br>&#8195;&#8195;文档显示PA9和PA10可以复用为USART1的TX和RX端口，要想在程序上把引脚指定为可复用的功能，需要三个步骤，下面拿PA引脚复用为USART1引脚举例。<br><strong>1. GPIO时钟使能</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br></pre></td></tr></table></figure><p><strong>2. 复用外设时钟使能</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br></pre></td></tr></table></figure><p><strong>3. 端口模式配置</strong><br>&#8195;&#8195;在 IO 复用位内置外设功能引脚的时候，必须设置 GPIO 端口的模式。具体配置参数需要在参考手册GPIO部分查找，USART1配置方法如下图所示：<br><img src="/2022/01/07/STM2IO/fuyong.png"><br>&#8195;&#8195;从表格中可以看出，我们要配置全双工的USART1，那么TX引脚需要配置为推挽复用输出，RX引脚配置为浮空输入或者带上拉输入。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//USART1_TX PA.9 复用推挽输出</span><br><span class="line">GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9; //PA.9</span><br><span class="line">GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; //复用推挽输出</span><br><span class="line">GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">//USART1_RX PA.10 浮空输入</span><br><span class="line">GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;//PA10</span><br><span class="line">GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//浮空输入</span><br><span class="line">GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br></pre></td></tr></table></figure><h1 id="端口重映射"><a href="#端口重映射" class="headerlink" title="端口重映射"></a>端口重映射</h1><p>&#8195;&#8195;为了使不同器件封装的外设 IO 功能数量达到最优，可以把一些复用功能重新映射到其他一些引脚上。下图是USART1重映射引脚表：<br><img src="/2022/01/07/STM2IO/AFIO.png"><br>&#8195;&#8195;从表中可以看出，默认情况下，USART1复用的引脚位是PA9、PA10，但可以将TX和RX重映射到引脚PB6和PB7上面去，重映射有4个步骤。<br><strong>1. 使能GPIO时钟</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br></pre></td></tr></table></figure><p><strong>2. 使能外设时钟</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);</span><br></pre></td></tr></table></figure><p><strong>3. 使能重映射时钟</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);</span><br></pre></td></tr></table></figure><p><strong>4. 开启重映射</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO_PinRemapConfig(GPIO_Remap_USART1, ENABLE);</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;这样就将串口的TX和RX重映射到引脚PB6和PB7上面了。<br>&#8195;&#8195;USART1 只有一种重映射，而对于USART3,存在部分重映射和完全重映射。所谓部分重映射就是部分管脚和默认的是一样的，而部分引脚重新映射到其他引脚，手册中的USART3重映射表如下图所示：<br><img src="/2022/01/07/STM2IO/AFIO2.png"><br>&#8195;&#8195;对于部分重映射，只用改变第四步函数参数即可。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO_PinRemapConfig(GPIO_PartialRemap_USART3, ENABLE);</span><br></pre></td></tr></table></figure><p><strong>参考：正点原子STM32F1开发指南-库函数版本_V3.3、STM32中文参考手册_V10</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;端口复用&quot;&gt;&lt;a href=&quot;#端口复用&quot; class=&quot;headerlink&quot; title=&quot;端口复用&quot;&gt;&lt;/a&gt;端口复用&lt;/h1&gt;&lt;p&gt;&amp;#8195;&amp;#8195;STM32有很多的内置外设，这些外设的外部引脚都是与GPIO复用的。也就是说，一个GPIO如果可</summary>
-      
-    
-    
-    
-    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
     
   </entry>
   
