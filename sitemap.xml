@@ -20,6 +20,15 @@
   </url>
   
   <url>
+    <loc>https://dajunhuang.github.io/2022/02/04/doxygen/</loc>
+    
+    <lastmod>2022-02-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://dajunhuang.github.io/2022/01/26/1alala/</loc>
     
     <lastmod>2022-02-02</lastmod>
@@ -200,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/09/STM8PWM/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/08/STM7TIM/</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -209,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/08/STM7TIM/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/09/STM8PWM/</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -329,13 +338,6 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/FSMC/</loc>
-    <lastmod>2022-02-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://dajunhuang.github.io/tags/DMA/</loc>
     <lastmod>2022-02-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -344,6 +346,13 @@
   
   <url>
     <loc>https://dajunhuang.github.io/tags/USART/</loc>
+    <lastmod>2022-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/tags/FSMC/</loc>
     <lastmod>2022-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -399,6 +408,13 @@
   </url>
   
   <url>
+    <loc>https://dajunhuang.github.io/tags/doxygen/</loc>
+    <lastmod>2022-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://dajunhuang.github.io/tags/Github/</loc>
     <lastmod>2022-02-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -413,13 +429,6 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/Linux/</loc>
-    <lastmod>2022-02-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://dajunhuang.github.io/tags/linux/</loc>
     <lastmod>2022-02-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -428,6 +437,13 @@
   
   <url>
     <loc>https://dajunhuang.github.io/tags/CMake/</loc>
+    <lastmod>2022-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/tags/Linux/</loc>
     <lastmod>2022-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
