@@ -6,7 +6,7 @@
   <link href="https://dajunhuang.github.io/atom.xml" rel="self"/>
   
   <link href="https://dajunhuang.github.io/"/>
-  <updated>2022-02-03T16:00:00.000Z</updated>
+  <updated>2022-02-04T16:00:00.000Z</updated>
   <id>https://dajunhuang.github.io/</id>
   
   <author>
@@ -17,11 +17,82 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>读取文件的代码</title>
+    <title>之前的日记</title>
+    <link href="https://dajunhuang.github.io/2022/02/05/20220205/"/>
+    <id>https://dajunhuang.github.io/2022/02/05/20220205/</id>
+    <published>2022-02-04T16:00:00.000Z</published>
+    <updated>2022-02-04T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>以前写的片段，现在泪目了才是真的。</p><p><img src="/2022/02/05/20220205/image-20220205111024206.png" alt="image-20220205111024206"></p><p><img src="/2022/02/05/20220205/image-20220205111039623.png" alt="image-20220205111039623"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;以前写的片段，现在泪目了才是真的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/02/05/20220205/image-20220205111024206.png&quot; alt=&quot;image-20220205111024206&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/202</summary>
+      
+    
+    
+    
+    <category term="日志" scheme="https://dajunhuang.github.io/categories/%E6%97%A5%E5%BF%97/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>自动整理markdown文件程序（待填坑）</title>
+    <link href="https://dajunhuang.github.io/2022/02/05/markdownsorter/"/>
+    <id>https://dajunhuang.github.io/2022/02/05/markdownsorter/</id>
+    <published>2022-02-04T16:00:00.000Z</published>
+    <updated>2022-02-04T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这东西似乎和编译原理有关，看上去挺难。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这东西似乎和编译原理有关，看上去挺难。&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Doxygen使用方法（待填坑）</title>
+    <link href="https://dajunhuang.github.io/2022/02/04/doxygen/"/>
+    <id>https://dajunhuang.github.io/2022/02/04/doxygen/</id>
+    <published>2022-02-03T16:00:00.000Z</published>
+    <updated>2022-02-03T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Doxygen-介绍"><a href="#Doxygen-介绍" class="headerlink" title="Doxygen 介绍"></a>Doxygen 介绍</h1><p>&#8195;&#8195;Doxygen是一个程序的文件产生工具，可将程序中的特定注释转换成为说明文件。<br>&#8195;&#8195;Doxygen是一种开源跨平台的，以类似JavaDoc风格描述的文档系统，完全支持C、C++、Java、Objective-C和IDL语言，部分支持PHP、C#。注释的语法与Qt-Doc、KDoc和JavaDoc兼容。Doxygen可以从一套归档源文件开始，生成HTML格式的在线类浏览器，或离线的LATEX、RTF参考手册。</p><h1 id="Doxygen-安装"><a href="#Doxygen-安装" class="headerlink" title="Doxygen 安装"></a>Doxygen 安装</h1><p>&#8195;&#8195;前置要求：Cmake、Flex、Bison等。</p><p>&#8195;&#8195;安装指令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install cmake/flex/bison</span><br><span class="line"></span><br><span class="line">git clone https://github.com/doxygen/doxygen.git</span><br><span class="line">cd doxygen</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake -G &quot;Unix Makefiles&quot; ..</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">make install</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;安装完成后使用<code>doxygen -g</code>指令生成配置文件，使用<code>doxygen Doxygen</code>编译生成文档。</p><p><strong>参考：<a href="https://baike.baidu.com/item/Doxygen/1366536?fr=aladdin">百度百科</a></strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Doxygen-介绍&quot;&gt;&lt;a href=&quot;#Doxygen-介绍&quot; class=&quot;headerlink&quot; title=&quot;Doxygen 介绍&quot;&gt;&lt;/a&gt;Doxygen 介绍&lt;/h1&gt;&lt;p&gt;&amp;#8195;&amp;#8195;Doxygen是一个程序的文件产生工具，可将程序</summary>
+      
+    
+    
+    
+    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
+    
+    
+    <category term="doxygen" scheme="https://dajunhuang.github.io/tags/doxygen/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ANSI转UTF-8小程序（待填坑）</title>
     <link href="https://dajunhuang.github.io/2022/02/04/convertiontool/"/>
     <id>https://dajunhuang.github.io/2022/02/04/convertiontool/</id>
     <published>2022-02-03T16:00:00.000Z</published>
-    <updated>2022-02-03T16:00:00.000Z</updated>
+    <updated>2022-02-04T16:00:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>我用来把ANSI的文档转换为UTF-8格式，之后加上另存功能。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string&gt; </span><br><span class="line">#include &lt;fstream&gt; </span><br><span class="line">#include &lt;iostream&gt; </span><br><span class="line"> </span><br><span class="line">using namespace std; </span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">    ifstream myfile(&quot;C:\\Users\\djhua\\Desktop\\main.c&quot;); </span><br><span class="line">    string temp; </span><br><span class="line">    while(getline(myfile,temp)) </span><br><span class="line">    &#123; </span><br><span class="line">        cout &lt;&lt; temp &lt;&lt; endl;</span><br><span class="line">    &#125; </span><br><span class="line">    myfile.close(); </span><br><span class="line">    return 0; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br></pre></td></tr></table></figure>]]></content>
     
@@ -36,30 +107,6 @@
     
     <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Doxygen使用方法</title>
-    <link href="https://dajunhuang.github.io/2022/02/04/doxygen/"/>
-    <id>https://dajunhuang.github.io/2022/02/04/doxygen/</id>
-    <published>2022-02-03T16:00:00.000Z</published>
-    <updated>2022-02-03T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Doxygen-介绍"><a href="#Doxygen-介绍" class="headerlink" title="Doxygen 介绍"></a>Doxygen 介绍</h1><p>&#8195;&#8195;Doxygen是一个程序的文件产生工具，可将程序中的特定注释转换成为说明文件。<br>&#8195;&#8195;Doxygen是一种开源跨平台的，以类似JavaDoc风格描述的文档系统，完全支持C、C++、Java、Objective-C和IDL语言，部分支持PHP、C#。注释的语法与Qt-Doc、KDoc和JavaDoc兼容。Doxygen可以从一套归档源文件开始，生成HTML格式的在线类浏览器，或离线的LATEX、RTF参考手册。<br>&#8195;&#8195;对于未归档的源文件，也可以通过配置Doxygen来提取代码结构。或者借助自动生成的包含依赖图（includedependency graphs）、继承图（inheritance diagram）以及协作图（collaborationdiagram）来可视化文档之间的关系。Doxygen生成的帮助文档的格式可以是CHM、RTF、PostScript、PDF、HTML和Unixman page等。</p><h1 id="Doxygen-安装"><a href="#Doxygen-安装" class="headerlink" title="Doxygen 安装"></a>Doxygen 安装</h1><p>&#8195;&#8195;待补充…</p><p><strong>参考：<a href="https://baike.baidu.com/item/Doxygen/1366536?fr=aladdin">百度百科</a></strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Doxygen-介绍&quot;&gt;&lt;a href=&quot;#Doxygen-介绍&quot; class=&quot;headerlink&quot; title=&quot;Doxygen 介绍&quot;&gt;&lt;/a&gt;Doxygen 介绍&lt;/h1&gt;&lt;p&gt;&amp;#8195;&amp;#8195;Doxygen是一个程序的文件产生工具，可将程序</summary>
-      
-    
-    
-    
-    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
-    
-    <category term="doxygen" scheme="https://dajunhuang.github.io/tags/doxygen/"/>
     
   </entry>
   
@@ -369,30 +416,6 @@
   </entry>
   
   <entry>
-    <title>Ubuntu修改密码方法</title>
-    <link href="https://dajunhuang.github.io/2022/01/13/linux_changePassword/"/>
-    <id>https://dajunhuang.github.io/2022/01/13/linux_changePassword/</id>
-    <published>2022-01-12T16:00:00.000Z</published>
-    <updated>2022-01-12T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="在开机的时候按Shift键进入GRUB菜单"><a href="#在开机的时候按Shift键进入GRUB菜单" class="headerlink" title="在开机的时候按Shift键进入GRUB菜单"></a>在开机的时候按Shift键进入GRUB菜单</h1><p>&#8195;&#8195;不在于按的时间长短，在于按的时机，要一开机就立马点进虚拟机按。<br><img src="/2022/01/13/linux_changePassword/l1.png"></p><h1 id="选择高级选项"><a href="#选择高级选项" class="headerlink" title="选择高级选项"></a>选择高级选项</h1><p><img src="/2022/01/13/linux_changePassword/l2.png"></p><h1 id="进入恢复模式"><a href="#进入恢复模式" class="headerlink" title="进入恢复模式"></a>进入恢复模式</h1><p>&#8195;&#8195;注意是按<code>E</code>进入。<br><img src="/2022/01/13/linux_changePassword/l3.png"></p><h1 id="按下图修改"><a href="#按下图修改" class="headerlink" title="按下图修改"></a>按下图修改</h1><p>&#8195;&#8195;把<code>recovery nomodest</code>部分修改为<code>quiet splash rw init=/bin/bash</code>。<br><img src="/2022/01/13/linux_changePassword/l4.png"></p><h1 id="启动并修改密码"><a href="#启动并修改密码" class="headerlink" title="启动并修改密码"></a>启动并修改密码</h1><p>&#8195;&#8195;修改完成后按<code>F10</code>启动，输入<code>Passwd</code>并按提示修改密码。<br><img src="/2022/01/13/linux_changePassword/l5.png"></p><p>&#8195;&#8195;此外如果要修改用户密码，在root模式下使用<code>passwd username</code>即可。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;在开机的时候按Shift键进入GRUB菜单&quot;&gt;&lt;a href=&quot;#在开机的时候按Shift键进入GRUB菜单&quot; class=&quot;headerlink&quot; title=&quot;在开机的时候按Shift键进入GRUB菜单&quot;&gt;&lt;/a&gt;在开机的时候按Shift键进入GRUB菜单&lt;/</summary>
-      
-    
-    
-    
-    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
-    
-    <category term="Linux" scheme="https://dajunhuang.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux文件和目录的权限</title>
     <link href="https://dajunhuang.github.io/2022/01/13/linux_fileDirectoryAuthority/"/>
     <id>https://dajunhuang.github.io/2022/01/13/linux_fileDirectoryAuthority/</id>
@@ -410,6 +433,30 @@
     
     
     <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Linux" scheme="https://dajunhuang.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu修改密码方法</title>
+    <link href="https://dajunhuang.github.io/2022/01/13/linux_changePassword/"/>
+    <id>https://dajunhuang.github.io/2022/01/13/linux_changePassword/</id>
+    <published>2022-01-12T16:00:00.000Z</published>
+    <updated>2022-01-12T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="在开机的时候按Shift键进入GRUB菜单"><a href="#在开机的时候按Shift键进入GRUB菜单" class="headerlink" title="在开机的时候按Shift键进入GRUB菜单"></a>在开机的时候按Shift键进入GRUB菜单</h1><p>&#8195;&#8195;不在于按的时间长短，在于按的时机，要一开机就立马点进虚拟机按。<br><img src="/2022/01/13/linux_changePassword/l1.png"></p><h1 id="选择高级选项"><a href="#选择高级选项" class="headerlink" title="选择高级选项"></a>选择高级选项</h1><p><img src="/2022/01/13/linux_changePassword/l2.png"></p><h1 id="进入恢复模式"><a href="#进入恢复模式" class="headerlink" title="进入恢复模式"></a>进入恢复模式</h1><p>&#8195;&#8195;注意是按<code>E</code>进入。<br><img src="/2022/01/13/linux_changePassword/l3.png"></p><h1 id="按下图修改"><a href="#按下图修改" class="headerlink" title="按下图修改"></a>按下图修改</h1><p>&#8195;&#8195;把<code>recovery nomodest</code>部分修改为<code>quiet splash rw init=/bin/bash</code>。<br><img src="/2022/01/13/linux_changePassword/l4.png"></p><h1 id="启动并修改密码"><a href="#启动并修改密码" class="headerlink" title="启动并修改密码"></a>启动并修改密码</h1><p>&#8195;&#8195;修改完成后按<code>F10</code>启动，输入<code>Passwd</code>并按提示修改密码。<br><img src="/2022/01/13/linux_changePassword/l5.png"></p><p>&#8195;&#8195;此外如果要修改用户密码，在root模式下使用<code>passwd username</code>即可。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;在开机的时候按Shift键进入GRUB菜单&quot;&gt;&lt;a href=&quot;#在开机的时候按Shift键进入GRUB菜单&quot; class=&quot;headerlink&quot; title=&quot;在开机的时候按Shift键进入GRUB菜单&quot;&gt;&lt;/a&gt;在开机的时候按Shift键进入GRUB菜单&lt;/</summary>
+      
+    
+    
+    
+    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
     
     
     <category term="Linux" scheme="https://dajunhuang.github.io/tags/Linux/"/>
@@ -465,56 +512,6 @@
     <category term="DMA" scheme="https://dajunhuang.github.io/tags/DMA/"/>
     
     <category term="USART" scheme="https://dajunhuang.github.io/tags/USART/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>STM32学习笔记（九）IC</title>
-    <link href="https://dajunhuang.github.io/2022/01/10/STM9IC/"/>
-    <id>https://dajunhuang.github.io/2022/01/10/STM9IC/</id>
-    <published>2022-01-09T16:00:00.000Z</published>
-    <updated>2022-01-09T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>&#8195;&#8195;输入捕获模式可以用来测量脉冲宽度或者测量频率。STM32的定时器，除了<code>TIM6</code>和<code>TIM7</code>，其他定时器都有输入捕获功能。STM32的输入捕获，简单的说就是通过检测<code>TIMx_CHx</code>上的边沿信号，在边沿信号发生跳变（比如上升沿/下降沿）的时候，将当前定时器的值<code>TIMx_CNT</code>存放到对应的通道的捕获/比较寄存器<code>TIMx_CCRx</code>里面，完成一次捕获。同时还可以配置捕获时是否触发中断DMA等。</p><h1 id="计时器配置"><a href="#计时器配置" class="headerlink" title="计时器配置"></a>计时器配置</h1><p>&#8195;&#8195;这部分前面已经介绍过，这里不再展开。</p><h1 id="输入捕获配置"><a href="#输入捕获配置" class="headerlink" title="输入捕获配置"></a>输入捕获配置</h1><p>&#8195;&#8195;库函数是通过<code>void TIM_ICInit(TIM_TypeDef* TIMx, TIM_ICInitTypeDef* TIM_ICInitStruct)</code>函数来初始化输入比较参数的，参数结构体<code>TIM_ICInitTypeDef</code>定义如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123; </span><br><span class="line">    uint16_t TIM_Channel; </span><br><span class="line">    uint16_t TIM_ICPolarity; </span><br><span class="line">    uint16_t TIM_ICSelection; </span><br><span class="line">    uint16_t TIM_ICPrescaler; </span><br><span class="line">    uint16_t TIM_ICFilter; </span><br><span class="line">&#125; TIM_ICInitTypeDef;</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;第一个参数<code>TIM_Channel</code>用来设置通道，取值如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#define TIM_Channel_1                      ((uint16_t)0x0000)</span><br><span class="line">#define TIM_Channel_2                      ((uint16_t)0x0004)</span><br><span class="line">#define TIM_Channel_3                      ((uint16_t)0x0008)</span><br><span class="line">#define TIM_Channel_4                      ((uint16_t)0x000C)</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;第二个参数<code>TIM_ICPolarity</code>用来设置输入信号的有效捕获极性，例如设置通道1捕获极性的方法为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TIM_OC1PolarityConfig(TIM5,TIM_ICPolarity_Falling)；</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;第三个参数<code>TIM_ICSelection</code>用来设置映射关系，取值如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#define TIM_ICSelection_DirectTI           ((uint16_t)0x0001)</span><br><span class="line">// TIM Input 1, 2, 3 or 4 is selected to be connected to IC1, IC2, IC3 or IC4, respectively. </span><br><span class="line">#define TIM_ICSelection_IndirectTI         ((uint16_t)0x0002)</span><br><span class="line">// TIM Input 1, 2, 3 or 4 is selected to be connected to IC2, IC1, IC4 or IC3, respectively. </span><br><span class="line">#define TIM_ICSelection_TRC                ((uint16_t)0x0003) </span><br><span class="line">// TIM Input 1, 2, 3 or 4 is selected to be connected to TRC. </span><br></pre></td></tr></table></figure><p>&#8195;&#8195;第四个参数<code>TIM_ICPrescaler</code>用来设置输入捕获分频系数。<br>&#8195;&#8195;第五个参数<code>TIM_ICFilter</code>设置滤波器长度。<br>&#8195;&#8195;配置计时器5通道1输入捕获的方法是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TIM_ICInitTypeDef TIM5_ICInitStructure; </span><br><span class="line">TIM5_ICInitStructure.TIM_Channel = TIM_Channel_1; //选择输入端 IC1 映射到 TI1 上 </span><br><span class="line">TIM5_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising; //上升沿捕获 </span><br><span class="line">TIM5_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI; //映射到 TI1 上 </span><br><span class="line">TIM5_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1; //配置输入分频,不分频 </span><br><span class="line">TIM5_ICInitStructure.TIM_ICFilter = 0x00;//IC1F=0000 配置输入滤波器 不滤波 </span><br><span class="line">TIM_ICInit(TIM5, &amp;TIM5_ICInitStructure); </span><br></pre></td></tr></table></figure><p>&#8195;&#8195;使能定时器的捕获和更新中断的方法是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TIM_ITConfig( TIM5,TIM_IT_Update|TIM_IT_CC1,ENABLE);//允许更新中断和捕获中断</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;前者在计时器到时触发，后者在捕获时触发。至于中断优先级配置，只需注意<code>NVIC_InitStructure.NVIC_IRQChannel</code>参数的配置。<br>&#8195;&#8195;其它中断配置和计时器使能事项参考通用计时器部分。</p><p>&#8195;&#8195;综上，输入捕获的使用方法：</p><ol><li>计时器初始化。</li><li>配置计时器输入捕获。</li><li>配置中断，编写中断处理函数。</li><li>使能计时器。</li></ol><p><strong>参考：正点原子STM32F1开发指南-库函数版本_V3.3、STM32中文参考手册_V10</strong></p><hr><p>示例：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 本实验利用TIM5_CH1来做输入捕获，我们将捕获PA0上的高电平脉宽，并将脉宽时间通过串</span><br><span class="line"> * 口打印出来，大家可以通过按WK_UP按键，模拟输入高电平。</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &quot;stm32f10x.h&quot;</span><br><span class="line"></span><br><span class="line">/* 加入以下代码,支持printf函数,而不需要选择use MicroLIB */</span><br><span class="line"></span><br><span class="line">/* 标准库需要的支持函数 */</span><br><span class="line">struct __FILE</span><br><span class="line">&#123;</span><br><span class="line">int handle;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">FILE __stdout;</span><br><span class="line">/* 定义_sys_exit()以避免使用半主机模式 */</span><br><span class="line">void _sys_exit( int x )</span><br><span class="line">&#123;</span><br><span class="line">x = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 重定义fputc函数 */</span><br><span class="line">int fputc( int ch, FILE *f )</span><br><span class="line">&#123;</span><br><span class="line">while ( (USART1-&gt;SR &amp; 0X40) == 0 )</span><br><span class="line">;  /* 循环发送,直到发送完毕 */</span><br><span class="line">USART1-&gt;DR = (u8) ch;</span><br><span class="line">return(ch);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void uart_init( u32 bound )</span><br><span class="line">&#123;</span><br><span class="line">/* GPIO端口设置 */</span><br><span class="line">GPIO_InitTypeDefGPIO_InitStructure;</span><br><span class="line">USART_InitTypeDefUSART_InitStructure;</span><br><span class="line">NVIC_InitTypeDefNVIC_InitStructure;</span><br><span class="line"></span><br><span class="line">RCC_APB2PeriphClockCmd( RCC_APB2Periph_USART1 | RCC_APB2Periph_GPIOA, ENABLE );         /* 使能USART1，GPIOA时钟 */</span><br><span class="line"></span><br><span class="line">/* USART1_TX   GPIOA.9 */</span><br><span class="line">GPIO_InitStructure.GPIO_Pin= GPIO_Pin_9;                                           /* PA.9 */</span><br><span class="line">GPIO_InitStructure.GPIO_Speed= GPIO_Speed_50MHz;</span><br><span class="line">GPIO_InitStructure.GPIO_Mode= GPIO_Mode_AF_PP;                                      /*复用推挽输出 */</span><br><span class="line">GPIO_Init( GPIOA, &amp;GPIO_InitStructure );                                                /* 初始化GPIOA.9 */</span><br><span class="line"></span><br><span class="line">/* USART1_RX  GPIOA.10初始化 */</span><br><span class="line">GPIO_InitStructure.GPIO_Pin= GPIO_Pin_10;                                          /* PA10 */</span><br><span class="line">GPIO_InitStructure.GPIO_Mode= GPIO_Mode_IN_FLOATING;                                /* 浮空输入 */</span><br><span class="line">GPIO_Init( GPIOA, &amp;GPIO_InitStructure );                                                /* 初始化GPIOA.10 */</span><br><span class="line"></span><br><span class="line">/* USART 初始化设置 */</span><br><span class="line">USART_InitStructure.USART_BaudRate= bound;                                /* 串口波特率 */</span><br><span class="line">USART_InitStructure.USART_WordLength= USART_WordLength_8b;                  /* 字长为8位数据格式 */</span><br><span class="line">USART_InitStructure.USART_StopBits= USART_StopBits_1;                     /* 一个停止位 */</span><br><span class="line">USART_InitStructure.USART_Parity= USART_Parity_No;                      /* 无奇偶校验位 */</span><br><span class="line">USART_InitStructure.USART_HardwareFlowControl= USART_HardwareFlowControl_None;       /* 无硬件数据流控制 */</span><br><span class="line">USART_InitStructure.USART_Mode= USART_Mode_Rx | USART_Mode_Tx;        /* 收发模式 */</span><br><span class="line"></span><br><span class="line">USART_Init( USART1, &amp;USART_InitStructure );                                             /* 初始化串口1 */</span><br><span class="line">USART_Cmd( USART1, ENABLE );                                                            /* 使能串口1 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static u8fac_us= 0;</span><br><span class="line">static u16fac_ms= 0;</span><br><span class="line"></span><br><span class="line">void delay_init()</span><br><span class="line">&#123;</span><br><span class="line">SysTick_CLKSourceConfig( SysTick_CLKSource_HCLK_Div8 ); /*选择外部时钟  HCLK/8 */</span><br><span class="line">fac_us= SystemCoreClock / 8000000;                    /* 为系统时钟的1/8 */</span><br><span class="line">fac_ms= (u16) fac_us * 1000;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void delay_ms( u16 nms )</span><br><span class="line">&#123;</span><br><span class="line">u32 temp;</span><br><span class="line">SysTick-&gt;LOAD= (u32) nms * fac_ms;                   /* 时间加载(SysTick-&gt;LOAD为24bit) */</span><br><span class="line">SysTick-&gt;VAL= 0x00;                                 /* 清空计数器 */</span><br><span class="line">SysTick-&gt;CTRL|= SysTick_CTRL_ENABLE_Msk;             /* 开始倒数 */</span><br><span class="line">do</span><br><span class="line">&#123;</span><br><span class="line">temp = SysTick-&gt;CTRL;</span><br><span class="line">&#125;</span><br><span class="line">while ( (temp &amp; 0x01) &amp;&amp; !(temp &amp; (1 &lt;&lt; 16) ) );        /* 等待时间到达 */</span><br><span class="line">SysTick-&gt;CTRL&amp;= ~SysTick_CTRL_ENABLE_Msk;            /* 关闭计数器 */</span><br><span class="line">SysTick-&gt;VAL= 0X00;                                 /* 清空计数器 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 定时器5通道1输入捕获配置 */</span><br><span class="line">void TIM5_Cap_Init( u16 arr, u16 psc )</span><br><span class="line">&#123;</span><br><span class="line">GPIO_InitTypeDefGPIO_InitStructure;</span><br><span class="line">TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;</span><br><span class="line">NVIC_InitTypeDefNVIC_InitStructure;</span><br><span class="line">TIM_ICInitTypeDefTIM5_ICInitStructure;</span><br><span class="line"></span><br><span class="line">RCC_APB1PeriphClockCmd( RCC_APB1Periph_TIM5, ENABLE );                  /* 使能TIM5时钟 */</span><br><span class="line">RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA, ENABLE );                 /* 使能GPIOA时钟 */</span><br><span class="line"></span><br><span class="line">GPIO_InitStructure.GPIO_Pin= GPIO_Pin_0;                           /* PA0 清除之前设置 */</span><br><span class="line">GPIO_InitStructure.GPIO_Mode= GPIO_Mode_IPD;                        /* PA0 输入 */</span><br><span class="line">GPIO_Init( GPIOA, &amp;GPIO_InitStructure );</span><br><span class="line">GPIO_ResetBits( GPIOA, GPIO_Pin_0 );                                    /* PA0 下拉 */</span><br><span class="line"></span><br><span class="line">/* 初始化定时器5 TIM5 */</span><br><span class="line">TIM_TimeBaseStructure.TIM_Period= arr;                          /* 设定计数器自动重装值 */</span><br><span class="line">TIM_TimeBaseStructure.TIM_Prescaler= psc;                          /* 预分频器 */</span><br><span class="line">TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;                 /* 设置时钟分割:TDTS = Tck_tim */</span><br><span class="line">TIM_TimeBaseStructure.TIM_CounterMode= TIM_CounterMode_Up;           /* TIM向上计数模式 */</span><br><span class="line">TIM_TimeBaseInit( TIM5, &amp;TIM_TimeBaseStructure );                       /* 根据TIM_TimeBaseInitStruct中指定的参数初始化TIMx的时间基数单位 */</span><br><span class="line"></span><br><span class="line">/* 初始化TIM5输入捕获参数 */</span><br><span class="line">TIM5_ICInitStructure.TIM_Channel= TIM_Channel_1;                /* CC1S=01      选择输入端 IC1映射到TI1上 */</span><br><span class="line">TIM5_ICInitStructure.TIM_ICPolarity= TIM_ICPolarity_Rising;        /*上升沿捕获 */</span><br><span class="line">TIM5_ICInitStructure.TIM_ICSelection= TIM_ICSelection_DirectTI;     /*映射到TI1上 */</span><br><span class="line">TIM5_ICInitStructure.TIM_ICPrescaler= TIM_ICPSC_DIV1;               /* 配置输入分频,不分频 */</span><br><span class="line">TIM5_ICInitStructure.TIM_ICFilter= 0x00;                         /* IC1F=0000 配置输入滤波器 不滤波 */</span><br><span class="line">TIM_ICInit( TIM5, &amp;TIM5_ICInitStructure );</span><br><span class="line"></span><br><span class="line">/* 中断分组初始化 */</span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannel= TIM5_IRQn;    /* TIM3中断 */</span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority= 2;            /* 先占优先级2级 */</span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelSubPriority= 0;            /* 从优先级0级 */</span><br><span class="line">NVIC_InitStructure.NVIC_IRQChannelCmd= ENABLE;       /* IRQ通道被使能 */</span><br><span class="line">NVIC_Init( &amp;NVIC_InitStructure );                                       /* 根据NVIC_InitStruct中指定的参数初始化外设NVIC寄存器 */</span><br><span class="line"></span><br><span class="line">TIM_ITConfig( TIM5, TIM_IT_Update | TIM_IT_CC1, ENABLE );               /* 允许更新中断 ,允许CC1IE捕获中断 */</span><br><span class="line"></span><br><span class="line">TIM_Cmd( TIM5, ENABLE );                                                /* 使能定时器5 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">u8TIM5CH1_CAPTURE_STA = 0;                                                /* 输入捕获状态 */</span><br><span class="line">u16TIM5CH1_CAPTURE_VAL;                                                    /* 输入捕获值 */</span><br><span class="line"></span><br><span class="line">int main( void )</span><br><span class="line">&#123;</span><br><span class="line">u32 temp = 0;</span><br><span class="line">delay_init();                                                           /* 延时函数初始化 */</span><br><span class="line">uart_init( 115200 );                                                    /* 串口初始化为115200 */</span><br><span class="line"></span><br><span class="line">TIM5_Cap_Init( 0XFFFF, 72 - 1 );                                        /* 以1Mhz的频率计数 */</span><br><span class="line">while ( 1 )</span><br><span class="line">&#123;</span><br><span class="line">delay_ms( 10 );</span><br><span class="line">if ( TIM5CH1_CAPTURE_STA &amp; 0X80 )               /* 成功捕获到了一次上升沿 */</span><br><span class="line">&#123;</span><br><span class="line">temp= TIM5CH1_CAPTURE_STA &amp; 0X3F;</span><br><span class="line">temp*= 65536;                       /* 溢出时间总和 */</span><br><span class="line">temp+= TIM5CH1_CAPTURE_VAL;         /* 得到总的高电平时间 */</span><br><span class="line">printf( &quot;HIGH:%d us\r\n&quot;, temp );       /* 打印总的高点平时间 */</span><br><span class="line">TIM5CH1_CAPTURE_STA = 0;                /* 开启下一次捕获 */</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 定时器5中断服务程序 */</span><br><span class="line">void TIM5_IRQHandler( void )</span><br><span class="line">&#123;</span><br><span class="line">if ( (TIM5CH1_CAPTURE_STA &amp; 0X80) == 0 )                                        /* 还未成功捕获 */</span><br><span class="line">&#123;</span><br><span class="line">if ( TIM_GetITStatus( TIM5, TIM_IT_Update ) != RESET )</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">if ( TIM5CH1_CAPTURE_STA &amp; 0X40 )                               /* 已经捕获到高电平了 */</span><br><span class="line">&#123;</span><br><span class="line">if ( (TIM5CH1_CAPTURE_STA &amp; 0X3F) == 0X3F )             /* 高电平太长了 */</span><br><span class="line">&#123;</span><br><span class="line">TIM5CH1_CAPTURE_STA|= 0X80;                /* 标记成功捕获了一次 */</span><br><span class="line">TIM5CH1_CAPTURE_VAL= 0XFFFF;</span><br><span class="line">&#125;else TIM5CH1_CAPTURE_STA++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">if ( TIM_GetITStatus( TIM5, TIM_IT_CC1 ) != RESET )                     /* 捕获1发生捕获事件 */</span><br><span class="line">&#123;</span><br><span class="line">if ( TIM5CH1_CAPTURE_STA &amp; 0X40 )                               /* 捕获到一个下降沿 */</span><br><span class="line">&#123;</span><br><span class="line">TIM5CH1_CAPTURE_STA|= 0X80;                        /* 标记成功捕获到一次高电平脉宽 */</span><br><span class="line">TIM5CH1_CAPTURE_VAL= TIM_GetCapture1( TIM5 );</span><br><span class="line">TIM_OC1PolarityConfig( TIM5, TIM_ICPolarity_Rising );   /* CC1P=0 设置为上升沿捕获 */</span><br><span class="line">&#125;else&#123;                                                          /* 还未开始,第一次捕获上升沿 */</span><br><span class="line">TIM5CH1_CAPTURE_STA= 0;                            /* 清空 */</span><br><span class="line">TIM5CH1_CAPTURE_VAL= 0;</span><br><span class="line">TIM_SetCounter( TIM5, 0 );</span><br><span class="line">TIM5CH1_CAPTURE_STA |= 0X40;                            /* 标记捕获到了上升沿 */</span><br><span class="line">TIM_OC1PolarityConfig( TIM5, TIM_ICPolarity_Falling );  /* CC1P=1 设置为下降沿捕获 */</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">TIM_ClearITPendingBit( TIM5, TIM_IT_CC1 | TIM_IT_Update );                      /* 清除中断标志位 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&amp;#8195;&amp;#8195;输入捕获模式可以用来测量脉冲宽度或者测量频率。STM32的定时器，除了&lt;code&gt;TIM6&lt;/code&gt;和&lt;code&gt;TIM7&lt;/code&gt;，其他定时器都有输入捕获功能。STM32的输入捕获，简单的说就是通过检测&lt;code&gt;TIMx_CHx&lt;/c</summary>
-      
-    
-    
-    
-    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
-    
-    <category term="TIM" scheme="https://dajunhuang.github.io/tags/TIM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Loopers》思获</title>
-    <link href="https://dajunhuang.github.io/2022/01/09/Loopers/"/>
-    <id>https://dajunhuang.github.io/2022/01/09/Loopers/</id>
-    <published>2022-01-08T16:00:00.000Z</published>
-    <updated>2022-01-10T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>&#8195;&#8195;《Loopers》（时廻者、ルーパーズ）讲了一群年轻人被困于“时间漩涡”后互相帮助并最终全部逃脱的故事。作品省略很多细节，主线很短，不到一天就能看完，不过故事中“时间漩涡”里人们的生活状态、男主平良明享受寻宝的态度、昼田贵理子和町村玲央奈之间的友情以及藤川美亚和平良明之间的感情等情节都让我有所想法。<br>&#8195;&#8195;故事里的10个人之所以被称为“Looper”，就是因为他们被永远被困在8月1日这一天，今天是8月1日，“明天”还会是一尘不变的8月1日，每天新报纸上的新闻、电视上的综艺和世界上发生的一切都是一样的，而且loopers“前一天”留下的所有痕迹都会消失，这意味着不论今天如何锻炼身体、拍了多好看的照片，上传了多精彩的游戏实况，画了多精致的线稿，在“下一天”都会回归原样，他们能带到“下一天”的只有自己的记忆，并且这样的日子在所有人中最久重复了快二十年。<br><img src="/2022/01/09/Loopers/loopers2.png" alt="drawing" width="500"><br>&#8195;&#8195;下一天不会来临这一事实表面上十分吸引人，而且是故事中年轻人们发牢骚时会产生的愿望，因为有每天会重置的金钱和精力去做所有事，但这样的生活会慢慢侵蚀人的内心。一个新的looper进入“时间漩涡”的一段时间往往也会很激动，认为这里是一个至臻至美的乌托邦，能做所有自己在寻常世界完全接触不到的事，但久而久之，由于接触不到更新的生活，所有事情都在按照自己的“经验”发展，就会变得无聊，麻木，精神异常。故事中因为这种生活玲央奈在昼田的头槌作为导火索的情况下沉睡不醒，雾岛让、堀井佐奈、利田美咲失去了对先前爱好的兴趣一蹶不振，还有两个loopers失去了理性只好被眩晕处理。<br>&#8195;&#8195;<strong>若是这乌托邦永恒不变，又何尝不是另一种形态的地狱？</strong>这让我想到我玩过类似主题的国产AVG《葬花·暗黑桃花源》，《葬花》的村民们因为长生不老重复了上千遍进入桃花源的那一年，但即使是再淳朴的村民也会被永恒不变的岁月消磨意志，他们在追求更强烈刺激过程中，让桃花源变成了一个享乐糜烂的地狱。留守桃花源的九百魂灵，渴望着“葬花之人”的到来，也是这部作品名字的由来。《Loopers》中只轻描淡写地说loopers们尝试过所有能想的到的事情，我认为时间跨度如果足够长，本作中的loopers们也不排除有变成《葬花》的村民们那种可能。遇到这种生活该怎么办？男主平良明给了一个答案：<br><img src="/2022/01/09/Loopers/loopers5.png" alt="drawing" width="500"><br>&#8195;&#8195;<strong>既然“明天”永远不会到来，那就让每个今天都变得更有意义</strong>。平良在“时间漩涡中”不仅靠寻宝保持了对生活的热情，它的调度也让米娅等loopers久违地体验到了生活的乐趣，恢复了对“明天”的信心，我看来这也是米娅对平良感情的由来。我当然能够理解平良的热情能有如此成效的原因，但我也明白对平良的塑造肯定掺杂了理想化的因素，现实中有多少人能在没有未来的日子保持这种热情呢？更多的可能会像昼田那样被现实一天天消耗意志。我认为本作通过良品这个角色想传达给玩家的一个主题就是——<strong>活在当下。在今天用尽全力，不要费尽心思考虑明天会发生什么，久而久之，好的结果自然会到来。</strong>这对目前混吃等死的我来说也是很好的告诫了。<br>&#8195;&#8195;寻宝是贯穿整个作品的主题，就算把游戏名改为“寻宝者”我也不会觉得奇怪，良平的热情来源于寻宝，米娅和其它loopers被寻宝游戏鼓舞，大伏笔觅心女也是在寻找最初的宝物为了解开魔法回到正常生活，主线也就是众人在“LOOPERS”的“LOOP”里寻找逃离的方法。生活告诉我们结果的重要性，经验告诉我们过程弥足珍贵，良平差点错失米娅这一至宝，故事想借此给我们说无论何种形式的寻宝过程和结果都重要，<strong>过程让人有获得的实感，获得的“宝物”虽说是过程的一个里程碑，但不要等宝物失去后才觉得后悔。</strong>这是我认为本作想给玩家传达的第二个主题，这显然与第一个主题有所关联。<br><img src="/2022/01/09/Loopers/loopers6.png" alt="drawing" width="500"><br>&#8195;&#8195;剧情上我唯独感到突兀的地方是玲央奈和米娅的清醒，尤其是后者有点强行凑HE的味道，没有交代任何原因米娅在已经宣告没有生还机会后醒来，此处合理性有待思考。<br>&#8195;&#8195;总的来说，本作剧情受篇幅限制很紧凑，也很让人投入，阅读中好像我就是loopers的一员一样；音乐我也不懂，只听得出来质量很高，好听；画面十分优秀，无论是游戏内的立绘、BG还是游戏外的UI设计都很有特色，和主题结合起来别具风味；米娅也很可爱，放几张图XD。<br><img src="/2022/01/09/Loopers/loopers7.png"><img src="/2022/01/09/Loopers/loopers8.png"><img src="/2022/01/09/Loopers/loopers9.png"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&amp;#8195;&amp;#8195;《Loopers》（时廻者、ルーパーズ）讲了一群年轻人被困于“时间漩涡”后互相帮助并最终全部逃脱的故事。作品省略很多细节，主线很短，不到一天就能看完，不过故事中“时间漩涡”里人们的生活状态、男主平良明享受寻宝的态度、昼田贵理子和町村玲央奈之间的友</summary>
-      
-    
-    
-    
-    <category term="评论" scheme="https://dajunhuang.github.io/categories/%E8%AF%84%E8%AE%BA/"/>
-    
-    
-    <category term="Galgame" scheme="https://dajunhuang.github.io/tags/Galgame/"/>
     
   </entry>
   
