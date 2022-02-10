@@ -6,7 +6,7 @@
   <link href="https://dajunhuang.github.io/atom.xml" rel="self"/>
   
   <link href="https://dajunhuang.github.io/"/>
-  <updated>2022-02-08T10:28:50.000Z</updated>
+  <updated>2022-02-10T02:16:51.000Z</updated>
   <id>https://dajunhuang.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Modern Operating Systems》 Reading Notes</title>
+    <link href="https://dajunhuang.github.io/2022/02/10/Modern%20Operating%20Systems/"/>
+    <id>https://dajunhuang.github.io/2022/02/10/Modern%20Operating%20Systems/</id>
+    <published>2022-02-10T02:16:51.000Z</published>
+    <updated>2022-02-10T02:16:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Processes-And-Threads"><a href="#Processes-And-Threads" class="headerlink" title="Processes And Threads"></a>Processes And Threads</h1><h2 id="Processes"><a href="#Processes" class="headerlink" title="Processes"></a>Processes</h2><p>While, strictly speaking, at any one instant the CPU is running only one process, in the course of 1 second it may work on several of them, giving the illusion of parallelism.</p><h3 id="The-Process-Model"><a href="#The-Process-Model" class="headerlink" title="The Process Model"></a>The Process Model</h3><p>A process is just an instance of an executing program, including the current values of the program counter, registers, and variables. In reality, of course, the real CPU switches back and forth from process to process.</p><p>![image-20220210102621810](Modern Operating Systems/image-20220210102621810.png)</p><p>With the CPU switching back and forth among the processes, the rate at which a process performs its computation will not be uniform and probably not even reproducible if the same processes are run again. Thus, processes must not be programmed with built-in assumptions about timing.</p><p>The difference between a process and a program is subtle, but absolutely crucial. </p><p>It is worth noting that if a program is running twice, it counts as two processes.</p><h3 id="Process-Creation"><a href="#Process-Creation" class="headerlink" title="Process Creation"></a>Process Creation</h3><p>Four principal events cause processes to be created:</p><ol><li>System initialization. </li><li>Execution of a process-creation system call by a running process. </li><li>A user request to create a new process. </li><li>Initiation of a batch job.</li></ol><p>Technically, in all these cases, a new process is created by having an existing process execute a process creation system call. </p><p>In UNIX, there is only one system call to create a new process: <code>fork</code>. This call creates an exact clone of the calling process. After the fork, the two processes, the parent and the child, have the same memory image, the same environment strings, and the same open files. That is all there is. Usually, the child process then executes <code>execve</code> or a similar system call to change its memory image and run a new program.</p><p>The reason for this twostep process is to allow the child to manipulate its file descriptors after the <code>fork</code> but before the <code>execve</code> in order to accomplish redirection of standard input, standard output, and standard error.</p><p>In Windows, in contrast, a single Win32 function call, <code>CreateProcess</code>, handles both process creation and loading the correct program into the new process. </p><p>In both UNIX and Windows systems, after a process is created, the parent and child have their own distinct address spaces. If either process changes a word in its address space, the change is not visible to the other process.</p><h3 id="Process-Termination"><a href="#Process-Termination" class="headerlink" title="Process Termination"></a>Process Termination</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Processes-And-Threads&quot;&gt;&lt;a href=&quot;#Processes-And-Threads&quot; class=&quot;headerlink&quot; title=&quot;Processes And Threads&quot;&gt;&lt;/a&gt;Processes And Threads&lt;/</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="操作系统" scheme="https://dajunhuang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>《晴霁之后定是菜花盛开的好天气》感想</title>
@@ -65,29 +89,6 @@
   </entry>
   
   <entry>
-    <title>自动整理markdown文件程序（待填坑）</title>
-    <link href="https://dajunhuang.github.io/2022/02/05/markdownsorter/"/>
-    <id>https://dajunhuang.github.io/2022/02/05/markdownsorter/</id>
-    <published>2022-02-04T16:00:00.000Z</published>
-    <updated>2022-02-04T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这东西似乎和编译原理有关，看上去挺难。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;这东西似乎和编译原理有关，看上去挺难。&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>基于STM32的文字识别（待填坑）</title>
     <link href="https://dajunhuang.github.io/2022/02/05/worddectector/"/>
     <id>https://dajunhuang.github.io/2022/02/05/worddectector/</id>
@@ -109,6 +110,29 @@
     
     
     <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自动整理markdown文件程序（待填坑）</title>
+    <link href="https://dajunhuang.github.io/2022/02/05/markdownsorter/"/>
+    <id>https://dajunhuang.github.io/2022/02/05/markdownsorter/</id>
+    <published>2022-02-04T16:00:00.000Z</published>
+    <updated>2022-02-04T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这东西似乎和编译原理有关，看上去挺难。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这东西似乎和编译原理有关，看上去挺难。&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
+    
     
   </entry>
   
@@ -242,7 +266,7 @@
     <published>2022-01-25T16:00:00.000Z</published>
     <updated>2022-02-05T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="二零二二年"><a href="#二零二二年" class="headerlink" title="二零二二年"></a>二零二二年</h1><h2 id="一月"><a href="#一月" class="headerlink" title="一月"></a>一月</h2><p>26日，在火车上想起来又是只带了数位板没带笔。在小红姐家留着。</p><p>27日，和小姨出去买东西，感慨很多单独记录了。</p><p>28日，迷茫怎么择校，怎么提升。</p><p>29日，和梁同学见了一面，原来我们真的很陌生了。</p><p>30日，回家，家里好冷啊。</p><p>31日，回家这几天见到的好看的女孩子要比一学期在学校见到的还要多。</p><h2 id="二月"><a href="#二月" class="headerlink" title="二月"></a>二月</h2><p>2日，今年春节很神奇地就在2月1日。今天，过年的节奏终于过去，不用苦恼于走亲访友的日程了。</p><p>3日，开始学习。</p><p>4日，奥运会开幕和原神前瞻直播同一天。</p><p>5日，在MC服务器安了一处家。</p><p>6日，上午老家砍树，晚上大舅家吃饭。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="二零二二年"><a href="#二零二二年" class="headerlink" title="二零二二年"></a>二零二二年</h1><h2 id="一月"><a href="#一月" class="headerlink" title="一月"></a>一月</h2><p>26日，在火车上想起来又是只带了数位板没带笔。在小红姐家留着。</p><p>27日，和小姨出去买东西，感慨很多单独记录了。</p><p>28日，迷茫怎么择校，怎么提升。</p><p>29日，和梁同学见了一面，原来我们真的很陌生了。</p><p>30日，回家，家里好冷啊。</p><p>31日，回家这几天见到的好看的女孩子要比一学期在学校见到的还要多。</p><h2 id="二月"><a href="#二月" class="headerlink" title="二月"></a>二月</h2><p>2日，今年春节很神奇地就在2月1日。今天，过年的节奏终于过去，不用苦恼于走亲访友的日程了。</p><p>3日，开始学习。</p><p>4日，奥运会开幕和原神前瞻直播同一天。</p><p>5日，在MC服务器安了一处家。</p><p>6日，上午老家砍树，晚上大舅家吃饭。</p><p>9日，每年的保留节目，又被一个人丢在家里了。</p>]]></content>
     
     
       
@@ -295,7 +319,7 @@
     <published>2022-01-21T16:00:00.000Z</published>
     <updated>2022-02-04T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="The-Tar-Pit"><a href="#The-Tar-Pit" class="headerlink" title="The Tar Pit"></a>The Tar Pit</h1><p>Large-system programming has over the past decade been such a tar pit, and many great and powerful beasts have thrashed violently in it.<br>No one thing seems to cause the difficulty - any particular paw can be pulled away. But the accumulation of simultaneous and interacting factors brings slower and slower motion.</p><h2 id="The-Programming-Systems-Product"><a href="#The-Programming-Systems-Product" class="headerlink" title="The Programming Systems Product"></a>The Programming Systems Product</h2><img src="/2022/01/22/The%20Mythical%20Man-Month/image-20220122195717668.png" alt="image-20220122195717668" style="zoom:45%;"><p>In the upper left of Fig. 1.1 is a program. It is complete in itself, ready to be run by the author on the system on which it was developed. That is the thing commonly produced in garages, and that is the object the individual programmer uses in estimating productivity.<br>Moving down across the horizontal boundary, a program becomes a programming product. This is a program that can be run,tested, repaired, and extended by anybody.<br>Moving across the vertical boundary, a program becomes a component in a programming system. This is a collection of interacting programs, coordinated in function and disciplined in format, so that the assemblage constitutes an entire facility for large tasks.<br>In the lower right-hand corner of Fig. 1.1 stands the programming systems product. This differs from the simple program in all of the above ways. It costs nine times as much. But it is the truly useful object, the intended product of most system programming efforts.</p><h2 id="The-Joys-of-the-Craft"><a href="#The-Joys-of-the-Craft" class="headerlink" title="The Joys of the Craft"></a>The Joys of the Craft</h2><p>First is the sheer joy of making things.<br>Second is the pleasure of making things that are useful to other people.<br>Third is the fascination of fashioning complex puzzle-like objects of interlocking moving parts and watching them work in subtle cycles, playing out the consequences of principles built in from the beginning.<br>Fourth is the joy of always learning<br>Finally, there is the delight of working in such a tractable medium. </p><h2 id="The-Woes-of-the-Craft"><a href="#The-Woes-of-the-Craft" class="headerlink" title="The Woes of the Craft"></a>The Woes of the Craft</h2><p>First, one must perform perfectly.<br>Next, other people set one’s objectives, provide one’s resources, and furnish one’s information.<br>The dependence upon others has a particular case that is especially painful for the system programmer.<br>The next woe is that designing grand concepts is fun; finding nitty little bugs is just work.<br>The last woe, and sometimes the last straw, is that the product over which one has labored so long appears to be obsolete upon (or before) completion.</p><h1 id="The-Mythical-Man-Month"><a href="#The-Mythical-Man-Month" class="headerlink" title="The Mythical Man-Month"></a>The Mythical Man-Month</h1><p>More software projects have gone awry for lack of calendar time than for all other causes combined. <strong>Why?</strong><br>First, our techniques of estimating are poorly developed.<br>Second, our estimating techniques fallaciously confuse effort with progress?<br>Third, because we are uncertain of our estimates, software managers often lack the courteous stubbornness of Antoine’s chef.<br>Fourth, schedule progress is poorly monitored.<br>Fifth, when schedule slippage is recognized, the natural (and traditional) response is to add manpower.</p><h2 id="Optimism"><a href="#Optimism" class="headerlink" title="Optimism"></a>Optimism</h2><p>So the first false assumption that underlies the scheduling of systems programming is that all will go well, that each task will hike only as long as it “ought” to take.<br>The pervasiveness of optimism among programmers deserves more than a flip analysis.<br>The programmer builds from pure thought-stuff: concepts and very flexible representations thereof. Because the medium is tractable, we expect few difficulties in implementation; hence our pervasive optimism. </p><h2 id="The-Man-Month"><a href="#The-Man-Month" class="headerlink" title="The Man-Month"></a>The Man-Month</h2><p>Cost does indeed vary as the product of the number of men and the number of months. Progress does not. Hence the man-month as a unit for measuring the size of a job is a dangerous and deceptive myth.<br>Men and months are interchangeable commodities only when a task can be partitioned among many workers with no communication among them.<br>When a task cannot be partitioned because of sequential constraints, the application of more effort has no effect on the schedule.<br>In tasks that can be partitioned but which require communication among the subtasks, the effort of communication must be added to the amount of work to be done.<br>The added burden of communication is made up of two parts, training and intercommunication. </p><h2 id="System-Test"><a href="#System-Test" class="headerlink" title="System Test"></a>System Test</h2><p>Because of optimism, we usually expect the number of bugs to be smaller than it turns out to be. Therefore testing is usually the most mis-scheduled part of programming.<br>software task: 1/3 planning, 1/6 coding, 1/4 component test and early system test, 1/4 system test, all components in hand.<br>few allowed one-half of the projected schedule for testing, but that most did indeed spend half of the actual schedule for that purpose.<br>Failure to allow enough time for system test, in particular, is peculiarly disastrous.<br>Furthermore, delay at this point has unusually severe financial, as well as psychological, repercussions.<br>It is therefore very important to allow enough system test time in the original schedule.</p><h2 id="Gutless-Estimating"><a href="#Gutless-Estimating" class="headerlink" title="Gutless Estimating"></a>Gutless Estimating</h2><p> the urgency of the patron may govern the scheduled completion of the task, but it cannot govern the actual completion.<br>It is very difficult to make a vigorous, plausible, and job risking defense of an estimate that is derived by no quantitative method, supported by little data, and certified chiefly by the hunches of the managers.<br>Until estimating is on a sounder basis, individual managers will need to …… with the assurance that their poor hunches are better than wish derived estimates.</p><h2 id="Regenerative-Schedule-Disaster"><a href="#Regenerative-Schedule-Disaster" class="headerlink" title="Regenerative Schedule Disaster"></a>Regenerative Schedule Disaster</h2><img src="/2022/01/22/The%20Mythical%20Man-Month/image-20220122210446094.png" alt="image-20220122210446094" style="zoom:50%;"><p>Adding manpower to a late software project makes it later.<br>The maximum number of men depends upon the number of independent subtasks. From these two quantities one can derive schedules using fewer men and more months. (The only risk is product obsolescence.) </p><h1 id="The-Surgical-Team"><a href="#The-Surgical-Team" class="headerlink" title="The Surgical Team"></a>The Surgical Team</h1><p>how does one build large systems on a meaningful schedule?</p><h2 id="The-Problem"><a href="#The-Problem" class="headerlink" title="The Problem"></a>The Problem</h2><p>Programming managers have long recognized wide productivity variations between good programmers and poor ones.<br>Indeed, most experience with large programming systems shows that the bruteforce approach is costly, slow, inefficient, and produces systems that are not conceptually integrated.<br>This then is the problem with the small, sharp team concept: it is too slow for really big systems.<br>For efficiency and conceptual integrity, one prefers a few good minds doing design and construction. Yet for large systems one wants a way to bring considerable manpower to bear, so that the product can make a timely appearance.</p><h2 id="Mills’s-Proposal"><a href="#Mills’s-Proposal" class="headerlink" title="Mills’s Proposal"></a>Mills’s Proposal</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="The-Tar-Pit"><a href="#The-Tar-Pit" class="headerlink" title="The Tar Pit"></a>The Tar Pit</h1><p>Large-system programming has over the past decade been such a tar pit, and many great and powerful beasts have thrashed violently in it.</p><p>No one thing seems to cause the difficulty - any particular paw can be pulled away. But the accumulation of simultaneous and interacting factors brings slower and slower motion.</p><h2 id="The-Programming-Systems-Product"><a href="#The-Programming-Systems-Product" class="headerlink" title="The Programming Systems Product"></a>The Programming Systems Product</h2><img src="/2022/01/22/The%20Mythical%20Man-Month/image-20220122195717668.png" alt="image-20220122195717668" style="zoom:45%;"><p>In the upper left of Fig. 1.1 is a program. It is complete in itself, ready to be run by the author on the system on which it was developed. That is the thing commonly produced in garages, and that is the object the individual programmer uses in estimating productivity.</p><p>Moving down across the horizontal boundary, a program becomes a programming product. This is a program that can be run,tested, repaired, and extended by anybody. </p><p>Moving across the vertical boundary, a program becomes a component in a programming system. This is a collection of interacting programs, coordinated in function and disciplined in format, so that the assemblage constitutes an entire facility for large tasks.</p><p>In the lower right-hand corner of Fig. 1.1 stands the programming systems product. This differs from the simple program in all of the above ways. It costs nine times as much. But it is the truly useful object, the intended product of most system programming efforts.</p><h2 id="The-Joys-of-the-Craft"><a href="#The-Joys-of-the-Craft" class="headerlink" title="The Joys of the Craft"></a>The Joys of the Craft</h2><p>First is the sheer joy of making things. </p><p>Second is the pleasure of making things that are useful to other people.</p><p>Third is the fascination of fashioning complex puzzle-like objects of interlocking moving parts and watching them work in subtle cycles, playing out the consequences of principles built in from the beginning.</p><p>Fourth is the joy of always learning</p><p>Finally, there is the delight of working in such a tractable medium. </p><h2 id="The-Woes-of-the-Craft"><a href="#The-Woes-of-the-Craft" class="headerlink" title="The Woes of the Craft"></a>The Woes of the Craft</h2><p>First, one must perform perfectly.</p><p>Next, other people set one’s objectives, provide one’s resources, and furnish one’s information. </p><p>The dependence upon others has a particular case that is especially painful for the system programmer.</p><p>The next woe is that designing grand concepts is fun; finding nitty little bugs is just work.</p><p>The last woe, and sometimes the last straw, is that the product over which one has labored so long appears to be obsolete upon (or before) completion.</p><h1 id="The-Mythical-Man-Month"><a href="#The-Mythical-Man-Month" class="headerlink" title="The Mythical Man-Month"></a>The Mythical Man-Month</h1><p>More software projects have gone awry for lack of calendar time than for all other causes combined. <strong>Why?</strong></p><p>First, our techniques of estimating are poorly developed.</p><p>Second, our estimating techniques fallaciously confuse effort with progress?</p><p>Third, because we are uncertain of our estimates, software managers often lack the courteous stubbornness of Antoine’s chef.</p><p>Fourth, schedule progress is poorly monitored. </p><p>Fifth, when schedule slippage is recognized, the natural (and traditional) response is to add manpower.</p><h2 id="Optimism"><a href="#Optimism" class="headerlink" title="Optimism"></a>Optimism</h2><p>So the first false assumption that underlies the scheduling of systems programming is that all will go well, that each task will hike only as long as it “ought” to take.</p><p>The pervasiveness of optimism among programmers deserves more than a flip analysis.</p><p>The programmer builds from pure thought-stuff: concepts and very flexible representations thereof. Because the medium is tractable, we expect few difficulties in implementation; hence our pervasive optimism. </p><h2 id="The-Man-Month"><a href="#The-Man-Month" class="headerlink" title="The Man-Month"></a>The Man-Month</h2><p>Cost does indeed vary as the product of the number of men and the number of months. Progress does not. Hence the man-month as a unit for measuring the size of a job is a dangerous and deceptive myth. </p><p>Men and months are interchangeable commodities only when a task can be partitioned among many workers with no communication among them.</p><p>When a task cannot be partitioned because of sequential constraints, the application of more effort has no effect on the schedule. </p><p>In tasks that can be partitioned but which require communication among the subtasks, the effort of communication must be added to the amount of work to be done.</p><p>The added burden of communication is made up of two parts, training and intercommunication. </p><h2 id="System-Test"><a href="#System-Test" class="headerlink" title="System Test"></a>System Test</h2><p>Because of optimism, we usually expect the number of bugs to be smaller than it turns out to be. Therefore testing is usually the most mis-scheduled part of programming.</p><p>software task: 1/3 planning, 1/6 coding, 1/4 component test and early system test, 1/4 system test, all components in hand.</p><p>few allowed one-half of the projected schedule for testing, but that most did indeed spend half of the actual schedule for that purpose.</p><p>Failure to allow enough time for system test, in particular, is peculiarly disastrous.</p><p>Furthermore, delay at this point has unusually severe financial, as well as psychological, repercussions.</p><p>It is therefore very important to allow enough system test time in the original schedule.</p><h2 id="Gutless-Estimating"><a href="#Gutless-Estimating" class="headerlink" title="Gutless Estimating"></a>Gutless Estimating</h2><p>the urgency of the patron may govern the scheduled completion of the task, but it cannot govern the actual completion.</p><p>It is very difficult to make a vigorous, plausible, and job risking defense of an estimate that is derived by no quantitative method, supported by little data, and certified chiefly by the hunches of the managers.</p><p>Until estimating is on a sounder basis, individual managers will need to …… with the assurance that their poor hunches are better than wish derived estimates.</p><h2 id="Regenerative-Schedule-Disaster"><a href="#Regenerative-Schedule-Disaster" class="headerlink" title="Regenerative Schedule Disaster"></a>Regenerative Schedule Disaster</h2><img src="/2022/01/22/The%20Mythical%20Man-Month/image-20220122210446094.png" alt="image-20220122210446094" style="zoom:50%;"><p>Adding manpower to a late software project makes it later. </p><p>The maximum number of men depends upon the number of independent subtasks. From these two quantities one can derive schedules using fewer men and more months. (The only risk is product obsolescence.) </p><h1 id="The-Surgical-Team"><a href="#The-Surgical-Team" class="headerlink" title="The Surgical Team"></a>The Surgical Team</h1><p>how does one build large systems on a meaningful schedule?</p><h2 id="The-Problem"><a href="#The-Problem" class="headerlink" title="The Problem"></a>The Problem</h2><p>Programming managers have long recognized wide productivity variations between good programmers and poor ones. </p><p>Indeed, most experience with large programming systems shows that the bruteforce approach is costly, slow, inefficient, and produces systems that are not conceptually integrated.</p><p>This then is the problem with the small, sharp team concept: it is too slow for really big systems. </p><p>For efficiency and conceptual integrity, one prefers a few good minds doing design and construction. Yet for large systems one wants a way to bring considerable manpower to bear, so that the product can make a timely appearance.</p><h2 id="Mills’s-Proposal"><a href="#Mills’s-Proposal" class="headerlink" title="Mills’s Proposal"></a>Mills’s Proposal</h2>]]></content>
     
     
       
@@ -482,30 +506,6 @@
     
     
     <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
-    
-    <category term="Linux" scheme="https://dajunhuang.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux文件和目录的权限</title>
-    <link href="https://dajunhuang.github.io/2022/01/13/linux_fileDirectoryAuthority/"/>
-    <id>https://dajunhuang.github.io/2022/01/13/linux_fileDirectoryAuthority/</id>
-    <published>2022-01-12T16:00:00.000Z</published>
-    <updated>2022-01-13T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="权限功能"><a href="#权限功能" class="headerlink" title="权限功能"></a>权限功能</h1><p>&#8195;&#8195;文件和目录的<code>rwx</code>权限功能如下表：<br><img src="/2022/01/13/linux_fileDirectoryAuthority/l2.png"><br>&#8195;&#8195;可以看到，对一般文件来说，<code>rwx</code>主要是针对“文件的内容”来设计权限，对目录来说，<code>rwx</code>则是针对“目录内的文件名列表”来设计权限。<br>&#8195;&#8195;对于文件而言，<code>r</code>让用户可读取此一文件的实际内容，如读取文本文件的文字内容等；<code>w</code>让用户可以编辑、新增或者是修改该文件的内容，但不含删除该文件。<code>x</code>让用户可以执行文件内容，注意一个文件能否被执行只与<code>x</code>权限是否开放有关，不像windows一样和文件后缀有关。<br>&#8195;&#8195;对目录而言，<code>r</code>可以让使用者读取目录的文件名列表，不过详细的信息却还是读不到的；<code>w</code>可以让使用者删除、更新、新建文件或目录；<code>x</code>与“能否进入该目录”有关，如果没有<code>x</code>权限，用户不能切换到目录内，也就无法执行该目录下的任何指令，即使你具有该目录的<code>r</code>或<code>w</code>的权限。示例如下:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">learning:</span><br><span class="line">drwxrwxr-- 2 root root 4096 1月  13 22:45 ./</span><br><span class="line">-rw-rw-r-- 1 root root    0 1月  13 22:45 learning</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;用户<code>csoh</code>只有<code>learning</code>目录的<code>r</code>权限，此时<code>cd learning</code>显示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash: cd: learning: Permission denied</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;<code>ll learning</code>显示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ls: cannot access &#x27;learning/.&#x27;: Permission denied</span><br><span class="line">ls: cannot access &#x27;learning/learning&#x27;: Permission denied</span><br><span class="line">ls: cannot access &#x27;learning/..&#x27;: Permission denied</span><br><span class="line">total 0</span><br><span class="line">d????????? ? ? ? ?             ? ./</span><br><span class="line">d????????? ? ? ? ?             ? ../</span><br><span class="line">-????????? ? ? ? ?             ? learning</span><br></pre></td></tr></table></figure><p>&#8195;&#8195;假设有<code>/dir1/file1</code>和<code>/dir2</code>两个路径，用户完成各项任务所需最小权限如下：<br><img src="/2022/01/13/linux_fileDirectoryAuthority/l3.png"><br>&#8195;&#8195;可见没有<code>dir1</code>的<code>r</code>权限不影响大部分操作，可理解为<code>/dir1</code>是个”抽屉”，<code>r</code>权限是”抽屉里的光”，已经知道抽屉里有怎样的数据的话，有没有光就无所谓了。</p><h1 id="默认权限"><a href="#默认权限" class="headerlink" title="默认权限"></a>默认权限</h1><p>&#8195;&#8195;用户创建一个新的文件或目录时所拥有的权限和<code>umask</code>有关，查看方法为<code>umask</code>或<code>umaks -S</code>指令。<br><img src="/2022/01/13/linux_fileDirectoryAuthority/l4.png"><br>&#8195;&#8195;用户创建文件时默认权限是<code>-rw-rw-rw-</code>，创建目录时默认权限是<code>drwxrwxrwx</code>，以<code>x</code>是1分，<code>w</code>是2分，<code>r</code>是4来算，<code>umask</code>的后三位分别是使用者，组内用户和其他用户默认权限需要减去的权限分数之和，按上图<code>umask</code>的后三位<code>002</code>来计算就是：使用者和组内用户不减去权限，其他用户减去<code>w</code>权限。此时创建一个新的文件和新的目录后：<br><img src="/2022/01/13/linux_fileDirectoryAuthority/l5.png"></p><p><strong>参考：鸟哥的 Linux 私房菜：基础学习篇 第四版</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;权限功能&quot;&gt;&lt;a href=&quot;#权限功能&quot; class=&quot;headerlink&quot; title=&quot;权限功能&quot;&gt;&lt;/a&gt;权限功能&lt;/h1&gt;&lt;p&gt;&amp;#8195;&amp;#8195;文件和目录的&lt;code&gt;rwx&lt;/code&gt;权限功能如下表：&lt;br&gt;&lt;img src=&quot;/202</summary>
-      
-    
-    
-    
-    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="Linux" scheme="https://dajunhuang.github.io/tags/Linux/"/>
