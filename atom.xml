@@ -23,7 +23,7 @@
     <published>2022-02-10T02:16:51.000Z</published>
     <updated>2022-02-10T02:16:51.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Processes-And-Threads"><a href="#Processes-And-Threads" class="headerlink" title="Processes And Threads"></a>Processes And Threads</h1><h2 id="Processes"><a href="#Processes" class="headerlink" title="Processes"></a>Processes</h2><p>While, strictly speaking, at any one instant the CPU is running only one process, in the course of 1 second it may work on several of them, giving the illusion of parallelism.</p><h3 id="The-Process-Model"><a href="#The-Process-Model" class="headerlink" title="The Process Model"></a>The Process Model</h3><p>A process is just an instance of an executing program, including the current values of the program counter, registers, and variables. In reality, of course, the real CPU switches back and forth from process to process.</p><p>![image-20220210102621810](Modern Operating Systems/image-20220210102621810.png)</p><p>With the CPU switching back and forth among the processes, the rate at which a process performs its computation will not be uniform and probably not even reproducible if the same processes are run again. Thus, processes must not be programmed with built-in assumptions about timing.</p><p>The difference between a process and a program is subtle, but absolutely crucial. </p><p>It is worth noting that if a program is running twice, it counts as two processes.</p><h3 id="Process-Creation"><a href="#Process-Creation" class="headerlink" title="Process Creation"></a>Process Creation</h3><p>Four principal events cause processes to be created:</p><ol><li>System initialization. </li><li>Execution of a process-creation system call by a running process. </li><li>A user request to create a new process. </li><li>Initiation of a batch job.</li></ol><p>Technically, in all these cases, a new process is created by having an existing process execute a process creation system call. </p><p>In UNIX, there is only one system call to create a new process: <code>fork</code>. This call creates an exact clone of the calling process. After the fork, the two processes, the parent and the child, have the same memory image, the same environment strings, and the same open files. That is all there is. Usually, the child process then executes <code>execve</code> or a similar system call to change its memory image and run a new program.</p><p>The reason for this twostep process is to allow the child to manipulate its file descriptors after the <code>fork</code> but before the <code>execve</code> in order to accomplish redirection of standard input, standard output, and standard error.</p><p>In Windows, in contrast, a single Win32 function call, <code>CreateProcess</code>, handles both process creation and loading the correct program into the new process. </p><p>In both UNIX and Windows systems, after a process is created, the parent and child have their own distinct address spaces. If either process changes a word in its address space, the change is not visible to the other process.</p><h3 id="Process-Termination"><a href="#Process-Termination" class="headerlink" title="Process Termination"></a>Process Termination</h3>]]></content>
+    <content type="html"><![CDATA[<h1 id="Processes-And-Threads"><a href="#Processes-And-Threads" class="headerlink" title="Processes And Threads"></a>Processes And Threads</h1><h2 id="Processes"><a href="#Processes" class="headerlink" title="Processes"></a>Processes</h2><p>While, strictly speaking, at any one instant the CPU is running only one process, in the course of 1 second it may work on several of them, giving the illusion of parallelism.</p><h3 id="The-Process-Model"><a href="#The-Process-Model" class="headerlink" title="The Process Model"></a>The Process Model</h3><p>A process is just an instance of an executing program, including the current values of the program counter, registers, and variables. In reality, of course, the real CPU switches back and forth from process to process.</p><img src="/2022/02/10/Modern%20Operating%20Systems/picture1.png" alt="image-20220210102621810" style="zoom: 67%;"><p>With the CPU switching back and forth among the processes, the rate at which a process performs its computation will not be uniform and probably not even reproducible if the same processes are run again. Thus, processes must not be programmed with built-in assumptions about timing.</p><p>The difference between a process and a program is subtle, but absolutely crucial. </p><p>It is worth noting that if a program is running twice, it counts as two processes.</p><h3 id="Process-Creation"><a href="#Process-Creation" class="headerlink" title="Process Creation"></a>Process Creation</h3><p>Four principal events cause processes to be created:</p><ol><li>System initialization. </li><li>Execution of a process-creation system call by a running process. </li><li>A user request to create a new process. </li><li>Initiation of a batch job.</li></ol><p>Technically, in all these cases, a new process is created by having an existing process execute a process creation system call. </p><p>In UNIX, there is only one system call to create a new process: <code>fork</code>. This call creates an exact clone of the calling process. After the fork, the two processes, the parent and the child, have the same memory image, the same environment strings, and the same open files. That is all there is. Usually, the child process then executes <code>execve</code> or a similar system call to change its memory image and run a new program.</p><p>The reason for this twostep process is to allow the child to manipulate its file descriptors after the <code>fork</code> but before the <code>execve</code> in order to accomplish redirection of standard input, standard output, and standard error.</p><p>In Windows, in contrast, a single Win32 function call, <code>CreateProcess</code>, handles both process creation and loading the correct program into the new process. </p><p>In both UNIX and Windows systems, after a process is created, the parent and child have their own distinct address spaces. If either process changes a word in its address space, the change is not visible to the other process.</p><h3 id="Process-Termination"><a href="#Process-Termination" class="headerlink" title="Process Termination"></a>Process Termination</h3>]]></content>
     
     
       
@@ -89,6 +89,29 @@
   </entry>
   
   <entry>
+    <title>自动整理markdown文件程序（待填坑）</title>
+    <link href="https://dajunhuang.github.io/2022/02/05/markdownsorter/"/>
+    <id>https://dajunhuang.github.io/2022/02/05/markdownsorter/</id>
+    <published>2022-02-04T16:00:00.000Z</published>
+    <updated>2022-02-04T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这东西似乎和编译原理有关，看上去挺难。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这东西似乎和编译原理有关，看上去挺难。&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>基于STM32的文字识别（待填坑）</title>
     <link href="https://dajunhuang.github.io/2022/02/05/worddectector/"/>
     <id>https://dajunhuang.github.io/2022/02/05/worddectector/</id>
@@ -110,29 +133,6 @@
     
     
     <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自动整理markdown文件程序（待填坑）</title>
-    <link href="https://dajunhuang.github.io/2022/02/05/markdownsorter/"/>
-    <id>https://dajunhuang.github.io/2022/02/05/markdownsorter/</id>
-    <published>2022-02-04T16:00:00.000Z</published>
-    <updated>2022-02-04T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这东西似乎和编译原理有关，看上去挺难。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;这东西似乎和编译原理有关，看上去挺难。&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
     
   </entry>
   
