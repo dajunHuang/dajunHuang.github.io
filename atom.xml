@@ -6,7 +6,7 @@
   <link href="https://dajunhuang.github.io/atom.xml" rel="self"/>
   
   <link href="https://dajunhuang.github.io/"/>
-  <updated>2022-02-10T02:16:51.000Z</updated>
+  <updated>2022-02-10T16:00:00.000Z</updated>
   <id>https://dajunhuang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>STM32学习笔记（十三）开发板驱动OV7725摄像头</title>
+    <link href="https://dajunhuang.github.io/2022/02/10/STM13OV7725/"/>
+    <id>https://dajunhuang.github.io/2022/02/10/STM13OV7725/</id>
+    <published>2022-02-10T13:22:13.000Z</published>
+    <updated>2022-02-10T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2022/02/10/STM13OV7725/image-20220211225650365.png" alt="image-20220211225650365"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2022/02/10/STM13OV7725/image-20220211225650365.png&quot; alt=&quot;image-20220211225650365&quot;&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
+    
+  </entry>
   
   <entry>
     <title>《Modern Operating Systems》 Reading Notes</title>
@@ -112,18 +137,18 @@
   </entry>
   
   <entry>
-    <title>基于STM32的文字识别（待填坑）</title>
+    <title>基于STM32的文字识别</title>
     <link href="https://dajunhuang.github.io/2022/02/05/worddectector/"/>
     <id>https://dajunhuang.github.io/2022/02/05/worddectector/</id>
     <published>2022-02-04T16:00:00.000Z</published>
-    <updated>2022-02-04T16:00:00.000Z</updated>
+    <updated>2022-02-10T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>差2/3。</p>]]></content>
+    <content type="html"><![CDATA[<p>差1/3。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;差2/3。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;差1/3。&lt;/p&gt;
 </summary>
       
     
@@ -133,29 +158,6 @@
     
     
     <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ANSI转UTF-8小程序（待填坑）</title>
-    <link href="https://dajunhuang.github.io/2022/02/04/convertiontool/"/>
-    <id>https://dajunhuang.github.io/2022/02/04/convertiontool/</id>
-    <published>2022-02-03T16:00:00.000Z</published>
-    <updated>2022-02-04T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>我用来把ANSI的文档转换为UTF-8格式，之后加上另存功能。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string&gt; </span><br><span class="line">#include &lt;fstream&gt; </span><br><span class="line">#include &lt;iostream&gt; </span><br><span class="line"> </span><br><span class="line">using namespace std; </span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">    ifstream myfile(&quot;C:\\Users\\djhua\\Desktop\\main.c&quot;); </span><br><span class="line">    string temp; </span><br><span class="line">    while(getline(myfile,temp)) </span><br><span class="line">    &#123; </span><br><span class="line">        cout &lt;&lt; temp &lt;&lt; endl;</span><br><span class="line">    &#125; </span><br><span class="line">    myfile.close(); </span><br><span class="line">    return 0; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;我用来把ANSI的文档转换为UTF-8格式，之后加上另存功能。&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br</summary>
-      
-    
-    
-    
-    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
     
   </entry>
   
@@ -180,6 +182,29 @@
     
     
     <category term="doxygen" scheme="https://dajunhuang.github.io/tags/doxygen/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ANSI转UTF-8小程序（待填坑）</title>
+    <link href="https://dajunhuang.github.io/2022/02/04/convertiontool/"/>
+    <id>https://dajunhuang.github.io/2022/02/04/convertiontool/</id>
+    <published>2022-02-03T16:00:00.000Z</published>
+    <updated>2022-02-04T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>我用来把ANSI的文档转换为UTF-8格式，之后加上另存功能。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string&gt; </span><br><span class="line">#include &lt;fstream&gt; </span><br><span class="line">#include &lt;iostream&gt; </span><br><span class="line"> </span><br><span class="line">using namespace std; </span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">    ifstream myfile(&quot;C:\\Users\\djhua\\Desktop\\main.c&quot;); </span><br><span class="line">    string temp; </span><br><span class="line">    while(getline(myfile,temp)) </span><br><span class="line">    &#123; </span><br><span class="line">        cout &lt;&lt; temp &lt;&lt; endl;</span><br><span class="line">    &#125; </span><br><span class="line">    myfile.close(); </span><br><span class="line">    return 0; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;我用来把ANSI的文档转换为UTF-8格式，之后加上另存功能。&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br</summary>
+      
+    
+    
+    
+    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
+    
     
   </entry>
   
@@ -266,7 +291,7 @@
     <published>2022-01-25T16:00:00.000Z</published>
     <updated>2022-02-05T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="二零二二年"><a href="#二零二二年" class="headerlink" title="二零二二年"></a>二零二二年</h1><h2 id="一月"><a href="#一月" class="headerlink" title="一月"></a>一月</h2><p>26日，在火车上想起来又是只带了数位板没带笔。在小红姐家留着。</p><p>27日，和小姨出去买东西，感慨很多单独记录了。</p><p>28日，迷茫怎么择校，怎么提升。</p><p>29日，和梁同学见了一面，原来我们真的很陌生了。</p><p>30日，回家，家里好冷啊。</p><p>31日，回家这几天见到的好看的女孩子要比一学期在学校见到的还要多。</p><h2 id="二月"><a href="#二月" class="headerlink" title="二月"></a>二月</h2><p>2日，今年春节很神奇地就在2月1日。今天，过年的节奏终于过去，不用苦恼于走亲访友的日程了。</p><p>3日，开始学习。</p><p>4日，奥运会开幕和原神前瞻直播同一天。</p><p>5日，在MC服务器安了一处家。</p><p>6日，上午老家砍树，晚上大舅家吃饭。</p><p>9日，每年的保留节目，又被一个人丢在家里了。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="二零二二年"><a href="#二零二二年" class="headerlink" title="二零二二年"></a>二零二二年</h1><h2 id="一月"><a href="#一月" class="headerlink" title="一月"></a>一月</h2><p>26日，在火车上想起来又是只带了数位板没带笔。在小红姐家留着。</p><p>27日，和小姨出去买东西，感慨很多单独记录了。</p><p>28日，迷茫怎么择校，怎么提升。</p><p>29日，和梁同学见了一面，原来我们真的很陌生了。</p><p>30日，回家，家里好冷啊。</p><p>31日，回家这几天见到的好看的女孩子要比一学期在学校见到的还要多。</p><h2 id="二月"><a href="#二月" class="headerlink" title="二月"></a>二月</h2><p>2日，今年春节很神奇地就在2月1日。今天，过年的节奏终于过去，不用苦恼于走亲访友的日程了。</p><p>3日，开始学习。</p><p>4日，奥运会开幕和原神前瞻直播同一天。</p><p>5日，在MC服务器安了一处家。</p><p>6日，上午老家砍树，晚上大舅家吃饭。</p><p>9日，每年的保留节目，又被一个人丢在家里了。</p><p>10日，现代操作系统，开始！</p><p>11日，墨柔云服务器遇见特别好的大佬<code>LSP_qq</code>。</p>]]></content>
     
     
       
@@ -317,7 +342,7 @@
     <link href="https://dajunhuang.github.io/2022/01/22/The%20Mythical%20Man-Month/"/>
     <id>https://dajunhuang.github.io/2022/01/22/The%20Mythical%20Man-Month/</id>
     <published>2022-01-21T16:00:00.000Z</published>
-    <updated>2022-02-04T16:00:00.000Z</updated>
+    <updated>2022-02-09T16:00:00.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="The-Tar-Pit"><a href="#The-Tar-Pit" class="headerlink" title="The Tar Pit"></a>The Tar Pit</h1><p>Large-system programming has over the past decade been such a tar pit, and many great and powerful beasts have thrashed violently in it.</p><p>No one thing seems to cause the difficulty - any particular paw can be pulled away. But the accumulation of simultaneous and interacting factors brings slower and slower motion.</p><h2 id="The-Programming-Systems-Product"><a href="#The-Programming-Systems-Product" class="headerlink" title="The Programming Systems Product"></a>The Programming Systems Product</h2><img src="/2022/01/22/The%20Mythical%20Man-Month/image-20220122195717668.png" alt="image-20220122195717668" style="zoom:45%;"><p>In the upper left of Fig. 1.1 is a program. It is complete in itself, ready to be run by the author on the system on which it was developed. That is the thing commonly produced in garages, and that is the object the individual programmer uses in estimating productivity.</p><p>Moving down across the horizontal boundary, a program becomes a programming product. This is a program that can be run,tested, repaired, and extended by anybody. </p><p>Moving across the vertical boundary, a program becomes a component in a programming system. This is a collection of interacting programs, coordinated in function and disciplined in format, so that the assemblage constitutes an entire facility for large tasks.</p><p>In the lower right-hand corner of Fig. 1.1 stands the programming systems product. This differs from the simple program in all of the above ways. It costs nine times as much. But it is the truly useful object, the intended product of most system programming efforts.</p><h2 id="The-Joys-of-the-Craft"><a href="#The-Joys-of-the-Craft" class="headerlink" title="The Joys of the Craft"></a>The Joys of the Craft</h2><p>First is the sheer joy of making things. </p><p>Second is the pleasure of making things that are useful to other people.</p><p>Third is the fascination of fashioning complex puzzle-like objects of interlocking moving parts and watching them work in subtle cycles, playing out the consequences of principles built in from the beginning.</p><p>Fourth is the joy of always learning</p><p>Finally, there is the delight of working in such a tractable medium. </p><h2 id="The-Woes-of-the-Craft"><a href="#The-Woes-of-the-Craft" class="headerlink" title="The Woes of the Craft"></a>The Woes of the Craft</h2><p>First, one must perform perfectly.</p><p>Next, other people set one’s objectives, provide one’s resources, and furnish one’s information. </p><p>The dependence upon others has a particular case that is especially painful for the system programmer.</p><p>The next woe is that designing grand concepts is fun; finding nitty little bugs is just work.</p><p>The last woe, and sometimes the last straw, is that the product over which one has labored so long appears to be obsolete upon (or before) completion.</p><h1 id="The-Mythical-Man-Month"><a href="#The-Mythical-Man-Month" class="headerlink" title="The Mythical Man-Month"></a>The Mythical Man-Month</h1><p>More software projects have gone awry for lack of calendar time than for all other causes combined. <strong>Why?</strong></p><p>First, our techniques of estimating are poorly developed.</p><p>Second, our estimating techniques fallaciously confuse effort with progress?</p><p>Third, because we are uncertain of our estimates, software managers often lack the courteous stubbornness of Antoine’s chef.</p><p>Fourth, schedule progress is poorly monitored. </p><p>Fifth, when schedule slippage is recognized, the natural (and traditional) response is to add manpower.</p><h2 id="Optimism"><a href="#Optimism" class="headerlink" title="Optimism"></a>Optimism</h2><p>So the first false assumption that underlies the scheduling of systems programming is that all will go well, that each task will hike only as long as it “ought” to take.</p><p>The pervasiveness of optimism among programmers deserves more than a flip analysis.</p><p>The programmer builds from pure thought-stuff: concepts and very flexible representations thereof. Because the medium is tractable, we expect few difficulties in implementation; hence our pervasive optimism. </p><h2 id="The-Man-Month"><a href="#The-Man-Month" class="headerlink" title="The Man-Month"></a>The Man-Month</h2><p>Cost does indeed vary as the product of the number of men and the number of months. Progress does not. Hence the man-month as a unit for measuring the size of a job is a dangerous and deceptive myth. </p><p>Men and months are interchangeable commodities only when a task can be partitioned among many workers with no communication among them.</p><p>When a task cannot be partitioned because of sequential constraints, the application of more effort has no effect on the schedule. </p><p>In tasks that can be partitioned but which require communication among the subtasks, the effort of communication must be added to the amount of work to be done.</p><p>The added burden of communication is made up of two parts, training and intercommunication. </p><h2 id="System-Test"><a href="#System-Test" class="headerlink" title="System Test"></a>System Test</h2><p>Because of optimism, we usually expect the number of bugs to be smaller than it turns out to be. Therefore testing is usually the most mis-scheduled part of programming.</p><p>software task: 1/3 planning, 1/6 coding, 1/4 component test and early system test, 1/4 system test, all components in hand.</p><p>few allowed one-half of the projected schedule for testing, but that most did indeed spend half of the actual schedule for that purpose.</p><p>Failure to allow enough time for system test, in particular, is peculiarly disastrous.</p><p>Furthermore, delay at this point has unusually severe financial, as well as psychological, repercussions.</p><p>It is therefore very important to allow enough system test time in the original schedule.</p><h2 id="Gutless-Estimating"><a href="#Gutless-Estimating" class="headerlink" title="Gutless Estimating"></a>Gutless Estimating</h2><p>the urgency of the patron may govern the scheduled completion of the task, but it cannot govern the actual completion.</p><p>It is very difficult to make a vigorous, plausible, and job risking defense of an estimate that is derived by no quantitative method, supported by little data, and certified chiefly by the hunches of the managers.</p><p>Until estimating is on a sounder basis, individual managers will need to …… with the assurance that their poor hunches are better than wish derived estimates.</p><h2 id="Regenerative-Schedule-Disaster"><a href="#Regenerative-Schedule-Disaster" class="headerlink" title="Regenerative Schedule Disaster"></a>Regenerative Schedule Disaster</h2><img src="/2022/01/22/The%20Mythical%20Man-Month/image-20220122210446094.png" alt="image-20220122210446094" style="zoom:50%;"><p>Adding manpower to a late software project makes it later. </p><p>The maximum number of men depends upon the number of independent subtasks. From these two quantities one can derive schedules using fewer men and more months. (The only risk is product obsolescence.) </p><h1 id="The-Surgical-Team"><a href="#The-Surgical-Team" class="headerlink" title="The Surgical Team"></a>The Surgical Team</h1><p>how does one build large systems on a meaningful schedule?</p><h2 id="The-Problem"><a href="#The-Problem" class="headerlink" title="The Problem"></a>The Problem</h2><p>Programming managers have long recognized wide productivity variations between good programmers and poor ones. </p><p>Indeed, most experience with large programming systems shows that the bruteforce approach is costly, slow, inefficient, and produces systems that are not conceptually integrated.</p><p>This then is the problem with the small, sharp team concept: it is too slow for really big systems. </p><p>For efficiency and conceptual integrity, one prefers a few good minds doing design and construction. Yet for large systems one wants a way to bring considerable manpower to bear, so that the product can make a timely appearance.</p><h2 id="Mills’s-Proposal"><a href="#Mills’s-Proposal" class="headerlink" title="Mills’s Proposal"></a>Mills’s Proposal</h2>]]></content>
     
@@ -485,30 +510,6 @@
     
     <category term="日志" scheme="https://dajunhuang.github.io/categories/%E6%97%A5%E5%BF%97/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu修改密码方法</title>
-    <link href="https://dajunhuang.github.io/2022/01/13/linux_changePassword/"/>
-    <id>https://dajunhuang.github.io/2022/01/13/linux_changePassword/</id>
-    <published>2022-01-12T16:00:00.000Z</published>
-    <updated>2022-01-12T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="在开机的时候按Shift键进入GRUB菜单"><a href="#在开机的时候按Shift键进入GRUB菜单" class="headerlink" title="在开机的时候按Shift键进入GRUB菜单"></a>在开机的时候按Shift键进入GRUB菜单</h1><p>&#8195;&#8195;不在于按的时间长短，在于按的时机，要一开机就立马点进虚拟机按。<br><img src="/2022/01/13/linux_changePassword/l1.png"></p><h1 id="选择高级选项"><a href="#选择高级选项" class="headerlink" title="选择高级选项"></a>选择高级选项</h1><p><img src="/2022/01/13/linux_changePassword/l2.png"></p><h1 id="进入恢复模式"><a href="#进入恢复模式" class="headerlink" title="进入恢复模式"></a>进入恢复模式</h1><p>&#8195;&#8195;注意是按<code>E</code>进入。<br><img src="/2022/01/13/linux_changePassword/l3.png"></p><h1 id="按下图修改"><a href="#按下图修改" class="headerlink" title="按下图修改"></a>按下图修改</h1><p>&#8195;&#8195;把<code>recovery nomodest</code>部分修改为<code>quiet splash rw init=/bin/bash</code>。<br><img src="/2022/01/13/linux_changePassword/l4.png"></p><h1 id="启动并修改密码"><a href="#启动并修改密码" class="headerlink" title="启动并修改密码"></a>启动并修改密码</h1><p>&#8195;&#8195;修改完成后按<code>F10</code>启动，输入<code>Passwd</code>并按提示修改密码。<br><img src="/2022/01/13/linux_changePassword/l5.png"></p><p>&#8195;&#8195;此外如果要修改用户密码，在root模式下使用<code>passwd username</code>即可。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;在开机的时候按Shift键进入GRUB菜单&quot;&gt;&lt;a href=&quot;#在开机的时候按Shift键进入GRUB菜单&quot; class=&quot;headerlink&quot; title=&quot;在开机的时候按Shift键进入GRUB菜单&quot;&gt;&lt;/a&gt;在开机的时候按Shift键进入GRUB菜单&lt;/</summary>
-      
-    
-    
-    
-    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
-    
-    <category term="Linux" scheme="https://dajunhuang.github.io/tags/Linux/"/>
     
   </entry>
   
