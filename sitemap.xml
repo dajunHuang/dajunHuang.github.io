@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://dajunhuang.github.io/2022/02/01/homephoto/</loc>
+    
+    <lastmod>2022-02-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://dajunhuang.github.io/2022/02/05/worddectector/</loc>
     
     <lastmod>2022-02-10</lastmod>
@@ -113,15 +122,6 @@
     <loc>https://dajunhuang.github.io/2022/01/22/STM11FSMC/</loc>
     
     <lastmod>2022-02-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://dajunhuang.github.io/2022/02/01/homephoto/</loc>
-    
-    <lastmod>2022-01-31</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -299,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/07/STM4GPIO/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/07/STM3NVIC/</loc>
     
     <lastmod>2022-01-06</lastmod>
     
@@ -308,7 +308,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/07/STM3NVIC/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/07/STM4GPIO/</loc>
     
     <lastmod>2022-01-06</lastmod>
     
@@ -378,14 +378,14 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/Galgame/</loc>
+    <loc>https://dajunhuang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    <loc>https://dajunhuang.github.io/tags/Galgame/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -427,14 +427,14 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/GPIO/</loc>
+    <loc>https://dajunhuang.github.io/tags/NVIC/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/TIM/</loc>
+    <loc>https://dajunhuang.github.io/tags/GPIO/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -448,7 +448,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
+    <loc>https://dajunhuang.github.io/tags/TIM/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -462,7 +462,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/NVIC/</loc>
+    <loc>https://dajunhuang.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -470,13 +470,6 @@
   
   <url>
     <loc>https://dajunhuang.github.io/tags/doxygen/</loc>
-    <lastmod>2022-02-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dajunhuang.github.io/tags/Linux/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -491,6 +484,13 @@
   
   <url>
     <loc>https://dajunhuang.github.io/tags/Git/</loc>
+    <lastmod>2022-02-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/tags/Linux/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -527,14 +527,14 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/categories/%E8%AF%84%E8%AE%BA/</loc>
+    <loc>https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://dajunhuang.github.io/categories/%E8%AF%84%E8%AE%BA/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
