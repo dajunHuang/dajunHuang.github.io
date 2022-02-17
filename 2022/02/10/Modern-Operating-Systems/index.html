@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>《Modern Operating Systems》(1) Processes And Threads | dajunHuang的小站</title><meta name="keywords" content="操作系统"><meta name="author" content="dajunHuang"><meta name="copyright" content="dajunHuang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ProcessesWhile, strictly speaking, at any one instant the CPU is running only one process, in the course of 1 second it may work on several of them, giving the illusion of parallelism. The Process Mod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Modern Operating Systems》(1) Processes And Threads">
+<meta property="og:url" content="https://dajunhuang.github.io/2022/02/10/Modern-Operating-Systems/index.html">
+<meta property="og:site_name" content="dajunHuang的小站">
+<meta property="og:description" content="ProcessesWhile, strictly speaking, at any one instant the CPU is running only one process, in the course of 1 second it may work on several of them, giving the illusion of parallelism. The Process Mod">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dajunhuang.github.io/2022/02/10/Modern-Operating-Systems/picture1.png">
+<meta property="article:published_time" content="2022-02-10T02:16:51.000Z">
+<meta property="article:modified_time" content="2022-02-10T02:16:51.000Z">
+<meta property="article:author" content="dajunHuang">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dajunhuang.github.io/2022/02/10/Modern-Operating-Systems/picture1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://dajunhuang.github.io/2022/02/10/Modern-Operating-Systems/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '《Modern Operating Systems》(1) Processes And Threads',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-10 10:16:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/Kimbiedark.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="dajunHuang的小站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/StardustPaimon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">dajunHuang的小站</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">《Modern Operating Systems》(1) Processes And Threads</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-10T02:16:51.000Z" title="发表于 2022-02-10 10:16:51">2022-02-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-10T02:16:51.000Z" title="更新于 2022-02-10 10:16:51">2022-02-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《Modern Operating Systems》(1) Processes And Threads"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="Processes"><a href="#Processes" class="headerlink" title="Processes"></a>Processes</h1><p>While, strictly speaking, at any one instant the CPU is running only one process, in the course of 1 second it may work on several of them, giving the illusion of parallelism.</p>
+<h2 id="The-Process-Model"><a href="#The-Process-Model" class="headerlink" title="The Process Model"></a>The Process Model</h2><p>A process is just an instance of an executing program, including the current values of the program counter, registers, and variables. In reality, of course, the real CPU switches back and forth from process to process.</p>
+<img src="/2022/02/10/Modern-Operating-Systems/picture1.png" alt="image-20220210102621810" style="zoom: 67%;">
+
+<p>With the CPU switching back and forth among the processes, the rate at which a process performs its computation will not be uniform and probably not even reproducible if the same processes are run again. Thus, processes must not be programmed with built-in assumptions about timing.</p>
+<p>The difference between a process and a program is subtle, but absolutely crucial. </p>
+<p>It is worth noting that if a program is running twice, it counts as two processes.</p>
+<h2 id="Process-Creation"><a href="#Process-Creation" class="headerlink" title="Process Creation"></a>Process Creation</h2><p>Four principal events cause processes to be created:</p>
+<ol>
+<li>System initialization. </li>
+<li>Execution of a process-creation system call by a running process. </li>
+<li>A user request to create a new process. </li>
+<li>Initiation of a batch job.</li>
+</ol>
+<p>Technically, in all these cases, a new process is created by having an existing process execute a process creation system call. </p>
+<p>In UNIX, there is only one system call to create a new process: <code>fork</code>. This call creates an exact clone of the calling process. After the fork, the two processes, the parent and the child, have <strong>the same memory image, the same environment strings, and the same open files</strong>. That is all there is. Usually, the child process then executes <code>execve</code> or a similar system call to change its memory image and run a new program.</p>
+<p>The reason for this twostep process is to allow the child to manipulate its file descriptors after the <code>fork</code> but before the <code>execve</code> in order to accomplish redirection of standard input, standard output, and standard error.</p>
+<p>In Windows, in contrast, a single Win32 function call, <code>CreateProcess</code>, handles both process creation and loading the correct program into the new process. </p>
+<p>In both UNIX and Windows systems, after a process is created, the parent and child have their own distinct address spaces. If either process changes a word in its address space, the change is not visible to the other process.</p>
+<h2 id="Process-Termination"><a href="#Process-Termination" class="headerlink" title="Process Termination"></a>Process Termination</h2><p>Sooner or later the new process will terminate, usually due to one of the following conditions:</p>
+<ol>
+<li>Normal exit (voluntary).</li>
+<li>Error exit (voluntary).</li>
+<li>Fatal error (involuntary).</li>
+<li>Killed by another process (involuntary).</li>
+</ol>
+<p>Most processes terminate because they have done their work. When a compiler has compiled the program given to it, the compiler executes a system call to tell the operating system that it is finished. This call is <code>exit</code> in UNIX and <code>ExitProcess</code> in Windows.</p>
+<p>The second reason for termination is that the process discovers a fatal error.</p>
+<p>The third reason for termination is an error caused by the process, often due to a program bug.</p>
+<p>The fourth reason a process might terminate is that the process executes a system call telling the operating system to kill some other process. In UNIX this call is <code>kill</code>. The corresponding Win32 function is <code>TerminateProcess</code>.</p>
+<h2 id="Process-Hierarchies"><a href="#Process-Hierarchies" class="headerlink" title="Process Hierarchies"></a>Process Hierarchies</h2><p>In some systems, when a process creates another process, the parent process and child process continue to be associated in certain ways. </p>
+<p>In UNIX, a process and all of its children and further descendants together form a process group.</p>
+<p>In contrast, Windows has no concept of a process hierarchy. All processes are equal.</p>
+<h2 id="Process-States"><a href="#Process-States" class="headerlink" title="Process States"></a>Process States</h2><p>In the first case, the suspension is inherent in the problem (you cannot process the user’s command line until it has been typed). In the second case, it is a technicality of the system (not enough CPUs to give each process its own private processor).</p>
+<p>In Fig. 2-2 we see a state diagram showing the three states a process may be in:</p>
+<ol>
+<li>Running (actually using the CPU at that instant).</li>
+<li>Ready (runnable; temporarily stopped to let another process run).</li>
+<li>Blocked (unable to run until some external event happens).</li>
+</ol>
+<img src="/2022/02/10/Modern-Operating-Systems/image-20220212102841645.png" alt="image-20220212102841645" style="zoom: 80%;">
+
+<p>This view gives rise to the model shown in Fig. 2-3. Here the lowest level of the operating system is the scheduler, with a variety of processes on top of it. All the interrupt handling and details of actually starting and stopping processes are hidden away in what is here called the scheduler, which is actually not much code.</p>
+<img src="/2022/02/10/Modern-Operating-Systems/image-20220212103814948.png" alt="image-20220212103814948" style="zoom:80%;">
+
+<h2 id="Implementation-of-Process"><a href="#Implementation-of-Process" class="headerlink" title="Implementation of Process"></a>Implementation of Process</h2><p>To implement the process model, the operating system maintains a table (an array of structures), called the process table, with one entry per process.</p>
+<p>Figure 2-4 shows some of the key fields in a typical system. </p>
+<img src="/2022/02/10/Modern-Operating-Systems/image-20220212105722319.png" alt="image-20220212105722319" style="zoom: 67%;">
+
+<p>Interrupt handling and scheduling are summarized in Fig. 2-5.</p>
+<img src="/2022/02/10/Modern-Operating-Systems/image-20220212105758878.png" alt="image-20220212105758878" style="zoom:67%;">
+
+<p>A process may be interrupted thousands of times during its execution, but the key idea is that after each interrupt the interrupted process returns to precisely the same state it was in before the interrupt occurred.</p>
+<h2 id="Modeling-Multiprogramming"><a href="#Modeling-Multiprogramming" class="headerlink" title="Modeling Multiprogramming"></a>Modeling Multiprogramming</h2><p>Suppose that a process spends a fraction <code>p</code> of its time waiting for I/O to complete. With <code>n</code> processes in memory at once, the probability that all <code>n</code> processes are waiting for I/O (in which case the CPU will be idle) is <code>p^n</code> . The CPU utilization is then given by the formula：<br>$$<br>CPU utilization = 1 - p^n<br>$$</p>
+<p>Figure 2-6 shows the CPU utilization as a function of n, which is called the degree of multiprogramming.</p>
+<img src="/2022/02/10/Modern-Operating-Systems/image-20220212111454948.png" alt="image-20220212111454948" style="zoom:67%;">
+
+<p>Suppose, for example, that a computer has 8 GB of memory, with the operating system and its tables taking up 2 GB and each user program also taking up 2 GB. These sizes allow three user programs to be in memory at once. With an 80% average I/O wait, we have a CPU utilization (ignoring operating system overhead) of 1 − 0. 83 or about 49%. Adding another 8 GB of memory allows the system to go from three-way multiprogramming to seven-way multiprogramming, thus raising the CPU utilization to 79%. In other words, the additional 8 GB will raise the throughput by 30%.</p>
+<h1 id="THREADS"><a href="#THREADS" class="headerlink" title="THREADS"></a>THREADS</h1><h2 id="Thread-Usage"><a href="#Thread-Usage" class="headerlink" title="Thread Usage"></a>Thread Usage</h2><p>The main reason for having threads is that in many applications, multiple activities are going on at once. Some of these may block from time to time.</p>
+<p> Only now with threads we add a new element: the ability for the parallel entities to share an address space and all of its data among themselves. </p>
+<p>A second argument for having threads is that since they are lighter weight than processes, they are easier (i.e., faster) to create and destroy than processes.</p>
+<p>Threads yield no performance gain when all of them are CPU bound, but when there is substantial computing and also substantial I/O, having threads allows these activities to overlap, thus speeding up the application.</p>
+<p>threads are useful on systems with multiple CPUs, where real parallelism is possible.</p>
+<img src="/2022/02/10/Modern-Operating-Systems/image-20220214211917238.png" alt="image-20220214211917238" style="zoom:80%;">
+
+<p>Threads offer a solution. The process could be structured with an input thread, a processing thread, and an output thread. </p>
+<h2 id="The-Classical-Thread-Model"><a href="#The-Classical-Thread-Model" class="headerlink" title="The Classical Thread Model"></a>The Classical Thread Model</h2><p>One way of looking at a process is that it is a way to group related resources together. A process has an address space containing program text and data, as well as other resources. These resources may include open files, child processes, pending alarms, signal handlers, accounting information, and more. </p>
+<p>The other concept a process has is a thread of execution, usually shortened to just thread.</p>
+<p>What threads add to the process model is to allow multiple executions to take place in the same process environment, to a large degree independent of one another.</p>
+<p>Because threads have some of the properties of processes, they are sometimes called lightweight processes. </p>
+<p>When a multithreaded process is run on a single-CPU system, the threads take turns running.</p>
+<p>Different threads in a process are not as independent as different processes. All threads have exactly the same address space, which means that they also share the same global variables. </p>
+<img src="/2022/02/10/Modern-Operating-Systems/image-20220214213439049.png" alt="image-20220214213439049" style="zoom:80%;">
+
+<p>Like a traditional process (i.e., a process with only one thread), a thread can be in any one of several states: running, blocked, ready, or terminated. </p>
+<p>It is important to realize that each thread has its own stack.</p>
+<img src="/2022/02/10/Modern-Operating-Systems/image-20220214213735291.png" alt="image-20220214213735291" style="zoom:80%;">
+
+<h2 id="POSIX-Threads"><a href="#POSIX-Threads" class="headerlink" title="POSIX Threads"></a>POSIX Threads</h2><p>To make it possible to write portable threaded programs, IEEE has defined a standard for threads in IEEE standard 1003.1c. The threads package it defines is called Pthreads. Most UNIX systems support it. The standard defines over 60 function calls.</p>
+<img src="/2022/02/10/Modern-Operating-Systems/image-20220215103825476.png" alt="image-20220215103825476" style="zoom:80%;">
+
+<p>All Pthreads threads have certain properties. Each one has an identifier, a set of registers (including the program counter), and a set of attributes, which are stored in a structure. </p>
+<h2 id="Implementing-Threads-in-User-Space"><a href="#Implementing-Threads-in-User-Space" class="headerlink" title="Implementing Threads in User Space"></a>Implementing Threads in User Space</h2><p><img src="/2022/02/10/Modern-Operating-Systems/image-20220217195210813.png" alt="image-20220217195210813"></p>
+<p>The first method is to put the threads package entirely in user space. The kernel knows nothing about them.</p>
+<p>The first, and most obvious, advantage is that a user-level threads package can be implemented on an operating system that does not support threads. </p>
+<p>The threads run on top of a run-time system, which is a collection of procedures that manage threads.</p>
+<p>When threads are managed in user space, each process needs its own private thread table to keep track of the threads in that process.</p>
+<p> Doing thread switching like this is at least an order of magnitude— maybe more—faster than trapping to the kernel and is a strong argument in favor of user-level threads packages.</p>
+<p>User-level threads also have other advantages. They allow each process to have its own customized scheduling algorithm.</p>
+<p>They also scale better, since kernel threads invariably require some table space and stack space in the kernel, which can be a problem if there are a very large number of threads.</p>
+<p>Despite their better performance, user-level threads packages have some major problems. First among these is the problem of how blocking system calls are implemented.</p>
+<blockquote>
+<p>线程发生I/O或页面故障引起的阻塞时，如果调用阻塞系统调用则内核由于不知道有多线程的存在，而会阻塞整个进程从而阻塞所有线程, 因此同一进程中只能同时有一个线程在运行</p>
+</blockquote>
+<p>Somewhat analogous to the problem of blocking system calls is the problem of page faults. </p>
+<p>Another problem with user-level thread packages is that if a thread starts running, no other thread in that process will ever run unless the first thread voluntarily gives up the CPU.</p>
+<p>Another, and really the most devastating, argument against user-level threads is that programmers generally want threads precisely in applications where the threads block often, as, for example, in a multithreaded Web server.</p>
+<h2 id="Implementing-Threads-in-the-Kernel"><a href="#Implementing-Threads-in-the-Kernel" class="headerlink" title="Implementing Threads in the Kernel"></a>Implementing Threads in the Kernel</h2><p><img src="/2022/02/10/Modern-Operating-Systems/image-20220217195210813.png" alt="image-20220217195210813"></p>
+<p>Instead, the kernel has a thread table that keeps track of all the threads in the system. </p>
+<p>All calls that might block a thread are implemented as system calls, at considerably greater cost than a call to a run-time system procedure.</p>
+<p>Due to the relatively greater cost of creating and destroying threads in the kernel, some systems take an environmentally correct approach and recycle their threads.</p>
+<p>Kernel threads do not require any new, nonblocking system calls. Their main disadvantage is that the cost of a system call is substantial.</p>
+<h2 id="Hybrid-Implementations"><a href="#Hybrid-Implementations" class="headerlink" title="Hybrid Implementations"></a>Hybrid Implementations</h2><img src="/2022/02/10/Modern-Operating-Systems/image-20220217202535388.png" alt="image-20220217202535388" style="zoom: 80%;">
+
+<h2 id="Schedular-Activation"><a href="#Schedular-Activation" class="headerlink" title="Schedular Activation"></a>Schedular Activation</h2><p>The goals of the scheduler activation work are to mimic the functionality of kernel threads, but with the better performance and greater flexibility usually associated with threads packages implemented in user space.</p>
+<p>Efficiency is achieved by avoiding unnecessary transitions between user and kernel space.</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="post_share"><div class="social-share" data-image="/2022/02/10/Modern-Operating-Systems/picture1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/10/STM13OV7725/"><img class="prev-cover" src="/2022/02/10/STM13OV7725/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">STM32学习笔记（十三）开发板驱动OV7725摄像头</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/08/QING/"><img class="next-cover" src="/2022/02/08/QING/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">《晴霁之后定是菜花盛开的好天气》感想</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/StardustPaimon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dajunHuang</div><div class="author-info__description">软工专业本科生，目标考研，爱好Vocaloid、OSU、Galgame。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dajunHuang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:djhuang_1@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这里是dajunHuang的小站，我会在这里发学习日志、感想、碎碎念等内容。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Processes"><span class="toc-number">1.</span> <span class="toc-text">Processes</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Process-Model"><span class="toc-number">1.1.</span> <span class="toc-text">The Process Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Process-Creation"><span class="toc-number">1.2.</span> <span class="toc-text">Process Creation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Process-Termination"><span class="toc-number">1.3.</span> <span class="toc-text">Process Termination</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Process-Hierarchies"><span class="toc-number">1.4.</span> <span class="toc-text">Process Hierarchies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Process-States"><span class="toc-number">1.5.</span> <span class="toc-text">Process States</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementation-of-Process"><span class="toc-number">1.6.</span> <span class="toc-text">Implementation of Process</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Modeling-Multiprogramming"><span class="toc-number">1.7.</span> <span class="toc-text">Modeling Multiprogramming</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#THREADS"><span class="toc-number">2.</span> <span class="toc-text">THREADS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Thread-Usage"><span class="toc-number">2.1.</span> <span class="toc-text">Thread Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Classical-Thread-Model"><span class="toc-number">2.2.</span> <span class="toc-text">The Classical Thread Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POSIX-Threads"><span class="toc-number">2.3.</span> <span class="toc-text">POSIX Threads</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementing-Threads-in-User-Space"><span class="toc-number">2.4.</span> <span class="toc-text">Implementing Threads in User Space</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementing-Threads-in-the-Kernel"><span class="toc-number">2.5.</span> <span class="toc-text">Implementing Threads in the Kernel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hybrid-Implementations"><span class="toc-number">2.6.</span> <span class="toc-text">Hybrid Implementations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Schedular-Activation"><span class="toc-number">2.7.</span> <span class="toc-text">Schedular Activation</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/02/17/The-Mythical-Man-Month-1/" title="《The Mythical Man-Month》(2) Aristocracy, Democracy, and System Design"><img src="/2022/02/17/The-Mythical-Man-Month-1/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《The Mythical Man-Month》(2) Aristocracy, Democracy, and System Design"/></a><div class="content"><a class="title" href="/2022/02/17/The-Mythical-Man-Month-1/" title="《The Mythical Man-Month》(2) Aristocracy, Democracy, and System Design">《The Mythical Man-Month》(2) Aristocracy, Democracy, and System Design</a><time datetime="2022-02-17T11:31:46.000Z" title="发表于 2022-02-17 19:31:46">2022-02-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/17/linux_cmake2/" title="CMake学习笔记（二）CMake子工程、代码生成"><img src="/2022/02/17/linux_cmake2/cmake_logo_slider.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CMake学习笔记（二）CMake子工程、代码生成"/></a><div class="content"><a class="title" href="/2022/02/17/linux_cmake2/" title="CMake学习笔记（二）CMake子工程、代码生成">CMake学习笔记（二）CMake子工程、代码生成</a><time datetime="2022-02-17T08:32:53.000Z" title="发表于 2022-02-17 16:32:53">2022-02-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/10/STM13OV7725/" title="STM32学习笔记（十三）开发板驱动OV7725摄像头"><img src="/2022/02/10/STM13OV7725/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STM32学习笔记（十三）开发板驱动OV7725摄像头"/></a><div class="content"><a class="title" href="/2022/02/10/STM13OV7725/" title="STM32学习笔记（十三）开发板驱动OV7725摄像头">STM32学习笔记（十三）开发板驱动OV7725摄像头</a><time datetime="2022-02-10T13:22:13.000Z" title="发表于 2022-02-10 21:22:13">2022-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/10/Modern-Operating-Systems/" title="《Modern Operating Systems》(1) Processes And Threads"><img src="/2022/02/10/Modern-Operating-Systems/picture1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《Modern Operating Systems》(1) Processes And Threads"/></a><div class="content"><a class="title" href="/2022/02/10/Modern-Operating-Systems/" title="《Modern Operating Systems》(1) Processes And Threads">《Modern Operating Systems》(1) Processes And Threads</a><time datetime="2022-02-10T02:16:51.000Z" title="发表于 2022-02-10 10:16:51">2022-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/08/QING/" title="《晴霁之后定是菜花盛开的好天气》感想"><img src="/2022/02/08/QING/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《晴霁之后定是菜花盛开的好天气》感想"/></a><div class="content"><a class="title" href="/2022/02/08/QING/" title="《晴霁之后定是菜花盛开的好天气》感想">《晴霁之后定是菜花盛开的好天气》感想</a><time datetime="2022-02-08T10:28:50.000Z" title="发表于 2022-02-08 18:28:50">2022-02-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By dajunHuang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
