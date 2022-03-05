@@ -108,9 +108,9 @@
     
     <category term="编译" scheme="https://dajunhuang.github.io/tags/%E7%BC%96%E8%AF%91/"/>
     
-    <category term="inux" scheme="https://dajunhuang.github.io/tags/inux/"/>
-    
     <category term="CMake" scheme="https://dajunhuang.github.io/tags/CMake/"/>
+    
+    <category term="inux" scheme="https://dajunhuang.github.io/tags/inux/"/>
     
   </entry>
   
@@ -482,9 +482,9 @@
     
     <category term="编译" scheme="https://dajunhuang.github.io/tags/%E7%BC%96%E8%AF%91/"/>
     
-    <category term="CMake" scheme="https://dajunhuang.github.io/tags/CMake/"/>
-    
     <category term="linux" scheme="https://dajunhuang.github.io/tags/linux/"/>
+    
+    <category term="CMake" scheme="https://dajunhuang.github.io/tags/CMake/"/>
     
   </entry>
   
