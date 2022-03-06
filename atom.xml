@@ -23,12 +23,12 @@
     <published>2022-03-04T02:10:37.000Z</published>
     <updated>2022-03-04T02:10:37.000Z</updated>
     
-    <content type="html"><![CDATA[<p>&#8195;&#8195;我发现自己这样一种心理：不认可别人的领域，这种思维包括但不限于认为必须会用计算机，必须对科技事物感兴趣，要积极学习新的东西。<br>&#8195;&#8195;我认为这种心理有两方面的原因，一个是自己比较孤僻，和其他人，其它领域的人事交流很少，简单来说就是见识太浅。另一个原因就是受所处环境的限制，西电是纯理科的学校，可以说90%的专业都脱离不开电子和信息这两个词，这就导致我就算去和别人交流，获取到的知识也很熟悉，久而久之，就导致了自己对学习这个概念认知的偏差，觉得自己的学习才叫学习。<br>&#8195;&#8195;然而世界很大，我和我的思维只是其中微不足道的一个部分，我的知识以外像文史法地生哲天物等学科有浩如烟海的内容，自己应该学着理解别人的思维。</p>]]></content>
+    <content type="html"><![CDATA[<p>&#8195;&#8195;我发现自己不习惯认可别人的领域，这种思维包括但不限于认为必须会用计算机，必须对科技事物感兴趣，要积极学习新的东西。<br>&#8195;&#8195;这种心理有两方面的原因，一个是自己比较孤僻，和其他人，其它领域的人事交流很少，简单来说就是见识太浅；另一个原因是受所处环境的限制，西电是纯理科的学校，可以说90%的专业都脱离不开电子和信息这两个词，这就导致我就算去和别人交流，获取到的知识也很熟悉，久而久之，就导致了自己对学习这个概念认知的偏差，觉得自己的学习才叫学习。<br>&#8195;&#8195;然而世界很大，我只是其中微不足道的一个，我的知识以外像文史法地生哲天物等学科有浩如烟海的内容，自己应该学着理解别人的思维。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;&amp;#8195;&amp;#8195;我发现自己这样一种心理：不认可别人的领域，这种思维包括但不限于认为必须会用计算机，必须对科技事物感兴趣，要积极学习新的东西。&lt;br&gt;&amp;#8195;&amp;#8195;我认为这种心理有两方面的原因，一个是自己比较孤僻，和其他人，其它领域的人事交流很少，简</summary>
+    <summary type="html">&lt;p&gt;&amp;#8195;&amp;#8195;我发现自己不习惯认可别人的领域，这种思维包括但不限于认为必须会用计算机，必须对科技事物感兴趣，要积极学习新的东西。&lt;br&gt;&amp;#8195;&amp;#8195;这种心理有两方面的原因，一个是自己比较孤僻，和其他人，其它领域的人事交流很少，简单来说就是见识太</summary>
       
     
     
@@ -108,9 +108,9 @@
     
     <category term="编译" scheme="https://dajunhuang.github.io/tags/%E7%BC%96%E8%AF%91/"/>
     
-    <category term="CMake" scheme="https://dajunhuang.github.io/tags/CMake/"/>
-    
     <category term="inux" scheme="https://dajunhuang.github.io/tags/inux/"/>
+    
+    <category term="CMake" scheme="https://dajunhuang.github.io/tags/CMake/"/>
     
   </entry>
   
@@ -262,29 +262,6 @@
   </entry>
   
   <entry>
-    <title>ANSI转UTF-8小程序（待填坑）</title>
-    <link href="https://dajunhuang.github.io/2022/02/04/convertiontool/"/>
-    <id>https://dajunhuang.github.io/2022/02/04/convertiontool/</id>
-    <published>2022-02-03T16:00:00.000Z</published>
-    <updated>2022-02-04T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>我用来把ANSI的文档转换为UTF-8格式，之后加上另存功能。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string&gt; </span><br><span class="line">#include &lt;fstream&gt; </span><br><span class="line">#include &lt;iostream&gt; </span><br><span class="line"> </span><br><span class="line">using namespace std; </span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">    ifstream myfile(&quot;C:\\Users\\djhua\\Desktop\\main.c&quot;); </span><br><span class="line">    string temp; </span><br><span class="line">    while(getline(myfile,temp)) </span><br><span class="line">    &#123; </span><br><span class="line">        cout &lt;&lt; temp &lt;&lt; endl;</span><br><span class="line">    &#125; </span><br><span class="line">    myfile.close(); </span><br><span class="line">    return 0; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;我用来把ANSI的文档转换为UTF-8格式，之后加上另存功能。&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br</summary>
-      
-    
-    
-    
-    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Doxygen使用方法</title>
     <link href="https://dajunhuang.github.io/2022/02/04/doxygen/"/>
     <id>https://dajunhuang.github.io/2022/02/04/doxygen/</id>
@@ -305,6 +282,29 @@
     
     
     <category term="Doxygen" scheme="https://dajunhuang.github.io/tags/Doxygen/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ANSI转UTF-8小程序（待填坑）</title>
+    <link href="https://dajunhuang.github.io/2022/02/04/convertiontool/"/>
+    <id>https://dajunhuang.github.io/2022/02/04/convertiontool/</id>
+    <published>2022-02-03T16:00:00.000Z</published>
+    <updated>2022-02-04T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>我用来把ANSI的文档转换为UTF-8格式，之后加上另存功能。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string&gt; </span><br><span class="line">#include &lt;fstream&gt; </span><br><span class="line">#include &lt;iostream&gt; </span><br><span class="line"> </span><br><span class="line">using namespace std; </span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">    ifstream myfile(&quot;C:\\Users\\djhua\\Desktop\\main.c&quot;); </span><br><span class="line">    string temp; </span><br><span class="line">    while(getline(myfile,temp)) </span><br><span class="line">    &#123; </span><br><span class="line">        cout &lt;&lt; temp &lt;&lt; endl;</span><br><span class="line">    &#125; </span><br><span class="line">    myfile.close(); </span><br><span class="line">    return 0; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;我用来把ANSI的文档转换为UTF-8格式，之后加上另存功能。&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br</summary>
+      
+    
+    
+    
+    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
+    
     
   </entry>
   
@@ -482,9 +482,9 @@
     
     <category term="编译" scheme="https://dajunhuang.github.io/tags/%E7%BC%96%E8%AF%91/"/>
     
-    <category term="linux" scheme="https://dajunhuang.github.io/tags/linux/"/>
-    
     <category term="CMake" scheme="https://dajunhuang.github.io/tags/CMake/"/>
+    
+    <category term="linux" scheme="https://dajunhuang.github.io/tags/linux/"/>
     
   </entry>
   
