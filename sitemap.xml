@@ -254,6 +254,15 @@
   </url>
   
   <url>
+    <loc>https://dajunhuang.github.io/2022/01/11/STM32F10x_StdPeriph_Lib/</loc>
+    
+    <lastmod>2022-01-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://dajunhuang.github.io/2022/01/07/STM2IO/</loc>
     
     <lastmod>2022-01-10</lastmod>
@@ -264,15 +273,6 @@
   
   <url>
     <loc>https://dajunhuang.github.io/2022/01/06/STM1CLK/</loc>
-    
-    <lastmod>2022-01-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://dajunhuang.github.io/2022/01/11/STM32F10x_StdPeriph_Lib/</loc>
     
     <lastmod>2022-01-10</lastmod>
     
@@ -299,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/09/STM8PWM/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/08/STM7TIM/</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -308,7 +308,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/08/STM7TIM/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/09/STM8PWM/</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -414,13 +414,6 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/Galgame/</loc>
-    <lastmod>2022-03-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://dajunhuang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2022-03-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -428,7 +421,21 @@
   </url>
   
   <url>
+    <loc>https://dajunhuang.github.io/tags/Galgame/</loc>
+    <lastmod>2022-03-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://dajunhuang.github.io/tags/STM32/</loc>
+    <lastmod>2022-03-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/tags/FSMC/</loc>
     <lastmod>2022-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -450,13 +457,6 @@
   
   <url>
     <loc>https://dajunhuang.github.io/tags/I%C2%B2C/</loc>
-    <lastmod>2022-03-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dajunhuang.github.io/tags/FSMC/</loc>
     <lastmod>2022-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -540,7 +540,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/inux/</loc>
+    <loc>https://dajunhuang.github.io/tags/linux/</loc>
     <lastmod>2022-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -554,7 +554,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/linux/</loc>
+    <loc>https://dajunhuang.github.io/tags/inux/</loc>
     <lastmod>2022-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -577,14 +577,14 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/categories/%E8%AF%84%E8%AE%BA/</loc>
+    <loc>https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://dajunhuang.github.io/categories/%E8%AF%84%E8%AE%BA/</loc>
     <lastmod>2022-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
