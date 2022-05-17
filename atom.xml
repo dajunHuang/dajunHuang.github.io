@@ -6,7 +6,7 @@
   <link href="https://dajunhuang.github.io/atom.xml" rel="self"/>
   
   <link href="https://dajunhuang.github.io/"/>
-  <updated>2022-04-16T16:00:00.000Z</updated>
+  <updated>2022-05-16T16:00:00.000Z</updated>
   <id>https://dajunhuang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux 下 GDB 使用简明教程</title>
+    <link href="https://dajunhuang.github.io/2022/05/17/Linux-gdb/"/>
+    <id>https://dajunhuang.github.io/2022/05/17/Linux-gdb/</id>
+    <published>2022-05-16T16:00:00.000Z</published>
+    <updated>2022-05-16T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>为了能在 gdb 调试时使用 layout src，在编译目标文件时需要加上 -g 选项，为了防止调试中需要跟踪的变量被优化掉，需要加上 -O0 选项，例如 <code>gcc -o HelloWorld -g -O0 HelloWorld.c</code></p></blockquote><h1 id="GDB界面"><a href="#GDB界面" class="headerlink" title="GDB界面"></a>GDB界面</h1><p>只进入gdb界面：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb</span><br></pre></td></tr></table></figure><p>进入界面后载入目标文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gdb</span><br><span class="line">file HelloWorld</span><br><span class="line">或</span><br><span class="line">gdb HelloWorld</span><br></pre></td></tr></table></figure><p>直接进入 GUI 界面：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb -tui Helloworld</span><br></pre></td></tr></table></figure><p>退出 GDB 调试：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quit</span><br></pre></td></tr></table></figure><p>显示功能界面：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">layout src 源代码界面</span><br><span class="line">layout asm 汇编代码界面</span><br><span class="line">layout reg 寄存器界面</span><br><span class="line"></span><br><span class="line">layout split 分屏显示多页面</span><br></pre></td></tr></table></figure><h1 id="breakpoint-和-watchpoint"><a href="#breakpoint-和-watchpoint" class="headerlink" title="breakpoint 和 watchpoint"></a>breakpoint 和 watchpoint</h1><p>使用<code>break</code>语句插入短点</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">break</span> main在main函数首插入断点</span><br><span class="line"><span class="built_in">break</span> 5在当前文件的第五行插入断点</span><br><span class="line"><span class="built_in">break</span> *0x80483c3 在选定地址插入断点</span><br><span class="line"><span class="built_in">break</span> hello.c:5在hello.c第五行插入断点</span><br></pre></td></tr></table></figure><p>查看已有断点</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info breakpoints </span><br></pre></td></tr></table></figure><p>使能、取消断点</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">delete 1 删除断点1</span><br><span class="line"><span class="built_in">disable</span> 1 关闭断点1</span><br><span class="line"><span class="built_in">enable</span> 1 使能断点1</span><br><span class="line">delete 删除所有断点</span><br><span class="line">clear sum 删除sum函数头的断点</span><br></pre></td></tr></table></figure><p>插入 watch point 会让 gdb 在插入位置的值改变时显示信息</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">watch i 为变量i添加监测点</span><br><span class="line">rwatch i 读监测点</span><br><span class="line">awatch i 读写监测点</span><br></pre></td></tr></table></figure><p>查看已有监测点</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info watch</span><br></pre></td></tr></table></figure><h1 id="step-和-next"><a href="#step-和-next" class="headerlink" title="step 和 next"></a>step 和 next</h1><p><code>next</code> 单步到程序源代码的下一行，不进入函数。<br><code>nexti</code> 单步一条机器指令，不进入函数。<br><code>step</code> 单步到程序源代码的下一行，进入函数。<br><code>stepi</code> 单步一条机器指令，进入函数。</p><h1 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h1><p><code>backtrace</code>、<code>info stack</code>、<code>where</code>查看函数调用栈<br><code>info program</code> 查看程序状态<br><code>info functions</code> 查看函数<br><code>info frame</code> 查看栈结构<br><code>info registers</code> 查看寄存器</p><hr><p><strong>参考：<a herf="https://blog.csdn.net/weixin_43092232/article/details/106243657">linux下gdb调试 | next, nexti, step, stepi单步调试详解</a>、<a herf="http://csapp.cs.cmu.edu/3e/docs/gdbnotes-x86-64.pdf">Summary of GDB commands for x86-64 Systems<br></a>。</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;为了能在 gdb 调试时使用 layout src，在编译目标文件时需要加上 -g 选项，为了防止调试中需要跟踪的变量被优化掉，需要加上 -O0 选项，例如 &lt;code&gt;gcc -o HelloWorld -g -O0 HelloWorld.c&lt;/</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Linux" scheme="https://dajunhuang.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux简单字符设备驱动</title>
@@ -490,28 +515,6 @@
     
     
     <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>红</title>
-    <link href="https://dajunhuang.github.io/2022/01/27/20220127/"/>
-    <id>https://dajunhuang.github.io/2022/01/27/20220127/</id>
-    <published>2022-01-26T16:00:00.000Z</published>
-    <updated>2022-02-02T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>&#8195;&#8195;今天被亲戚带到万达去买东西，本来我是不乐意去的，但回来之后仔细考虑一下这趟旅程还是很有意义的，不是说我喜欢逛这个商超，而是路上不断产生的想法有些价值。<br>&#8195;&#8195;我一直不喜欢装修的富丽堂皇一看就很有距离感的地方，今天去的万达就是一个典型，外面有宣传铺天盖地，里面处处都是灯光、玻璃橱窗、会动的熵堆和无处不在的说话声。我不喜欢来这种地方一小方面，也有可能一大方面，是因为不习惯在随时可能产生交流的地方久待，还有一部分是我不认可（你寄吧谁啊）这种建筑物，这种场所的存在。<br>&#8195;&#8195;我的家庭学校国家从小就教育我要勤俭节约，一粥一饭一丝一缕，我也知道实现共产主义是社会主义国家的最终目标，但置身商超里，我感受不到以上实体一点点的存在，看到一切都在和理想中的“按需分配”作对。商场中每块玻璃都被擦得通透向熵堆展示里面的商品，每个角落都被来自商家或黄或红的灯照射着吸引路人前来购物，每面墙上都贴着浓妆艳抹的人物画，每个熵堆也打扮得和画上差不多。我想到的一个词就是“纸醉金迷”。<br>&#8195;&#8195;出发前我还在阅读同学借给我的一本讲哲学的书，试图理解伟大的人在精神层次的追求，但周围熙熙攘攘的场景让我觉得格外空虚，像自己心中理想的理想国被完全否定了一样。<br>&#8195;&#8195;接下来才是重点。这时，我的思想正被上述愤慨的情绪霸占，但当亲戚差点就要给我买下价值不菲的衣服时，我仍然产生了一种“消费的喜悦”，这一瞬间里我体验到了就在刚刚被我嘲弄过的刺激。哈哈，多么可笑！简直就像扣1送xxx的梗一样，我贬低其他人的同时，自己也不能抵挡住诱惑！去他妈的高尚的虚伪的自己！<br>&#8195;&#8195;我的价值观不合时宜？需要改变？我在这留下疑惑，希望自己以后来回答。不过短时间也不会改变。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&amp;#8195;&amp;#8195;今天被亲戚带到万达去买东西，本来我是不乐意去的，但回来之后仔细考虑一下这趟旅程还是很有意义的，不是说我喜欢逛这个商超，而是路上不断产生的想法有些价值。&lt;br&gt;&amp;#8195;&amp;#8195;我一直不喜欢装修的富丽堂皇一看就很有距离感的地方，今天去的万</summary>
-      
-    
-    
-    
-    <category term="日志" scheme="https://dajunhuang.github.io/categories/%E6%97%A5%E5%BF%97/"/>
     
     
   </entry>
