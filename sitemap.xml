@@ -47,15 +47,6 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/04/17/Linux-proc-file-system/</loc>
-    
-    <lastmod>2022-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://dajunhuang.github.io/2022/04/17/Linux-memory_map/</loc>
     
     <lastmod>2022-04-16</lastmod>
@@ -66,6 +57,15 @@
   
   <url>
     <loc>https://dajunhuang.github.io/2022/04/17/Linux-tasklet-workqueue/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/2022/04/17/Linux-proc-file-system/</loc>
     
     <lastmod>2022-04-16</lastmod>
     
@@ -398,7 +398,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/08/STM6EXTI/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/08/STM5USART/</loc>
     
     <lastmod>2022-01-07</lastmod>
     
@@ -407,7 +407,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/2022/01/08/STM5USART/</loc>
+    <loc>https://dajunhuang.github.io/2022/01/08/STM6EXTI/</loc>
     
     <lastmod>2022-01-07</lastmod>
     
@@ -495,14 +495,14 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/%E6%B1%87%E7%BC%96/</loc>
+    <loc>https://dajunhuang.github.io/tags/FPGA/</loc>
     <lastmod>2022-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/FPGA/</loc>
+    <loc>https://dajunhuang.github.io/tags/%E6%B1%87%E7%BC%96/</loc>
     <lastmod>2022-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -551,13 +551,6 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/FSMC/</loc>
-    <lastmod>2022-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://dajunhuang.github.io/tags/I%C2%B2C/</loc>
     <lastmod>2022-05-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -565,21 +558,14 @@
   </url>
   
   <url>
+    <loc>https://dajunhuang.github.io/tags/FSMC/</loc>
+    <lastmod>2022-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://dajunhuang.github.io/tags/NVIC/</loc>
-    <lastmod>2022-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dajunhuang.github.io/tags/GPIO/</loc>
-    <lastmod>2022-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dajunhuang.github.io/tags/EXTI/</loc>
     <lastmod>2022-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -635,6 +621,13 @@
   </url>
   
   <url>
+    <loc>https://dajunhuang.github.io/tags/EXTI/</loc>
+    <lastmod>2022-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://dajunhuang.github.io/tags/linux/</loc>
     <lastmod>2022-05-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -649,7 +642,7 @@
   </url>
   
   <url>
-    <loc>https://dajunhuang.github.io/tags/CPU/</loc>
+    <loc>https://dajunhuang.github.io/tags/GPIO/</loc>
     <lastmod>2022-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -657,6 +650,13 @@
   
   <url>
     <loc>https://dajunhuang.github.io/tags/Markdown/</loc>
+    <lastmod>2022-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dajunhuang.github.io/tags/CPU/</loc>
     <lastmod>2022-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
