@@ -1,0 +1,615 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>PARWAN CPU 结构分析 | dajunHuang的小站</title><meta name="keywords" content="CPU"><meta name="author" content="dajunHuang"><meta name="copyright" content="dajunHuang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、概述PARWAN是一种简易冯诺依曼式RISC架构CPU,CPU结构可以分为逻辑处理部分、内存管理部分、控制部分和总线部分。  逻辑控制部分：算术逻辑单元ALU，累加寄存器AC,移位单元SHU，状态寄存器SR  内存管理部分：程序计数器页寄存器PC_PAGE，程序计数器偏移寄存器PC_OFFSET，内存地址寄存器页寄存器MAR_PAGE，内存地址寄存器偏移寄存器&#96;MAR_OFFSET  控制部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PARWAN CPU 结构分析">
+<meta property="og:url" content="https://dajunhuang.github.io/2022/05/26/parwan/index.html">
+<meta property="og:site_name" content="dajunHuang的小站">
+<meta property="og:description" content="一、概述PARWAN是一种简易冯诺依曼式RISC架构CPU,CPU结构可以分为逻辑处理部分、内存管理部分、控制部分和总线部分。  逻辑控制部分：算术逻辑单元ALU，累加寄存器AC,移位单元SHU，状态寄存器SR  内存管理部分：程序计数器页寄存器PC_PAGE，程序计数器偏移寄存器PC_OFFSET，内存地址寄存器页寄存器MAR_PAGE，内存地址寄存器偏移寄存器&#96;MAR_OFFSET  控制部分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dajunhuang.github.io/2022/05/26/parwan/cover.png">
+<meta property="article:published_time" content="2022-05-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-25T16:00:00.000Z">
+<meta property="article:author" content="dajunHuang">
+<meta property="article:tag" content="CPU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dajunhuang.github.io/2022/05/26/parwan/cover.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://dajunhuang.github.io/2022/05/26/parwan/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"QJTM0K4E75","apiKey":"917ec590ce9fcbbb38a0cb37230e91db","indexName":"myindex","hits":{"per_page":3},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'PARWAN CPU 结构分析',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-26 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/Kimbiedark.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="dajunHuang的小站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/StardustPaimon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">dajunHuang的小站</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">PARWAN CPU 结构分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-25T16:00:00.000Z" title="发表于 2022-05-26 00:00:00">2022-05-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-25T16:00:00.000Z" title="更新于 2022-05-26 00:00:00">2022-05-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PARWAN CPU 结构分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>PARWAN是一种简易冯诺依曼式RISC架构CPU,CPU结构可以分为逻辑处理部分、内存管理部分、控制部分和总线部分。</p>
+<ul>
+<li><p>逻辑控制部分：算术逻辑单元<code>ALU</code>，累加寄存器<code>AC</code>,移位单元<code>SHU</code>，状态寄存器<code>SR</code></p>
+</li>
+<li><p>内存管理部分：程序计数器页寄存器<code>PC_PAGE</code>，程序计数器偏移寄存器<code>PC_OFFSET</code>，内存地址寄存器页寄存器<code>MAR_PAGE</code>，内存地址寄存器偏移寄存器`MAR_OFFSET</p>
+</li>
+<li><p>控制部分：控制状态机<code>CONTROLLER</code>，指令寄存器<code>IR</code>，31根控制信号线</p>
+</li>
+<li><p>总线部分：外部数据总线<code>DATABUS</code>，外部地址总线<code>ADBUS</code>，内部数据总线<code>DBUS</code>，内部总线<code>OBUS</code>，内部页地址总线<code>MAR_PAGE_BUS</code>，内部偏移地址总线<code>MAR_OFFSET_BUS</code></p>
+</li>
+</ul>
+<p>PARWAN CPU的结构图见上一页。</p>
+<h1 id="二、地址空间管理"><a href="#二、地址空间管理" class="headerlink" title="二、地址空间管理"></a>二、地址空间管理</h1><p>PARWAN地址总线<code>ADBUS</code>的宽度是12位，数据总线宽度是8位，总容量是16*256字节，因此只用一个字节是无法任意寻址的。PARWAN中的2字节长指令中有的是用全地址寻址<code>FULL ADDRESS</code>，有的是用页地址<code>PAGE ADDRESS</code>加偏移地址<code>OFFSET ADDRESS</code>寻址。</p>
+<h2 id="全地址寻址"><a href="#全地址寻址" class="headerlink" title="全地址寻址"></a>全地址寻址</h2><p>某些指令用这种方式直接或间接寻。全地址寻址把指令第一字节的后四位作为页地址，把指令的第二字节作为偏移地址。地址位对照表如下，图中<code>A[x]</code>代表一条2字节指令第一字节的第x位，<code>B[x]</code>代表第二字节的第x位。</p>
+<table>
+<thead>
+<tr>
+<th align="center">地址位</th>
+<th align="center">11</th>
+<th align="center">10</th>
+<th align="center">9</th>
+<th align="center">8</th>
+<th align="center">7</th>
+<th align="center">6</th>
+<th align="center">5</th>
+<th align="center">4</th>
+<th align="center">3</th>
+<th align="center">2</th>
+<th align="center">1</th>
+<th align="center">0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">实际数据</td>
+<td align="center">A[3]</td>
+<td align="center">A[2]</td>
+<td align="center">A[1]</td>
+<td align="center">A[8]</td>
+<td align="center">B[7]</td>
+<td align="center">B[6]</td>
+<td align="center">B[5]</td>
+<td align="center">B[4]</td>
+<td align="center">B[3]</td>
+<td align="center">B[2]</td>
+<td align="center">B[1]</td>
+<td align="center">B[0]</td>
+</tr>
+</tbody></table>
+<h2 id="页加偏移地址寻址"><a href="#页加偏移地址寻址" class="headerlink" title="页加偏移地址寻址"></a>页加偏移地址寻址</h2><p>某些指令用这种方式直接寻址。偏移地址寻址使用指令所在的页作为基址，加上指令第二字节确定的偏移来确定地址。地址位对照表如下。</p>
+<table>
+<thead>
+<tr>
+<th align="center">地址位</th>
+<th align="center">页地址</th>
+<th align="center">7</th>
+<th align="center">6</th>
+<th align="center">5</th>
+<th align="center">4</th>
+<th align="center">3</th>
+<th align="center">2</th>
+<th align="center">1</th>
+<th align="center">0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">实际数据</td>
+<td align="center">指令所在页地址</td>
+<td align="center">B[7]</td>
+<td align="center">B[6]</td>
+<td align="center">B[5]</td>
+<td align="center">B[4]</td>
+<td align="center">B[3]</td>
+<td align="center">B[2]</td>
+<td align="center">B[1]</td>
+<td align="center">B[0]</td>
+</tr>
+</tbody></table>
+<h1 id="三、指令集"><a href="#三、指令集" class="headerlink" title="三、指令集"></a>三、指令集</h1><p>PARWAN的指令集有17条指令，其中11条是双字节指令，6条是单字节指令。11条双字节指令中的6条可以使用全地址进行直接寻址和间接寻址，另外5条只能用页地址加偏移地址进行直接寻址，指令集的功能、寻址策略、是否支持间接寻址、使用的状态位、置位的状态位如下</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Instruction</strong> <strong>Mnemonic</strong></th>
+<th align="center"><strong>Brief Description</strong></th>
+<th align="center"><strong>Address Bits</strong></th>
+<th align="center"><strong>Address Scheme</strong></th>
+<th align="center"><strong>Indirect Address</strong></th>
+<th align="center"><strong>Flags use</strong></th>
+<th align="center"><strong>Flags set</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">LDA loc</td>
+<td align="center">LOAD AC w/(loc)</td>
+<td align="center">12</td>
+<td align="center">FULL</td>
+<td align="center">yes</td>
+<td align="center">—-</td>
+<td align="center">–ZN</td>
+</tr>
+<tr>
+<td align="center">AND loc</td>
+<td align="center">AND AC w(loc)</td>
+<td align="center">12</td>
+<td align="center">FULL</td>
+<td align="center">yes</td>
+<td align="center">—-</td>
+<td align="center">–ZN</td>
+</tr>
+<tr>
+<td align="center">ADD loc</td>
+<td align="center">ADD (loc) to AC</td>
+<td align="center">12</td>
+<td align="center">FULL</td>
+<td align="center">yes</td>
+<td align="center">-C–</td>
+<td align="center">VCZN</td>
+</tr>
+<tr>
+<td align="center">SUB loc</td>
+<td align="center">SUB (loc) to AC</td>
+<td align="center">12</td>
+<td align="center">FULL</td>
+<td align="center">yes</td>
+<td align="center">-C–</td>
+<td align="center">VCZN</td>
+</tr>
+<tr>
+<td align="center">JMP adr</td>
+<td align="center">JUMP to adr</td>
+<td align="center">12</td>
+<td align="center">FULL</td>
+<td align="center">yes</td>
+<td align="center">—-</td>
+<td align="center">—-</td>
+</tr>
+<tr>
+<td align="center">STA loc</td>
+<td align="center">Store AC in loc</td>
+<td align="center">12</td>
+<td align="center">FULL</td>
+<td align="center">yes</td>
+<td align="center">—-</td>
+<td align="center">—-</td>
+</tr>
+<tr>
+<td align="center">JSR tos</td>
+<td align="center">Subroutine to tos</td>
+<td align="center">8</td>
+<td align="center">PAGE</td>
+<td align="center">no</td>
+<td align="center">—-</td>
+<td align="center">—-</td>
+</tr>
+<tr>
+<td align="center">BRA_V_adr</td>
+<td align="center">Branch to adr If V</td>
+<td align="center">8</td>
+<td align="center">PAGE</td>
+<td align="center">no</td>
+<td align="center">V—-</td>
+<td align="center">—-</td>
+</tr>
+<tr>
+<td align="center">BRA_C_adr</td>
+<td align="center">Branch to adr if C</td>
+<td align="center">8</td>
+<td align="center">PAGE</td>
+<td align="center">no</td>
+<td align="center">-C—-</td>
+<td align="center">—-</td>
+</tr>
+<tr>
+<td align="center">BRA_Z_adr</td>
+<td align="center">Branch to adr if Z</td>
+<td align="center">8</td>
+<td align="center">PAGE</td>
+<td align="center">no</td>
+<td align="center">–Z-</td>
+<td align="center">—-</td>
+</tr>
+<tr>
+<td align="center">BRA_N_adr</td>
+<td align="center">Branch to adr if N</td>
+<td align="center">8</td>
+<td align="center">PAGE</td>
+<td align="center">no</td>
+<td align="center">—N</td>
+<td align="center">—-</td>
+</tr>
+<tr>
+<td align="center">NOP</td>
+<td align="center">No operation</td>
+<td align="center">-</td>
+<td align="center">NONE</td>
+<td align="center">no</td>
+<td align="center">—-</td>
+<td align="center">—-</td>
+</tr>
+<tr>
+<td align="center">CLA</td>
+<td align="center">Clear AC</td>
+<td align="center">-</td>
+<td align="center">NONE</td>
+<td align="center">no</td>
+<td align="center">—-</td>
+<td align="center">—-</td>
+</tr>
+<tr>
+<td align="center">CMA</td>
+<td align="center">Complement AC</td>
+<td align="center">-</td>
+<td align="center">NONE</td>
+<td align="center">no</td>
+<td align="center">—-</td>
+<td align="center">–ZN</td>
+</tr>
+<tr>
+<td align="center">CMC</td>
+<td align="center">Complement C</td>
+<td align="center">-</td>
+<td align="center">NONE</td>
+<td align="center">no</td>
+<td align="center">-C–</td>
+<td align="center">-C–</td>
+</tr>
+<tr>
+<td align="center">ASL</td>
+<td align="center">Arith shift left</td>
+<td align="center">-</td>
+<td align="center">NONE</td>
+<td align="center">No</td>
+<td align="center">—-</td>
+<td align="center">VCZN</td>
+</tr>
+<tr>
+<td align="center">ASR</td>
+<td align="center">Arith shift right</td>
+<td align="center">-</td>
+<td align="center">NONE</td>
+<td align="center">no</td>
+<td align="center">—-</td>
+<td align="center">–ZN</td>
+</tr>
+</tbody></table>
+<p>指令的位级表示情况如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Instruction</strong> <strong>Mnemonic</strong></th>
+<th align="center">Opcode Bits 7 6 5</th>
+<th align="center">D/I Bit 4</th>
+<th align="center">Bits 3 2 1 0</th>
+<th align="center"><strong>Address Bits</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">LDA loc</td>
+<td align="center">0 0 0</td>
+<td align="center">0/1</td>
+<td align="center">Page adr</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">AND loc</td>
+<td align="center">0 0 1</td>
+<td align="center">0/1</td>
+<td align="center">Page adr</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">ADD loc</td>
+<td align="center">0 1 0</td>
+<td align="center">0/1</td>
+<td align="center">Page adr</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">SUB loc</td>
+<td align="center">0 1 1</td>
+<td align="center">0/1</td>
+<td align="center">Page adr</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">JMP adr</td>
+<td align="center">1 0 0</td>
+<td align="center">0/1</td>
+<td align="center">Page adr</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">STA loc</td>
+<td align="center">1 0 1</td>
+<td align="center">0/1</td>
+<td align="center">Page adr</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">JSR tos</td>
+<td align="center">1 1 0</td>
+<td align="center">-</td>
+<td align="center">- - - -</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">BRA_V_adr</td>
+<td align="center">1 1 1</td>
+<td align="center">1</td>
+<td align="center">1 0 0 0</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">BRA_C_adr</td>
+<td align="center">1 1 1</td>
+<td align="center">1</td>
+<td align="center">0 1 0 0</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">BRA_Z_adr</td>
+<td align="center">1 1 1</td>
+<td align="center">1</td>
+<td align="center">0 0 1 0</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">BRA_N_adr</td>
+<td align="center">1 1 1</td>
+<td align="center">1</td>
+<td align="center">0 0 0 1</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">NOP</td>
+<td align="center">1 1 1</td>
+<td align="center">0</td>
+<td align="center">0 0 0 0</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">CLA</td>
+<td align="center">1 1 1</td>
+<td align="center">0</td>
+<td align="center">0 0 0 1</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">CMA</td>
+<td align="center">1 1 1</td>
+<td align="center">0</td>
+<td align="center">0 0 1 0</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">CMC</td>
+<td align="center">1 1 1</td>
+<td align="center">0</td>
+<td align="center">0 1 0 0</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">ASL</td>
+<td align="center">1 1 1</td>
+<td align="center">0</td>
+<td align="center">1 0 0 0</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">ASR</td>
+<td align="center">1 1 1</td>
+<td align="center">0</td>
+<td align="center">1 0 0 1</td>
+<td align="center">-</td>
+</tr>
+</tbody></table>
+<h1 id="四、控制状态机"><a href="#四、控制状态机" class="headerlink" title="四、控制状态机"></a>四、控制状态机</h1><p>PARWAN总共有9个状态，所有指令中最少的要经过5个状态（单字节指令）最多的要经过7个状态（双字节间接寻址指令），CPU的状态迁移图如下：</p>
+<p><img src="/2022/05/26/parwan/%E7%8A%B6%E6%80%81%E6%9C%BA.drawio.png" alt="状态机.drawio"></p>
+<h2 id="S1取值"><a href="#S1取值" class="headerlink" title="S1取值"></a>S1取值</h2><p>选通<code>PC_ON_MAR_PAGE_BUS</code>,<code>PC_ON_MAR_OFFSET_BUS</code>,<code>LOAD_PAGE_MAR</code>,<code>LOAD_OFFSET_MAR</code>，把<code>PC</code>寄存器中的页号和偏移地址传到<code>MAR</code>寄存器中。</p>
+<p><img src="/2022/05/26/parwan/image-20220526104206138.png" alt="image-20220526104206138"></p>
+<p>状态机转移到状态S2。</p>
+<h2 id="S2取指"><a href="#S2取指" class="headerlink" title="S2取指"></a>S2取指</h2><p>选通<code>MAR_ON_ADBUS</code>,<code>READ_MEM</code>,<code>DATABUS_ON_DBUS</code>,<code>ALU_A</code>,<code>LOAD_IR</code>,<code>INCREMENT_PC</code>，从内存读取一个字节的指令，送到<code>IR</code>。</p>
+<p><img src="/2022/05/26/parwan/image-20220526104149560.png" alt="image-20220526104149560"></p>
+<p>状态机转移到状态S3。</p>
+<h2 id="S3单字节指令执行"><a href="#S3单字节指令执行" class="headerlink" title="S3单字节指令执行"></a>S3单字节指令执行</h2><p>选通<code>PC_ON_MAR_PAGE_BUS</code>,<code>PC_ON_MAR_OFFSET_BUS</code>,<code>LOAD_PAGE_MAR</code>,<code>LOAD_OFFSET_MAR</code>，执行指令第一字节。下图中蓝色框中的指令视具体指令决定是否选通。</p>
+<p><img src="/2022/05/26/parwan/image-20220526105723405.png" alt="image-20220526105723405"></p>
+<p>如果是单字节指令，状态机转移到状态2取第二字节数据，否则转移到状态4。</p>
+<h2 id="S4双字节指令执行"><a href="#S4双字节指令执行" class="headerlink" title="S4双字节指令执行"></a>S4双字节指令执行</h2><p>选通<code>MAR_ON_ADBUS</code>，<code>READ_MEM</code>，<code>DATABUS_ON_DBUS</code>，<code>DBUS_ON_MAR_OFFSET_BUS</code>，<code>LOAD_OFFSET_MAR</code>，<code>INCREMENT_PC</code>，执行指令。如果指令支持间接寻址，选通<code>IR_ON_MAR_PAGE_BUS</code>和<code>LOAD_PAGE_MAR</code>，第一字节指令第四位装入<code>MAR_PAGE</code>。</p>
+<p><img src="/2022/05/26/parwan/image-20220526111200426.png" alt="image-20220526111200426"></p>
+<p>一般的直接寻址指令会迁移到状态S6，一般的间接寻址指令会迁移到状态S5。而<code>JSR</code>指令会迁移到S7，<code>BRANCH</code>指令迁移到状态S9。</p>
+<h2 id="S5间接寻址"><a href="#S5间接寻址" class="headerlink" title="S5间接寻址"></a>S5间接寻址</h2><p>和上一步类似，选通<code>MAR_ON_ADBUS</code>，<code>READ_MEM</code>，<code>DATABUS_ON_DBUS</code>，<code>DBUS_ON_MAR_OFFSET_BUS</code>，<code>LOAD_OFFSET_MAR</code>取数送入<code>MAR_OFFSET</code>。</p>
+<p><img src="/2022/05/26/parwan/image-20220526111918557.png" alt="image-20220526111918557"></p>
+<p>既然得到了想要的地址，状态机转入状态6。</p>
+<h2 id="S6直接寻址"><a href="#S6直接寻址" class="headerlink" title="S6直接寻址"></a>S6直接寻址</h2><p>执行简单直接寻址指令，控制单元在这一步发送执行具体指令的信号。</p>
+<p><img src="/2022/05/26/parwan/image-20220526114431243.png" alt="image-20220526114431243"></p>
+<p>状态机在当前指令是<code>JMP</code>时回到S2，其它指令回到初始状态。</p>
+<h2 id="S7-JSR指令"><a href="#S7-JSR指令" class="headerlink" title="S7 JSR指令"></a>S7 JSR指令</h2><p>选通<code>MAR_ON_ADBUS</code>，<code>PC_OFFSET_ON_DBUS</code>，<code>DBUS_ON_DATABUS</code>，<code>WRITE_MEM</code>，<code>LOAD_OFFSET_PC</code>，在子程序第一字节处写入当前<code>PC</code>的<code>OFFSET</code>偏移地址。</p>
+<p><img src="/2022/05/26/parwan/image-20220526114941194.png" alt="image-20220526114941194"></p>
+<p>状态机转移到状态S8。</p>
+<h2 id="S8-JSR指令"><a href="#S8-JSR指令" class="headerlink" title="S8 JSR指令"></a>S8 JSR指令</h2><p>发送<code>INCREMENT_PC</code>信号，开始执行子程序。</p>
+<p><img src="/2022/05/26/parwan/image-20220526115217132.png" alt="image-20220526115217132"></p>
+<p>跳转至初始状态。</p>
+<h2 id="S9-分支跳转指令"><a href="#S9-分支跳转指令" class="headerlink" title="S9 分支跳转指令"></a>S9 分支跳转指令</h2><p>根据状态为判断是否发送<code>load_offset_PC</code>信号，即是否发生跳转。</p>
+<p><img src="/2022/05/26/parwan/image-20220526115624097.png" alt="image-20220526115624097"></p>
+<p>状态机转移至初始状态。</p>
+<h1 id="五、ALU-仿真"><a href="#五、ALU-仿真" class="headerlink" title="五、ALU 仿真"></a>五、ALU 仿真</h1><p>PARWAN的<code>ALU</code>的结构如下图所示，它的输入是两个8位数据、4位状态寄存器的值、操作选择信号，输出是8位计算结果和4位状态位。</p>
+<img src="/2022/05/26/parwan/image-20220526120440058.png" alt="image-20220526120440058" style="zoom: 50%;">
+
+<p>ALU有6种共8个逻辑功能，分别是：</p>
+<ol>
+<li><p>直接输出<code>a.side</code>的值</p>
+</li>
+<li><p>直接输出<code>b.side</code>的值</p>
+</li>
+<li><p>计算<code>not a.side</code>的值</p>
+</li>
+<li><p>计算<code>not b.side</code>的值</p>
+</li>
+<li><p>计算<code>a.side + b.side</code>的值</p>
+</li>
+<li><p>计算<code>a.side - b.side</code>的值</p>
+</li>
+<li><p>计算<code>a.side or b.side</code>的值</p>
+</li>
+<li><p>计算<code>a.side and b.side</code>的值</p>
+</li>
+</ol>
+<p>4位状态寄存器表示的意思是</p>
+<ul>
+<li><code>V</code>：发生溢出</li>
+<li><code>C</code>：加法运算产生了进位或者减法运算不产生借位</li>
+<li><code>Z</code>：结果为0</li>
+<li><code>N</code>：结果为负数</li>
+</ul>
+<h2 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h2><p>ALU VHDL代码如下：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Library</span> IEEE;</span><br><span class="line"><span class="keyword">Use</span> IEEE.Std_Logic_1164.<span class="keyword">ALL</span>;</span><br><span class="line"><span class="keyword">Use</span> IEEE.NUMERIC_STD.<span class="keyword">ALL</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">Entity</span> ALU <span class="keyword">is</span> </span><br><span class="line"><span class="keyword">port</span>(	</span><br><span class="line"><span class="comment">----------------------------------------------------------------</span></span><br><span class="line">	A			:	 <span class="keyword">IN</span> 	<span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line">	B			:	 <span class="keyword">IN</span> 	<span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);  </span><br><span class="line">	OPCOD		:	 <span class="keyword">IN</span>     <span class="built_in">Std_Logic_Vector</span>(<span class="number">3</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);	 </span><br><span class="line"><span class="comment">----------------------------------------------------------------</span></span><br><span class="line">    Flag_In    	:	 <span class="keyword">IN</span>     <span class="built_in">Std_Logic_Vector</span>(<span class="number">4</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line"><span class="comment">----------------------------------------------------------------</span></span><br><span class="line">	Y			:	 <span class="keyword">OUT</span>	<span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line">	Flag_Out	:	 <span class="keyword">OUT</span>	<span class="built_in">Std_Logic_Vector</span>(<span class="number">4</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>)</span><br><span class="line"><span class="comment">----------------------------------------------------------------</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">End</span> ALU;	</span><br><span class="line"></span><br><span class="line"><span class="keyword">Architecture</span> Dataflow <span class="keyword">of</span> ALU <span class="keyword">is</span>   </span><br><span class="line"></span><br><span class="line"><span class="keyword">Signal</span> 	 Flag_Out_S	:	<span class="built_in">Std_Logic_Vector</span>(<span class="number">4</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>) := <span class="string">&quot;0000&quot;</span>;	 <span class="comment">-- 状态位输出</span></span><br><span class="line"><span class="keyword">Signal</span> 	 Y_S		:	<span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);	 <span class="comment">-- 计算结果输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Alias</span>    n_in	 	: 	<span class="built_in">Std_logic</span> <span class="keyword">is</span> Flag_In(<span class="number">0</span>); <span class="comment">-- 符号标志输入</span></span><br><span class="line"><span class="keyword">Alias</span>    z_in 		: 	<span class="built_in">Std_logic</span> <span class="keyword">is</span> Flag_In(<span class="number">1</span>); <span class="comment">-- 零标志输入</span></span><br><span class="line"><span class="keyword">Alias</span>    c_in 		: 	<span class="built_in">Std_logic</span> <span class="keyword">is</span> Flag_In(<span class="number">2</span>); <span class="comment">-- 进位标志输入</span></span><br><span class="line"><span class="keyword">Alias</span>    v_in 		: 	<span class="built_in">Std_logic</span> <span class="keyword">is</span> Flag_In(<span class="number">3</span>); <span class="comment">-- 溢出标志输入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Alias</span>    n_out	 	: 	<span class="built_in">Std_logic</span> <span class="keyword">is</span> Flag_Out_S(<span class="number">0</span>); <span class="comment">-- 符号标志输出</span></span><br><span class="line"><span class="keyword">Alias</span>    z_out 		: 	<span class="built_in">Std_logic</span> <span class="keyword">is</span> Flag_Out_S(<span class="number">1</span>); <span class="comment">-- 零标志输出</span></span><br><span class="line"><span class="keyword">Alias</span>    c_out 		: 	<span class="built_in">Std_logic</span> <span class="keyword">is</span> Flag_Out_S(<span class="number">2</span>); <span class="comment">-- 进位标志输出</span></span><br><span class="line"><span class="keyword">Alias</span>    v_out 		: 	<span class="built_in">Std_logic</span> <span class="keyword">is</span> Flag_Out_S(<span class="number">3</span>); <span class="comment">-- 溢出标志输出</span></span><br><span class="line"><span class="keyword">Begin</span></span><br><span class="line"><span class="comment">--Hard Wire----------------------------------------</span></span><br><span class="line">Flag_Out 	&lt;= Flag_Out_S;			</span><br><span class="line">Y	 		&lt;= Y_S;</span><br><span class="line">n_out    	&lt;= Y_S(<span class="number">8</span>-<span class="number">1</span>); <span class="comment">-- 判断符号标志</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">With</span> Y_S <span class="keyword">select</span> <span class="comment">-- 判断零标志</span></span><br><span class="line">	z_out &lt;= <span class="string">&#x27;1&#x27;</span>  <span class="keyword">when</span> X<span class="string">&quot;00&quot;</span>,</span><br><span class="line">				<span class="string">&#x27;0&#x27;</span>  <span class="keyword">when</span> <span class="keyword">others</span>;</span><br><span class="line"> </span><br><span class="line">ALU_P: <span class="keyword">Process</span>(A,B,OPCOD) 	</span><br><span class="line"><span class="keyword">Variable</span> temp	:	<span class="built_in">unsigned</span>(<span class="number">10</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>); </span><br><span class="line"><span class="keyword">Begin</span></span><br><span class="line"><span class="comment">--Operaci髇</span></span><br><span class="line">	<span class="keyword">Case</span> OPCOD <span class="keyword">is</span> </span><br><span class="line">		<span class="keyword">when</span> <span class="string">&quot;000&quot;</span> =&gt; <span class="comment">-- 输出A</span></span><br><span class="line">			Y_S 	  &lt;= A;</span><br><span class="line">			c_out	  &lt;= c_in;</span><br><span class="line">			v_out	  &lt;= v_in;</span><br><span class="line">		<span class="keyword">when</span> <span class="string">&quot;001&quot;</span> =&gt; <span class="comment">-- 输出B	   </span></span><br><span class="line">			Y_S 	  &lt;= B;</span><br><span class="line">			c_out	  &lt;= c_in;</span><br><span class="line">			v_out	  &lt;= v_in;</span><br><span class="line">		<span class="keyword">when</span> <span class="string">&quot;010&quot;</span> =&gt; <span class="comment">-- 输出!A	   </span></span><br><span class="line">			Y_S 	  &lt;= <span class="keyword">NOT</span> A;</span><br><span class="line">			c_out	  &lt;= c_in;</span><br><span class="line">			v_out	  &lt;= v_in;</span><br><span class="line">		<span class="keyword">when</span> <span class="string">&quot;011&quot;</span> =&gt; <span class="comment">-- 输出!B</span></span><br><span class="line">			Y_S 	  &lt;= <span class="keyword">NOT</span> B;</span><br><span class="line">			c_out	  &lt;= c_in;</span><br><span class="line">			v_out	  &lt;= v_in;</span><br><span class="line">		<span class="keyword">when</span> <span class="string">&quot;100&quot;</span> =&gt; <span class="comment">-- 输出A+B 同时判断进位标志和溢出标志</span></span><br><span class="line">			 temp  	  :=  <span class="built_in">unsigned</span>(<span class="string">&#x27;0&#x27;</span> &amp; c_in &amp; B)+<span class="built_in">unsigned</span>(<span class="string">&#x27;0&#x27;</span> &amp; <span class="string">&#x27;0&#x27;</span> &amp; A);   </span><br><span class="line">			 Y_S	  	  &lt;= <span class="built_in">Std_logic_vector</span>( temp(<span class="number">7</span> <span class="keyword">downto</span> <span class="number">0</span>) );</span><br><span class="line">			 c_out	  &lt;= <span class="built_in">Std_logic</span>(temp(<span class="number">8</span>));</span><br><span class="line">			 v_out	  &lt;= <span class="built_in">Std_logic</span>(temp(<span class="number">9</span>));</span><br><span class="line">		<span class="keyword">when</span> <span class="string">&quot;101&quot;</span> =&gt; <span class="comment">-- 输出A-B 同时判断进位标志和溢出标志</span></span><br><span class="line">			 temp  	  :=  <span class="built_in">unsigned</span>(<span class="string">&#x27;0&#x27;</span> &amp; c_in &amp; B)-<span class="built_in">unsigned</span>(<span class="string">&#x27;0&#x27;</span> &amp; <span class="string">&#x27;0&#x27;</span> &amp; A);   </span><br><span class="line">			 Y_S	  	  &lt;= <span class="built_in">Std_logic_vector</span>( temp(<span class="number">7</span> <span class="keyword">downto</span> <span class="number">0</span>));</span><br><span class="line">			 c_out	  &lt;= <span class="built_in">Std_logic</span>(temp(<span class="number">8</span>));</span><br><span class="line">			 v_out	  &lt;= <span class="built_in">Std_logic</span>(temp(<span class="number">9</span>));</span><br><span class="line">		<span class="keyword">when</span> <span class="string">&quot;110&quot;</span> =&gt; <span class="comment">-- 输出A or B</span></span><br><span class="line">			Y_S 	  &lt;= A <span class="keyword">or</span> B; </span><br><span class="line">			c_out	  &lt;= c_in;</span><br><span class="line">			v_out	  &lt;= v_in;</span><br><span class="line">		<span class="keyword">when</span> <span class="string">&quot;111&quot;</span> =&gt; <span class="comment">-- 输出A and	B</span></span><br><span class="line">			Y_S 	  &lt;= A <span class="keyword">and</span> B; 			</span><br><span class="line">			c_out	  &lt;= c_in;	</span><br><span class="line">			v_out	  &lt;= v_in;</span><br><span class="line">		<span class="keyword">when</span> <span class="keyword">others</span> =&gt; </span><br><span class="line">			Y_S 	  &lt;= (<span class="keyword">others</span> =&gt; <span class="string">&#x27;X&#x27;</span>);</span><br><span class="line">	<span class="keyword">end</span> <span class="keyword">case</span>;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">process</span>;		 </span><br><span class="line"><span class="keyword">End</span> DataFlow;</span><br></pre></td></tr></table></figure>
+
+<p>测试TestBench代码如下：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LIBRARY</span> ieee;</span><br><span class="line"><span class="keyword">USE</span> ieee.std_logic_1164.<span class="keyword">ALL</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">ENTITY</span> tb_alu <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">END</span> tb_alu;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">ARCHITECTURE</span> behavior <span class="keyword">OF</span> tb_alu <span class="keyword">IS</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">COMPONENT</span> ALU</span><br><span class="line"><span class="keyword">port</span>(	</span><br><span class="line"><span class="comment">----------------------------------------------------------------</span></span><br><span class="line">	A			:	 <span class="keyword">IN</span> 	<span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line">	B			:	 <span class="keyword">IN</span> 	<span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);  </span><br><span class="line">	OPCOD		:	 <span class="keyword">IN</span>     <span class="built_in">Std_Logic_Vector</span>(<span class="number">3</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);	 </span><br><span class="line"><span class="comment">----------------------------------------------------------------</span></span><br><span class="line">    Flag_In    	:	 <span class="keyword">IN</span>     <span class="built_in">Std_Logic_Vector</span>(<span class="number">4</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line"><span class="comment">----------------------------------------------------------------</span></span><br><span class="line">	Y			:	 <span class="keyword">OUT</span>	<span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line">	Flag_Out	:	 <span class="keyword">OUT</span>	<span class="built_in">Std_Logic_Vector</span>(<span class="number">4</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>)</span><br><span class="line"><span class="comment">----------------------------------------------------------------</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">COMPONENT</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">signal</span> A : <span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line"><span class="keyword">signal</span> B : <span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line"><span class="keyword">signal</span> OPCOD : <span class="built_in">Std_Logic_Vector</span>(<span class="number">3</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line"><span class="keyword">signal</span> Flag_In : <span class="built_in">Std_Logic_Vector</span>(<span class="number">4</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line"><span class="keyword">signal</span> Y : <span class="built_in">Std_Logic_Vector</span>(<span class="number">8</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line"><span class="keyword">signal</span> Flag_Out : <span class="built_in">Std_Logic_Vector</span>(<span class="number">4</span>-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"> </span><br><span class="line">uut1 : ALU <span class="keyword">port</span> <span class="keyword">map</span>(A =&gt; A, B =&gt; B, OPCOD =&gt; OPCOD, Flag_In =&gt; Flag_In, Y =&gt; Y, Flag_Out =&gt; Flag_Out);</span><br><span class="line">		  </span><br><span class="line"><span class="keyword">process</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	Flag_In &lt;= X<span class="string">&quot;0&quot;</span>;</span><br><span class="line">	<span class="keyword">wait</span> <span class="keyword">for</span> <span class="number">5</span> ns;</span><br><span class="line">	</span><br><span class="line">	A &lt;= X<span class="string">&quot;FF&quot;</span>;</span><br><span class="line">	B &lt;= X<span class="string">&quot;FF&quot;</span>;</span><br><span class="line">	OPCOD &lt;= <span class="string">&quot;100&quot;</span>; <span class="comment">-- FF + FF = FE</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">wait</span> <span class="keyword">for</span> <span class="number">5</span> ns;</span><br><span class="line">	</span><br><span class="line">	OPCOD &lt;= <span class="string">&quot;101&quot;</span>; <span class="comment">-- FF - FF = 00</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">wait</span> <span class="keyword">for</span> <span class="number">5</span> ns;</span><br><span class="line">	</span><br><span class="line">	OPCOD &lt;= <span class="string">&quot;110&quot;</span>; <span class="comment">-- FF or FF = FF</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">wait</span> <span class="keyword">for</span> <span class="number">5</span> ns;</span><br><span class="line">	</span><br><span class="line">	B &lt;= X<span class="string">&quot;F0&quot;</span>;</span><br><span class="line">	OPCOD &lt;= <span class="string">&quot;111&quot;</span>; <span class="comment">-- FF and F0 = F0</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">wait</span>;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">process</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="仿真运行结果"><a href="#仿真运行结果" class="headerlink" title="仿真运行结果"></a>仿真运行结果</h2><p><img src="/2022/05/26/parwan/image-20220526152456149.png" alt="image-20220526152456149"></p>
+<p>仿真结果符合预期，仿真实验成功。</p>
+<h1 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h1><p>PARWAN结构很简单，但麻雀虽小五脏俱全，时间充足的话还是值得跟深入的学习的。</p>
+<hr>
+<p><strong>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014541377/article/details/107064920">Parwan处理器架构简述</a>、<a target="_blank" rel="noopener" href="https://github.com/GRifka93/Parwan_Proccesor">GRifka93/Parwan_Proccesor: A VHDL implementation. </a>。</strong></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CPU/">CPU</a></div><div class="post_share"><div class="social-share" data-image="/2022/05/26/parwan/cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/05/23/Linux-elf-command/"><img class="next-cover" src="/2022/05/23/Linux-elf-command/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux 下 objdump 指令和 readelf 指令</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/StardustPaimon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dajunHuang</div><div class="author-info__description">SE 专业本科生。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dajunHuang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:djhuang_1@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这里是dajunHuang的小站，我会在这里发学习日志、感想、碎碎念等内容。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">二、地址空间管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%9C%B0%E5%9D%80%E5%AF%BB%E5%9D%80"><span class="toc-number">2.1.</span> <span class="toc-text">全地址寻址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E5%8A%A0%E5%81%8F%E7%A7%BB%E5%9C%B0%E5%9D%80%E5%AF%BB%E5%9D%80"><span class="toc-number">2.2.</span> <span class="toc-text">页加偏移地址寻址</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-number">3.</span> <span class="toc-text">三、指令集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%8E%A7%E5%88%B6%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">4.</span> <span class="toc-text">四、控制状态机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#S1%E5%8F%96%E5%80%BC"><span class="toc-number">4.1.</span> <span class="toc-text">S1取值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S2%E5%8F%96%E6%8C%87"><span class="toc-number">4.2.</span> <span class="toc-text">S2取指</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S3%E5%8D%95%E5%AD%97%E8%8A%82%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">4.3.</span> <span class="toc-text">S3单字节指令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S4%E5%8F%8C%E5%AD%97%E8%8A%82%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">4.4.</span> <span class="toc-text">S4双字节指令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S5%E9%97%B4%E6%8E%A5%E5%AF%BB%E5%9D%80"><span class="toc-number">4.5.</span> <span class="toc-text">S5间接寻址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S6%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80"><span class="toc-number">4.6.</span> <span class="toc-text">S6直接寻址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S7-JSR%E6%8C%87%E4%BB%A4"><span class="toc-number">4.7.</span> <span class="toc-text">S7 JSR指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S8-JSR%E6%8C%87%E4%BB%A4"><span class="toc-number">4.8.</span> <span class="toc-text">S8 JSR指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S9-%E5%88%86%E6%94%AF%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4"><span class="toc-number">4.9.</span> <span class="toc-text">S9 分支跳转指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81ALU-%E4%BB%BF%E7%9C%9F"><span class="toc-number">5.</span> <span class="toc-text">五、ALU 仿真</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81"><span class="toc-number">5.1.</span> <span class="toc-text">实验代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BF%E7%9C%9F%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">5.2.</span> <span class="toc-text">仿真运行结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">六、总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/26/parwan/" title="PARWAN CPU 结构分析"><img src="/2022/05/26/parwan/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PARWAN CPU 结构分析"/></a><div class="content"><a class="title" href="/2022/05/26/parwan/" title="PARWAN CPU 结构分析">PARWAN CPU 结构分析</a><time datetime="2022-05-25T16:00:00.000Z" title="发表于 2022-05-26 00:00:00">2022-05-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/23/Linux-elf-command/" title="Linux 下 objdump 指令和 readelf 指令"><img src="/2022/05/23/Linux-elf-command/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux 下 objdump 指令和 readelf 指令"/></a><div class="content"><a class="title" href="/2022/05/23/Linux-elf-command/" title="Linux 下 objdump 指令和 readelf 指令">Linux 下 objdump 指令和 readelf 指令</a><time datetime="2022-05-22T16:00:00.000Z" title="发表于 2022-05-23 00:00:00">2022-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/17/Linux-gdb/" title="Linux 下 GDB 使用简明教程"><img src="/2022/05/17/Linux-gdb/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux 下 GDB 使用简明教程"/></a><div class="content"><a class="title" href="/2022/05/17/Linux-gdb/" title="Linux 下 GDB 使用简明教程">Linux 下 GDB 使用简明教程</a><time datetime="2022-05-16T16:00:00.000Z" title="发表于 2022-05-17 00:00:00">2022-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/17/Linux-demo-char-drv/" title="Linux简单字符设备驱动"><img src="/2022/04/17/Linux-demo-char-drv/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux简单字符设备驱动"/></a><div class="content"><a class="title" href="/2022/04/17/Linux-demo-char-drv/" title="Linux简单字符设备驱动">Linux简单字符设备驱动</a><time datetime="2022-04-16T16:00:00.000Z" title="发表于 2022-04-17 00:00:00">2022-04-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/17/Linux-memory_map/" title="Linux 内存分配和地址映射实验"><img src="/2022/04/17/Linux-memory_map/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux 内存分配和地址映射实验"/></a><div class="content"><a class="title" href="/2022/04/17/Linux-memory_map/" title="Linux 内存分配和地址映射实验">Linux 内存分配和地址映射实验</a><time datetime="2022-04-16T16:00:00.000Z" title="发表于 2022-04-17 00:00:00">2022-04-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By dajunHuang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Algolia</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'on3vA0jK42WgnXXz02kkHwyw-gzGzoHsz',
+      appKey: 'euyxI1HSwwia0W3PzVShD5fI',
+      avatar: 'retro',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
