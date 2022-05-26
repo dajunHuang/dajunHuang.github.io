@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>物联网问题 | dajunHuang的小站</title><meta name="keywords" content="物联网"><meta name="author" content="dajunHuang"><meta name="copyright" content="dajunHuang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、低功耗远距离无线传输技术有哪些？并对其结构、特点和技术标准进行介绍1、LoRa LoRa 是指 Long Range Radio，它是专为远程低功耗通信设计的无线协议，主要针对M2M和物联网网络，由Semtech开发，能让公共或多租户网络能够连接到同一网络上运行的多个应用程序。 LoRa 为物联网应用提供远程、低功耗和安全的数据传输等功能。它能覆盖了比蜂窝网络更大的范围，可用于公共、专用或混合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物联网问题">
+<meta property="og:url" content="https://dajunhuang.github.io/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/index.html">
+<meta property="og:site_name" content="dajunHuang的小站">
+<meta property="og:description" content="一、低功耗远距离无线传输技术有哪些？并对其结构、特点和技术标准进行介绍1、LoRa LoRa 是指 Long Range Radio，它是专为远程低功耗通信设计的无线协议，主要针对M2M和物联网网络，由Semtech开发，能让公共或多租户网络能够连接到同一网络上运行的多个应用程序。 LoRa 为物联网应用提供远程、低功耗和安全的数据传输等功能。它能覆盖了比蜂窝网络更大的范围，可用于公共、专用或混合">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dajunhuang.github.io/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526162108897.png">
+<meta property="article:published_time" content="2022-05-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-25T16:00:00.000Z">
+<meta property="article:author" content="dajunHuang">
+<meta property="article:tag" content="物联网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dajunhuang.github.io/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526162108897.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://dajunhuang.github.io/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"QJTM0K4E75","apiKey":"917ec590ce9fcbbb38a0cb37230e91db","indexName":"myindex","hits":{"per_page":3},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '物联网问题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-26 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/Kimbiedark.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="dajunHuang的小站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/StardustPaimon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">dajunHuang的小站</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 总览</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-pen"></i><span> 留言</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">物联网问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-25T16:00:00.000Z" title="发表于 2022-05-26 00:00:00">2022-05-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-25T16:00:00.000Z" title="更新于 2022-05-26 00:00:00">2022-05-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="物联网问题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="一、低功耗远距离无线传输技术有哪些？并对其结构、特点和技术标准进行介绍"><a href="#一、低功耗远距离无线传输技术有哪些？并对其结构、特点和技术标准进行介绍" class="headerlink" title="一、低功耗远距离无线传输技术有哪些？并对其结构、特点和技术标准进行介绍"></a>一、低功耗远距离无线传输技术有哪些？并对其结构、特点和技术标准进行介绍</h2><p><strong>1、LoRa</strong></p>
+<p>LoRa 是指 Long Range Radio，它是专为远程低功耗通信设计的无线协议，主要针对M2M和物联网网络，由Semtech开发，能让公共或多租户网络能够连接到同一网络上运行的多个应用程序。</p>
+<p>LoRa 为物联网应用提供远程、低功耗和安全的数据传输等功能。它能覆盖了比蜂窝网络更大的范围，可用于公共、专用或混合网络。它可以轻松嵌入现有基础设施，并支持使用低成本电池供电的物联网应用。</p>
+<p>LoRa 的应用包括智能计量、库存跟踪、监控、汽车行业和公用事业等，它被广泛部署并与许多系统结合，甚至像 Arduino 这样的小型计算机也可以选择使用 LoRa，而且为大规模制造或专业的应用开发 LoRa 应用程序也很容易。</p>
+<p>LoRa 的协议结构如下图所示：</p>
+<img src="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526162108897.png" alt="image-20220526162108897" style="zoom:67%;">
+
+<p>LoRa 协议的一些技术参数如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Certification</strong></th>
+<th align="center"><strong>Coverage</strong></th>
+<th align="center"><strong>Payload</strong></th>
+<th align="center"><strong>Data Rate (Max)</strong></th>
+<th align="center"><strong>Frequency Range</strong></th>
+<th align="center"><strong>Security</strong></th>
+<th align="center"><strong>Power Consumption</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Yes</td>
+<td align="center">15 KM</td>
+<td align="center">243 Bytes</td>
+<td align="center">&lt; 50 kbps</td>
+<td align="center">125 kHz</td>
+<td align="center">AES Encryption</td>
+<td align="center">20 dBm</td>
+</tr>
+</tbody></table>
+<p><strong>2. SigFox</strong></p>
+<p>SigFox 的工作频率为868或915 MHz，使用二进制相移键控（BPSK）传输非常少量的数据。它的传输速度非常慢（300 b/s）但可以实现远程覆盖，因此非常适合任何只需要少量数据的物联网应用。</p>
+<p>SigFox 适用于任何需要发送少量、不频繁数据突发的应用程序。诸如基本报警系统、位置监控和简单计量等单向系统。SigFox的信号会重复发送以确保接收方能接收到，但信息的发送也会受到一些条件的限制，如供电电池寿命较短，缺乏确保信号塔接收到信息的能力。</p>
+<p>SigFox 协议结构如下：</p>
+<img src="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526171849635.png" alt="image-20220526171849635" style="zoom:50%;">
+
+<p>SigFox 协议的一些技术参数如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Certification</strong></th>
+<th align="center"><strong>Coverage</strong></th>
+<th align="center"><strong>Payload</strong></th>
+<th align="center"><strong>Data Rate (Max)</strong></th>
+<th align="center"><strong>Frequency Range</strong></th>
+<th align="center"><strong>Security</strong></th>
+<th align="center"><strong>Power Consumption</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Yes</td>
+<td align="center">13 KM</td>
+<td align="center">12 Bytes</td>
+<td align="center">&lt; 100 bps</td>
+<td align="center">868/915 MHz</td>
+<td align="center">None</td>
+<td align="center">13.5 dBm</td>
+</tr>
+</tbody></table>
+<p><strong>3. LTE-M</strong></p>
+<p>LTE-M 是由 3GPP 发行版开发的低功耗广域网（LPWAN）无线电技术标准。LTE-M利用低成本模块，延长电池寿命，提供更好的信号穿透能力，并能够使用现有基础设施。</p>
+<p>Cat M1在半双工模式下的上行链路和下行链路速度为375 kb/s，能够支持中低数据速率需求的物联网应用。在相同的速度下，LTE Cat M1可以通过无线（FOTA）提供远程固件更新。</p>
+<p>与常规LTE的20 MHz相比，LTE-M 具有1.4 MHz的窄带宽，提供了更大的范围。它使用与常规 LTE 中相同的区域切换功能，可以使用LTE-M漫游，因此它适用于可以跨多个区域操作的应用程序。LTE-M 延迟在毫秒范围内，能为时间敏感型应用程序提供实时通信。即使终端设备未直接连接到电网，单次充电寿命也可达10年，维护成本低。</p>
+<p>智能建筑、智能城市、汽车和交通、互联健康、智能计量是 LTE-M 应用的主要领域。</p>
+<p>LTE-M 协议结构如下：</p>
+<img src="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526172824195.png" alt="image-20220526172824195" style="zoom:80%;">
+
+<p>LTE-M 协议的一些技术参数如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>Certification</strong></th>
+<th><strong>Coverage</strong></th>
+<th><strong>Payload</strong></th>
+<th><strong>Data Rate (Max)</strong></th>
+<th><strong>Frequency Range</strong></th>
+<th><strong>Security</strong></th>
+<th><strong>Power Consumption</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Yes</td>
+<td>11 KM</td>
+<td>1000 Bytes</td>
+<td>&lt; 1 Mbps</td>
+<td>20 MHz</td>
+<td>AES Encryption</td>
+<td>23 dBm</td>
+</tr>
+</tbody></table>
+<h2 id="二、查阅资料，简述应用最广的物联网平台及其它们的结构、特点和应用领域"><a href="#二、查阅资料，简述应用最广的物联网平台及其它们的结构、特点和应用领域" class="headerlink" title="二、查阅资料，简述应用最广的物联网平台及其它们的结构、特点和应用领域"></a>二、查阅资料，简述应用最广的物联网平台及其它们的结构、特点和应用领域</h2><p><strong>1、Thinworx8</strong></p>
+<p>Thinworx8 是工业公司的顶级物联网平台之一，它为设备提供了十分简单的连接，是一个提供构建，部署和扩展工业级别项目和应用的，更好，更快，更容易的平台。</p>
+<p>ThingWorx 8于2017年6月8日上市， 拥有优越的平台能力，提供针对工程和制造领域而设计的角色应用、庞大的合作伙伴和客户生态系统、丰富的教学课程以及一系列专为工业物联网客户和合作伙伴设计的全新服务。</p>
+<p> Thingworx是由PTC为开发企业应用程序开发而设计的物联网平台。它具有如下特性：</p>
+<ul>
+<li><p>能轻松连接到传感器与RFID等电子设备；</p>
+</li>
+<li><p>一旦设置完毕就可以远程工作了；</p>
+</li>
+<li><p>在dashboard预构建了小部件；</p>
+</li>
+<li><p>移除了项目的复杂性；</p>
+</li>
+<li><p>集成了机器学习；</p>
+</li>
+</ul>
+<p><strong>2、Google Cloud IoT</strong></p>
+<p>Google Cloud IoT是专为智能物联网服务打造的平台，有一套完整的工具，可连接、处理、存储和分析边缘和云端的数据。该平台包含多种可伸缩的全托管式云服务，以及具备机器学习功能、用于边缘/本地计算的集成式软件堆栈。</p>
+<p>Google云物联网平台提供了以下特性，包括：</p>
+<ul>
+<li><p>提供了巨大的存储；</p>
+</li>
+<li><p>降低服务器维护成本；</p>
+</li>
+<li><p>通过完全受保护，智能且响应迅速的物联网数据进行业务；</p>
+</li>
+<li><p>高效且可扩展；</p>
+</li>
+<li><p>分析大数据；</p>
+</li>
+</ul>
+<p><strong>优点</strong>：</p>
+<ul>
+<li><p>最快的输入/输出；</p>
+</li>
+<li><p>更短的访问时间；</p>
+</li>
+<li><p>提供与其它google服务的集成；</p>
+</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><p>大多数组件都是google的技术；</p>
+</li>
+<li><p>编程语言会有限制；</p>
+</li>
+</ul>
+<p><strong>3、Microsoft Azure IoT Suite</strong></p>
+<p>物联网 (IoT) 是跨边缘和云的托管和平台服务的集合，用于连接、监视和控制数十亿项 IoT 资产。它还包括适用于装置和设备的安全性和操作系统，以及帮助企业构建、部署和管理 IoT 应用程序的数据和分析。</p>
+<p>Azure IoT Suite提供了以下功能：</p>
+<ul>
+<li><p>简单的设备注册表；</p>
+</li>
+<li><p>与SAP，Salesforce，Oracle，WebSphere等的丰富集成；</p>
+</li>
+<li><p>dashborad和可视化；</p>
+</li>
+<li><p>实时流媒体；</p>
+</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li><p>提供了第三方服务；</p>
+</li>
+<li><p>安全且可扩展；</p>
+</li>
+<li><p>高可用；</p>
+</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><p>需要管理；</p>
+</li>
+<li><p>贵；</p>
+</li>
+<li><p>不支持错误；</p>
+</li>
+</ul>
+<h2 id="三、你身边还有哪些物联网的应用"><a href="#三、你身边还有哪些物联网的应用" class="headerlink" title="三、你身边还有哪些物联网的应用"></a>三、你身边还有哪些物联网的应用</h2><p>车联网、智能零售、智能家居、智慧安防、智慧能源、指挥物流、智能制造等。</p>
+<h2 id="四、什么是Zigbee，Zigbee有什么特点"><a href="#四、什么是Zigbee，Zigbee有什么特点" class="headerlink" title="四、什么是Zigbee，Zigbee有什么特点"></a>四、什么是Zigbee，Zigbee有什么特点</h2><p>ZigBee协议是由ZigBee联盟制定的无线通信标准，该联盟成立于2001年8月。2002年下半年，英国Invensys公司、日本三菱电气公司、美国摩托罗拉公司以及荷兰飞利浦半导体公司共同宣布加入ZigBee联盟，研发名为“ZigBee”的下一代无线通信标准，这一事件成为该技术发展过程中的里程碑。ZigBee联盟现有的理事公司包括BM Group，Ember公司，飞思卡尔半导体，Honeywell，三菱电机，摩托罗拉，飞利浦，三星电子，西门子，及德州仪器。</p>
+<p>ZigBee联盟的目的是为了在全球统一标准上实现简单可靠、价格低廉、功耗低、无线连接的监测和控制产品进行合作，并于2004年12月发布了第一个正式标准。</p>
+<h2 id="五、画出Zigbee网络的拓扑结构图"><a href="#五、画出Zigbee网络的拓扑结构图" class="headerlink" title="五、画出Zigbee网络的拓扑结构图"></a>五、画出Zigbee网络的拓扑结构图</h2><p><strong>1、 星型拓扑 Star Topology structure</strong></p>
+<img src="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526175855021.png" alt="image-20220526175855021" style="zoom: 60%;">
+
+<p>**2、树型拓扑 Tree Topology **</p>
+<img src="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526175946233.png" alt="image-20220526175946233" style="zoom: 60%;">
+
+<p>**3、网状拓扑 mesh topology **</p>
+<img src="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526180055996.png" alt="image-20220526180055996" style="zoom:60%;">
+
+
+
+<h2 id="六、列出Zigbee技术的主要应用领域"><a href="#六、列出Zigbee技术的主要应用领域" class="headerlink" title="六、列出Zigbee技术的主要应用领域"></a>六、列出Zigbee技术的主要应用领域</h2><p>Zigbee已广泛应用于物联网产业链中的M2M行业，如智能电网、智能交通、智能家居、金融、移动POS终端、供应链自动化、工业自动化、智能建筑、消防、公共安全、环境保护、气象、数字化医疗、遥感勘测、农业、林业、水务、煤矿、石化等领域。</p>
+<h2 id="七、Zigbee无线网络分为哪几层，以及它与IEEE802-15-4-802-15-4的联系"><a href="#七、Zigbee无线网络分为哪几层，以及它与IEEE802-15-4-802-15-4的联系" class="headerlink" title="七、Zigbee无线网络分为哪几层，以及它与IEEE802.15.4 802.15.4的联系"></a>七、Zigbee无线网络分为哪几层，以及它与IEEE802.15.4 802.15.4的联系</h2><p>完整的ZigBee 协议栈自上而下由应用层、应用汇聚层、网络层、数据链路层和物理层组成。</p>
+<p>以下为各层在Zigbee结构中的作用：<br>物理层：作为Zigbee协议结构的最低层，提供了最基础的服务，为上一层MAC层提供了服务，如数据的接口等等。同时也起到了与现实 (物理) 世界交互的作用；<br>MAC层：负责不同设备之间无线数据链路的建立，维护，结束，确认的数据传送和接收；<br>网络/安全层：保证了数据的传输和完整性，同时可对数据进行加密；<br>应用/支持层：根据设计目的和需求使多个器件之间进行通信；<br>其中，Zigbee协议架构最具特色的两项是：功耗以及自组网。</p>
+<p>zigbee和802.15.4都是无线通信协议。ZigBee建立在802.15.4标准之上，zigbee是以802.15.4为基础的，802.15.4只规定了通信协议栈的物理层和链路层的通信标准，zigbee将其扩展到整个通信协议，比如上层的网路层、应用层等，zigbee都规定了相应的通信标准。它确定了可以在不同制造商之间共享的应用纲要。</p>
+<hr>
+<p><strong>参考：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/ZigBee">ZigBee - 维基百科</a>、<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/703318">什么是物联网?物联网赋能CRM能做什么？</a>、<a target="_blank" rel="noopener" href="https://azure.microsoft.com/zh-cn/overview/iot/#iot-approach">Azure IoT – 物联网平台 | Microsoft Azure</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34258782/article/details/86134695">物联网（IoT）的11大云平台</a>、<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/wellarchitected/latest/iot-lens-checklist/overview.html?did=wp_card&trk=wp_card">Overview - IoT Lens Checklist </a>、<a target="_blank" rel="noopener" href="https://volansys.com/selecting-right-low-power-wide-area-network-lpwan-technology/">LoRa, SigFox, and LTE-M Technologies for long-range communications</a>、<a target="_blank" rel="noopener" href="https://www.cnblogs.com/stonecastle/p/3140146.html">Zigbee 的拓扑结构</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ZigBee%E6%8A%80%E6%9C%AF/5273672">ZigBee技术</a>。</strong></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a></div><div class="post_share"><div class="social-share" data-image="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526162108897.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/26/parwan/"><img class="prev-cover" src="/2022/05/26/parwan/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">PARWAN CPU 结构分析</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/23/Linux-elf-command/"><img class="next-cover" src="/2022/05/23/Linux-elf-command/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux 下 objdump 指令和 readelf 指令</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/StardustPaimon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dajunHuang</div><div class="author-info__description">SE 专业本科生。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dajunHuang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:djhuang_1@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这里是dajunHuang的小站，我会在这里发学习日志、感想、碎碎念等内容。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BD%8E%E5%8A%9F%E8%80%97%E8%BF%9C%E8%B7%9D%E7%A6%BB%E6%97%A0%E7%BA%BF%E4%BC%A0%E8%BE%93%E6%8A%80%E6%9C%AF%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%B9%B6%E5%AF%B9%E5%85%B6%E7%BB%93%E6%9E%84%E3%80%81%E7%89%B9%E7%82%B9%E5%92%8C%E6%8A%80%E6%9C%AF%E6%A0%87%E5%87%86%E8%BF%9B%E8%A1%8C%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">一、低功耗远距离无线传输技术有哪些？并对其结构、特点和技术标准进行介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9F%A5%E9%98%85%E8%B5%84%E6%96%99%EF%BC%8C%E7%AE%80%E8%BF%B0%E5%BA%94%E7%94%A8%E6%9C%80%E5%B9%BF%E7%9A%84%E7%89%A9%E8%81%94%E7%BD%91%E5%B9%B3%E5%8F%B0%E5%8F%8A%E5%85%B6%E5%AE%83%E4%BB%AC%E7%9A%84%E7%BB%93%E6%9E%84%E3%80%81%E7%89%B9%E7%82%B9%E5%92%8C%E5%BA%94%E7%94%A8%E9%A2%86%E5%9F%9F"><span class="toc-number">2.</span> <span class="toc-text">二、查阅资料，简述应用最广的物联网平台及其它们的结构、特点和应用领域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BD%A0%E8%BA%AB%E8%BE%B9%E8%BF%98%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%A9%E8%81%94%E7%BD%91%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">三、你身边还有哪些物联网的应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFZigbee%EF%BC%8CZigbee%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">四、什么是Zigbee，Zigbee有什么特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%94%BB%E5%87%BAZigbee%E7%BD%91%E7%BB%9C%E7%9A%84%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84%E5%9B%BE"><span class="toc-number">5.</span> <span class="toc-text">五、画出Zigbee网络的拓扑结构图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%88%97%E5%87%BAZigbee%E6%8A%80%E6%9C%AF%E7%9A%84%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E9%A2%86%E5%9F%9F"><span class="toc-number">6.</span> <span class="toc-text">六、列出Zigbee技术的主要应用领域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81Zigbee%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E5%88%86%E4%B8%BA%E5%93%AA%E5%87%A0%E5%B1%82%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AE%83%E4%B8%8EIEEE802-15-4-802-15-4%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">7.</span> <span class="toc-text">七、Zigbee无线网络分为哪几层，以及它与IEEE802.15.4 802.15.4的联系</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/26/parwan/" title="PARWAN CPU 结构分析"><img src="/2022/05/26/parwan/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PARWAN CPU 结构分析"/></a><div class="content"><a class="title" href="/2022/05/26/parwan/" title="PARWAN CPU 结构分析">PARWAN CPU 结构分析</a><time datetime="2022-05-25T16:00:00.000Z" title="发表于 2022-05-26 00:00:00">2022-05-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/" title="物联网问题"><img src="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/image-20220526162108897.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="物联网问题"/></a><div class="content"><a class="title" href="/2022/05/26/%E7%89%A9%E8%81%94%E7%BD%91%E5%A4%A7%E4%BD%9C%E4%B8%9A1/" title="物联网问题">物联网问题</a><time datetime="2022-05-25T16:00:00.000Z" title="发表于 2022-05-26 00:00:00">2022-05-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/23/Linux-elf-command/" title="Linux 下 objdump 指令和 readelf 指令"><img src="/2022/05/23/Linux-elf-command/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux 下 objdump 指令和 readelf 指令"/></a><div class="content"><a class="title" href="/2022/05/23/Linux-elf-command/" title="Linux 下 objdump 指令和 readelf 指令">Linux 下 objdump 指令和 readelf 指令</a><time datetime="2022-05-22T16:00:00.000Z" title="发表于 2022-05-23 00:00:00">2022-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/17/Linux-gdb/" title="Linux 下 GDB 使用简明教程"><img src="/2022/05/17/Linux-gdb/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux 下 GDB 使用简明教程"/></a><div class="content"><a class="title" href="/2022/05/17/Linux-gdb/" title="Linux 下 GDB 使用简明教程">Linux 下 GDB 使用简明教程</a><time datetime="2022-05-16T16:00:00.000Z" title="发表于 2022-05-17 00:00:00">2022-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/17/Linux-demo-char-drv/" title="Linux简单字符设备驱动"><img src="/2022/04/17/Linux-demo-char-drv/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux简单字符设备驱动"/></a><div class="content"><a class="title" href="/2022/04/17/Linux-demo-char-drv/" title="Linux简单字符设备驱动">Linux简单字符设备驱动</a><time datetime="2022-04-16T16:00:00.000Z" title="发表于 2022-04-17 00:00:00">2022-04-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By dajunHuang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Algolia</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
