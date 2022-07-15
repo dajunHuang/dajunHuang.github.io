@@ -6,7 +6,7 @@
   <link href="https://dajunhuang.github.io/atom.xml" rel="self"/>
   
   <link href="https://dajunhuang.github.io/"/>
-  <updated>2022-05-25T16:00:00.000Z</updated>
+  <updated>2022-07-14T16:00:00.000Z</updated>
   <id>https://dajunhuang.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>考研时间安排</title>
+    <link href="https://dajunhuang.github.io/2022/07/15/kaoyan/"/>
+    <id>https://dajunhuang.github.io/2022/07/15/kaoyan/</id>
+    <published>2022-07-14T16:00:00.000Z</published>
+    <updated>2022-07-14T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th align="center">时间</th><th align="center">任务</th></tr></thead><tbody><tr><td align="center">07:30 - 08:15</td><td align="center">英语单词或阅读</td></tr><tr><td align="center">08:15 - 08:30</td><td align="center">早餐</td></tr><tr><td align="center">08:30 - 12:00</td><td align="center">数学</td></tr><tr><td align="center"></td><td align="center"></td></tr><tr><td align="center">12:00 - 13:30</td><td align="center">吃饭休息</td></tr><tr><td align="center"></td><td align="center"></td></tr><tr><td align="center">13:30 - 15:40</td><td align="center">专业课</td></tr><tr><td align="center">15:40 - 16:00</td><td align="center">休息</td></tr><tr><td align="center">16:00 - 17:30</td><td align="center">英语</td></tr><tr><td align="center"></td><td align="center"></td></tr><tr><td align="center">17:30 - 18:00</td><td align="center">吃饭</td></tr><tr><td align="center"></td><td align="center"></td></tr><tr><td align="center">18:00 - 20:00</td><td align="center">计算机知识学习</td></tr><tr><td align="center">20:00 - 23:00</td><td align="center">洗澡、玩、其他事</td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;时间&lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;任务&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;07:30 - 08:15&lt;/td&gt;
+</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://dajunhuang.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="考研" scheme="https://dajunhuang.github.io/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
   
   <entry>
     <title>PARWAN CPU 结构分析</title>
@@ -494,31 +527,6 @@
     <category term="STM32" scheme="https://dajunhuang.github.io/tags/STM32/"/>
     
     <category term="I²C" scheme="https://dajunhuang.github.io/tags/I%C2%B2C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>不同时间家里阳台的风景</title>
-    <link href="https://dajunhuang.github.io/2022/02/01/homephoto/"/>
-    <id>https://dajunhuang.github.io/2022/02/01/homephoto/</id>
-    <published>2022-01-31T16:00:00.000Z</published>
-    <updated>2022-02-10T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>2022年2月7日</p><p><img src="/2022/02/01/homephoto/IMG_20220207_083911.jpg" alt="IMG_20220207_083911.jpg"></p><p>2022年1月31日</p><p><img src="/2022/02/01/homephoto/IMG_20220131_133548.jpg" alt="IMG_20220131_133548"></p><p>2021年8月8日</p><p><img src="/2022/02/01/homephoto/IMG_20210808_113555.jpg" alt="IMG_20210808_113555"></p><p>2021年2月14日</p><p><img src="/2022/02/01/homephoto/IMG_20210214_093835.jpg" alt="IMG_20210214_093835"></p><p>2021年1月15日</p><p><img src="/2022/02/01/homephoto/IMG_20210115_123310.jpg" alt="IMG_20210115_123310"></p><p>2020年6月20日</p><p><img src="/2022/02/01/homephoto/IMG_20200620_132024.jpg" alt="IMG_20200620_132024"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;2022年2月7日&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2022/02/01/homephoto/IMG_20220207_083911.jpg&quot; alt=&quot;IMG_20220207_083911.jpg&quot;&gt;&lt;/p&gt;
-&lt;p&gt;2022年1月31日&lt;/p&gt;
-&lt;p&gt;&lt;img sr</summary>
-      
-    
-    
-    
-    <category term="杂物" scheme="https://dajunhuang.github.io/categories/%E6%9D%82%E7%89%A9/"/>
-    
     
   </entry>
   
