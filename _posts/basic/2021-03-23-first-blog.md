@@ -1,4 +1,17 @@
-## Blog Post Title From First Header
+---
+layout: post
+description: Today I needed to quickly parse a pipe delimited data file in order to get a unique list of values from one of the columns.
+date: 2021-03-23 20:40:00 +0800
+category:
+- basic
+tags:
+- Quick-Post
+- test_tag
+permalink: /basic/first-blog
+published: false
+---
+
+## first blog
 
 Due to a plugin called `jekyll-titles-from-headings` which is supported by GitHub Pages by default. The above header (in the markdown file) will be automatically used as the pages title.
 
