@@ -1,3 +1,11 @@
+---
+layout: post
+title: Parsing a pipe delimited file to get a unique list of values
+description: Today I needed to quickly parse a pipe delimited data file in order to get a unique list of values from one of the columns.
+date: 2021-03-23 20:40:00 -0700
+tags: Quick-Post
+---
+
 ## Blog Post Title From First Header
 
 Due to a plugin called `jekyll-titles-from-headings` which is supported by GitHub Pages by default. The above header (in the markdown file) will be automatically used as the pages title.
