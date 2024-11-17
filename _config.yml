@@ -10,10 +10,21 @@ github_username: "dajunHuang"
 #flickr_username: username
 #instagram_username: username
 #pinterest_username: username
-#youtube_username: username
+#youtube_username: username  
 #googleplus_username: +username
 
 theme: "minima"
+# remote_theme: pages-themes/minimal@v0.2.0
+
+collections:
+  notes: # collection for personal blog posts
+    output: true
+
+header_pages:
+  - indexs.md
+  - notes-date.html
+  - posts-date.html
+  - about.md
 
 rss: rss
 
@@ -22,17 +33,16 @@ kramdown:
     disable: true
     
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-relative-links
 
 titles_from_headings:
   strip_title: true
-  collections: true
+  # collections: true
 
-relative_links:
-  enabled:     true
-  collections: on
+home_notes_limit: 8
+home_posts_limit: 7
 
 defaults:
   - scope:

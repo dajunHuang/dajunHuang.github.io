@@ -1,0 +1,17 @@
+---
+layout: page
+title: All Notes
+---
+
+{%- assign allnotes = site.notes | sort_natural: "date" | reverse %}
+
+{%- assign notesByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y %B'"  %}
+
+{%- for yearMonth in notesByYearMonth %}
+<h3>{{ yearMonth.name }}</h3>
+<ul>
+  {%- for note in yearMonth.items %}
+  <li><a href="{{ note.url }}">{{ note.title }}</a></li>
+  {%- endfor %}
+</ul>
+{%- endfor %}

@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+  <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+  
+  {{ content }}
+  
+  {%- if site.notes.size > 0 -%}
+  <h2 class="post-list-heading">{{ page.list_title | default: "Latest Notes" }}</h2>
+  <div class="post-list-horizontal">
+    {%- assign notes = site.notes | sort: date | reverse -%}
+    {%- assign notes_limit = site.home_notes_limit | default: 8 -%}
+    {%- for note in notes limit:notes_limit -%}
+    <div class="post-item">
+      <a class="post-link" href="{{ note.url | relative_url }}">
+        {% if note.images %}
+        <div class="post-images">
+          <img src="{{ note.images[0] | relative_url }}" alt="Post Image" class="post-image">
+        </div>
+        {% endif %}
+        <div class="post-description">
+          {{ note.content | markdownify | strip_html | truncate: 26 }}
+        </div>
+      </a>
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <div class="post-meta">{{ note.date | date: date_format }}</div>
+    </div>
+    {%- endfor -%}
+  </div>
+  <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>  -->
+  {%- endif -%}
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading" style="margin-top: 17px;">{{ page.list_title | default: "Latest Posts" }}</h2>
+    <ul class="post-list">
+      {%- assign posts = site.posts | sort: date | reverse -%}
+      {%- assign post_limit = site.home_post_limit | default: 8 -%}
+      {%- for post in posts limit:post_limit -%}
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <li style="margin: 0; padding-bottom: 10px;">
+        <a class="post-link" href="{{ post.url | relative_url }}">
+          <div class="post-list-horizontal" style="border-top: 1px solid #ccc; box-sizing: border-box; padding-top: 10px;">
+            <div>
+              <h3 style="font-size: 20px;">
+                {{ post.title | escape }}
+              </h3>
+              {% if post.description %}
+              <div class="post-description-2">
+                {{ post.description }}
+              </div>
+              {%- endif -%}
+              <div class="post-meta">{{ post.date | date: date_format }}</div>
+            </div>
+            {% if post.image %}
+            <div class="post-images-2">
+              <img src="{{ post.image | relative_url }}" alt="Post Image" class="post-image">
+            </div>
+            {% endif %}
+          </div>
+        </a>
+      </li>
+      {%- endfor -%}
+    </ul>
+    <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>  -->
+  {%- endif -%}
+
+
+</div>
