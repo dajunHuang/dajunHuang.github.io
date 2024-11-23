@@ -41,9 +41,9 @@ layout: default
       {%- assign post_limit = site.home_post_limit | default: 8 -%}
       {%- for post in posts limit:post_limit -%}
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <li style="margin: 0; padding-bottom: 10px;">
+      <li style="margin: 0; padding-bottom: 15px;">
         <a class="post-link" href="{{ post.url | relative_url }}">
-          <div class="post-list-horizontal" style="border-top: 1px solid #ccc; box-sizing: border-box; padding-top: 10px;">
+          <div class="post-list-horizontal">
             <div>
               <h3 style="font-size: 20px;">
                 {{ post.title | escape }}
