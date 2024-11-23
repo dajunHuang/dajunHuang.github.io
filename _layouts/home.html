@@ -10,7 +10,7 @@ layout: default
   {{ content }}
   
   {%- if site.notes.size > 0 -%}
-  <h2 class="post-list-heading">{{ page.list_title | default: "新发布的笔记" }}</h2>
+  <h2 class="post-list-heading"><b>{{ page.list_title | default: "新发布的笔记" }}</b></h2>
   <div class="post-list-horizontal">
     {%- assign notes = site.notes | sort: date | reverse -%}
     {%- assign notes_limit = site.home_notes_limit | default: 8 -%}
@@ -35,7 +35,7 @@ layout: default
   {%- endif -%}
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading" style="margin-top: 17px;">{{ page.list_title | default: "新发布的文章" }}</h2>
+    <h2 class="post-list-heading" style="margin-top: 17px;"><b>{{ page.list_title | default: "新发布的文章" }}</b></h2>
     <ul class="post-list">
       {%- assign posts = site.posts | sort: date | reverse -%}
       {%- assign post_limit = site.home_post_limit | default: 8 -%}
