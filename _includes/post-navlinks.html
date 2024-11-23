@@ -2,20 +2,20 @@
 <div class="post_navi">
   {%- if page.previous.url -%}
   <a class="post_navi-item nav_prev" href="{{ page.previous.url }}" title="{{ page.previous.title }}">
-    <div class="post_navi-arrow">&lt;</div><div class="post_navi-label">Previous Post</div><div><span>{{ page.previous.title }}</span></div>
+    <div class="post_navi-arrow">&lt;</div><div class="post_navi-label">上一篇文章</div><div><span>{{ page.previous.title }}</span></div>
   </a>
   {%- else -%}
   <a class="post_navi-item nav_prev" href="{{ 'posts-date.html' | absolute_url }}" title="Blogs">
-    <div class="post_navi-arrow">&lt;</div><div class="post_navi-label">All Posts</div><div><span>Archive of all previous posts</span></div>
+    <div class="post_navi-arrow">&lt;</div><div class="post_navi-label">所有文章</div><div><span>全部发布的文章</span></div>
   </a>
   {%- endif -%}
   {%- if page.next.url -%}
   <a class="post_navi-item nav_next" href="{{ page.next.url }}" title="{{ page.next.title }}">
-    <div class="post_navi-arrow">&gt;</div><div class="post_navi-label">Next Post</div><div><span>{{ page.next.title }}</span></div>
+    <div class="post_navi-arrow">&gt;</div><div class="post_navi-label">下一篇文章</div><div><span>{{ page.next.title }}</span></div>
   </a>
   {%- else -%}
   <a class="post_navi-item nav_next" href="{{ 'posts-date.html' | absolute_url }}" title="Blogs">
-    <div class="post_navi-arrow">&gt;</div><div class="post_navi-label">All Posts</div><div><span>Archive of all previous posts</span></div>
+    <div class="post_navi-arrow">&gt;</div><div class="post_navi-label">所有文章</div><div><span>全部发布的文章</span></div>
   </a>
   {%- endif -%}
 </div>
