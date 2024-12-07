@@ -8,31 +8,6 @@ layout: default
   {%- endif -%}
   
   {{ content }}
-  
-  {%- if site.notes.size > 0 -%}
-  <h2 class="post-list-heading"><b>{{ page.list_title | default: "新发布的笔记" }}</b></h2>
-  <div class="post-list-horizontal">
-    {%- assign notes = site.notes | sort: date | reverse -%}
-    {%- assign notes_limit = site.home_notes_limit | default: 8 -%}
-    {%- for note in notes limit:notes_limit -%}
-    <div class="post-item">
-      <a class="post-link" href="{{ note.url | relative_url }}">
-        {% if note.images %}
-        <div class="post-images">
-          <img src="{{ note.images[0] | relative_url }}" alt="Post Image" class="post-image">
-        </div>
-        {% endif %}
-        <div class="post-description">
-          {{ note.content | markdownify | strip_html | truncate: 26 }}
-        </div>
-      </a>
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <div class="post-meta">{{ note.date | date: date_format }}</div>
-    </div>
-    {%- endfor -%}
-  </div>
-  <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>  -->
-  {%- endif -%}
 
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading" style="margin-top: 17px;"><b>{{ page.list_title | default: "新发布的文章" }}</b></h2>
@@ -68,5 +43,28 @@ layout: default
     <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>  -->
   {%- endif -%}
 
-
+  {%- if site.notes.size > 0 -%}
+  <h2 class="post-list-heading"><b>{{ page.list_title | default: "新发布的笔记" }}</b></h2>
+  <div class="post-list-horizontal">
+    {%- assign notes = site.notes | sort: date | reverse -%}
+    {%- assign notes_limit = site.home_notes_limit | default: 8 -%}
+    {%- for note in notes limit:notes_limit -%}
+    <div class="post-item">
+      <a class="post-link" href="{{ note.url | relative_url }}">
+        {% if note.images %}
+        <div class="post-images">
+          <img src="{{ note.images[0] | relative_url }}" alt="Post Image" class="post-image">
+        </div>
+        {% endif %}
+        <div class="post-description">
+          {{ note.content | markdownify | strip_html | truncate: 26 }}
+        </div>
+      </a>
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <div class="post-meta">{{ note.date | date: date_format }}</div>
+    </div>
+    {%- endfor -%}
+  </div>
+  <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>  -->
+  {%- endif -%}
 </div>

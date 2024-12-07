@@ -5,13 +5,18 @@ title: 所有笔记
 
 {%- assign allnotes = site.notes | sort_natural: "date" | reverse %}
 
-{%- assign notesByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y %B'"  %}
+{%- assign notesByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y-%m'"  %}
+
+{%- assign months_in_chinese = "一,二,三,四,五,六,七,八,九,十,十一,十二" | split: "," %}
 
 {%- for yearMonth in notesByYearMonth %}
-<h3>{{ yearMonth.name }}</h3>
-<ul>
-  {%- for note in yearMonth.items %}
-  <li><a href="{{ note.url }}">{{ note.title }}</a></li>
-  {%- endfor %}
-</ul>
+  {%- assign year = yearMonth.name | split: '-' | first %}
+  {%- assign month_index = yearMonth.name | split: '-' | last | minus: 1 %}
+  {%- assign month_chinese = months_in_chinese[month_index] %}
+  <h3>{{ year }} 年 {{ month_chinese }} 月</h3>
+  <ul>
+    {%- for note in yearMonth.items %}
+    <li><a href="{{ note.url }}">{{ note.title }}</a></li>
+    {%- endfor %}
+  </ul>
 {%- endfor %}
