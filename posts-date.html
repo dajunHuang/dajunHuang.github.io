@@ -8,10 +8,12 @@ title: 所有文章
 
 {%- assign allposts = site.posts | sort_natural: "date" | reverse %}
 
-{%- assign postsByYearMonth = allposts | group_by_exp:"allposts", "allposts.date | date: '%Y %B'"  %}
+{%- assign postsByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y-%m'"  %}
 
 {%- for yearMonth in postsByYearMonth %}
-<h3>{{ yearMonth.name }}</h3>
+{%- assign year = yearMonth.name | split: '-' | first %}
+{%- assign month_index = yearMonth.name | split: '-' | last %}
+<h3>{{ year }} 年 {{ month_index }} 月</h3>
 <ul>
   {%- for post in yearMonth.items %}
   <li><a href="{{ post.url }}">{{ post.title }}</a></li>
