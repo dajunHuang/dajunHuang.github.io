@@ -8,7 +8,7 @@ title: 所有文章
 
 {%- assign allposts = site.posts | sort_natural: "date" | reverse %}
 
-{%- assign postsByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y-%m'"  %}
+{%- assign postsByYearMonth = allposts | group_by_exp:"allposts", "allposts.date | date: '%Y-%m'"  %}
 
 {%- for yearMonth in postsByYearMonth %}
 {%- assign year = yearMonth.name | split: '-' | first %}
