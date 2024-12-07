@@ -13,7 +13,7 @@ title: 所有笔记
   {%- assign year = yearMonth.name | split: '-' | first %}
   {%- assign month_index = yearMonth.name | split: '-' | last | minus: 1 %}
   {%- assign month_chinese = months_in_chinese[month_index] %}
-  <h3>{{ year }} 年 {{ month_chinese }} 月</h3>
+  <h3>{{ year }} 年 {{ month_index }} 月</h3>
   <ul>
     {%- for note in yearMonth.items %}
     <li><a href="{{ note.url }}">{{ note.title }}</a></li>
