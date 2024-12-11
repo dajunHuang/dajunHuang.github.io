@@ -15,7 +15,7 @@ layout: default
       {%- assign posts = site.posts | sort: date | reverse -%}
       {%- assign post_limit = site.home_post_limit | default: 8 -%}
       {%- for post in posts limit:post_limit -%}
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      {%- assign date_format = site.minima.date_format | default: "%Y-%-m-%-d" -%}
       <li style="margin: 0; padding-bottom: 15px;">
         <a class="post-link" href="{{ post.url | relative_url }}">
           <div class="post-list-horizontal">
@@ -60,7 +60,7 @@ layout: default
           {{ note.content | markdownify | strip_html | truncate: 26 }}
         </div>
       </a>
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      {%- assign date_format = site.minima.date_format | default: "%Y-%-m-%-d" -%}
       <div class="post-meta">{{ note.date | date: date_format }}</div>
     </div>
     {%- endfor -%}
