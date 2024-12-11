@@ -12,7 +12,7 @@ layout: default
         {%- assign date_format = site.minima.date_format | default: "%Y 年 %-m 月 %-d 日 %H:%M" -%}
         <i class="fas fa-calendar-alt"> </i>
         {{ page.date | date: date_format }}
-      </time>
+      </time> &nbsp;
     
       {%- if page.categories -%}
       <i class="far fa-folder-open has-text-grey"> </i>
@@ -20,7 +20,7 @@ layout: default
         {% for category in page.categories %}
           <a href="{{ site.baseurl }}/categories/{{ category | slugify }}" class="post-category">{{ category }}</a>{% if forloop.last == false %}, {% endif %}
         {% endfor %}
-      </span>
+      </span> &nbsp;
       {%- endif -%}
 
       {%- if page.tags -%}
@@ -29,7 +29,7 @@ layout: default
           {% for tag in page.tags %}
             <a href="{{ site.baseurl }}/tags/{{ tag | slugify }}" class="post-tag">{{ tag }}</a>{% if forloop.last == false %}, {% endif %}
           {% endfor %}
-        </span>
+        </span> &nbsp;
       {%- endif -%}</p>
 
   </header>
