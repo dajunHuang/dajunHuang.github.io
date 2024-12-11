@@ -2,7 +2,7 @@
 layout: posts
 title: 中文 first blog
 description: 中文 Today I needed to quickly parse a pipe delimited data file in order to get a unique list of values from one of the columns.
-date: 2024-11-16 20:40:00 +0800
+date: 2024-11-16 20:40:00
 category:
 - basic
 tags:

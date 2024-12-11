@@ -9,7 +9,7 @@ layout: default
     <p class="post-meta">
 
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%Y 年 %-m 月 %-d 日 %H:%M" -%}
+        {%- assign date_format = site.minima.date_format | default: "%Y-%-m-%-d %-H:%-M" -%}
         <i class="fas fa-calendar-alt"> </i>
         {{ page.date | date: date_format }}
       </time> &nbsp;

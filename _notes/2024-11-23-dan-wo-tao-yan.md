@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: “但我讨厌摇滚乐”/洛天依原创 —— 夜予報_停電前夜
-date: 2024-11-23 18:27:00 +0800
+date: 2024-11-23 18:27:00
 images:
 - /assets/pic/notes/2024-11-23-dan-wo-tao-yan/image1.png
 - /assets/pic/notes/2024-11-23-dan-wo-tao-yan/image2.png
