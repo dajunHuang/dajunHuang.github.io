@@ -12,11 +12,6 @@ layout: default
         {%- assign date_format = site.minima.date_format | default: "%Y 年 %-m 月 %-d 日" -%}
         {{ page.date | date: date_format }}
       </time>
-
-      {% assign author = page.author | default: site.author %}
-      {%- if author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ author }}</span></span>
-      {%- endif -%}</p>
     
       {%- if page.categories -%}
       • <span class="post-categories">
@@ -32,7 +27,7 @@ layout: default
             <a href="{{ site.baseurl }}/tags/{{ tag | slugify }}" class="post-tag">{{ tag }}</a>{% if forloop.last == false %}, {% endif %}
           {% endfor %}
         </span>
-      {%- endif -%}
+      {%- endif -%}</p>
 
   </header>
 
