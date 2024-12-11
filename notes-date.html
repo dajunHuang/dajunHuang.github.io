@@ -5,12 +5,10 @@ title: 所有图文
 
 {%- assign allnotes = site.notes | sort_natural: "date" | reverse %}
 
-{%- assign notesByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y-%m'"  %}
+{%- assign notesByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y 年 %m 月'"  %}
 
 {%- for yearMonth in notesByYearMonth %}
-  {%- assign year = yearMonth.name | split: '-' | first %}
-  {%- assign month_index = yearMonth.name | split: '-' | last %}
-  <h3>{{ year }} 年 {{ month_index }} 月</h3>
+  <h3>{{ yearMonth.name }}</h3>
   <ul>
     {%- for note in yearMonth.items %}
     <li><a href="{{ note.url }}">{{ note.title }}</a></li>
