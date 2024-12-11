@@ -5,7 +5,7 @@ title: 所有图文
 
 {%- assign allnotes = site.notes | sort_natural: "date" | reverse %}
 
-{%- assign notesByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y 年 %m 月'"  %}
+{%- assign notesByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y 年 %-m 月'"  %}
 
 {%- for yearMonth in notesByYearMonth %}
   <h3>{{ yearMonth.name }}</h3>
