@@ -16,7 +16,7 @@ layout: default
       {%- assign post_limit = site.home_post_limit | default: 8 -%}
       {%- for post in posts limit:post_limit -%}
       {%- assign date_format = site.minima.date_format | default: "%Y-%-m-%-d" -%}
-      <li style="margin: 0; padding-bottom: 15px; border: 2px solid white; background-color: white;">
+      <li style="margin: 0; padding-bottom: 15px;">
         <a class="post-link" href="{{ post.url | relative_url }}">
           <div class="post-list-horizontal">
             <div>
