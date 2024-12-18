@@ -13,6 +13,8 @@ github_username: "dajunHuang"
 #youtube_username: username  
 #googleplus_username: +username
 
+url: "https://dajunhuang.github.io/"
+
 theme: "minima"
 # remote_theme: pages-themes/minimal@v0.2.0
 
