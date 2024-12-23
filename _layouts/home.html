@@ -16,7 +16,7 @@ layout: default
       {%- assign post_limit = site.home_post_limit | default: 8 -%}
       {%- for post in posts limit:post_limit -%}
       {%- assign date_format = site.minima.date_format | default: "%Y-%-m-%-d" -%}
-      <li style="margin: 0; padding-bottom: 15px; border: 2px dashed #ccc; border-radius: 10px; padding: 15px;">
+      <li class="post-item">
         <a class="post-link" href="{{ post.url | relative_url }}">
           <div class="post-list-horizontal">
             <div>
@@ -49,7 +49,7 @@ layout: default
     {%- assign notes = site.notes | sort: date | reverse -%}
     {%- assign notes_limit = site.home_notes_limit | default: 8 -%}
     {%- for note in notes limit:notes_limit -%}
-    <div class="post-item">
+    <div class="note-item">
       <a class="post-link" href="{{ note.url | relative_url }}">
         {% if note.images %}
         <div class="post-images">
