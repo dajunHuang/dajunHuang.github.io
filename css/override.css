@@ -70,13 +70,13 @@ hr {
   border-radius: 10px; /* 圆角 */
   background-color: #f9f9f9; /* 可选：背景色 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 可选：阴影效果 */
-  transition: transform 0.2s, box-shadow 0.2s; /* 鼠标悬停动画 */
+  /* transition: transform 0.2s, box-shadow 0.2s; 鼠标悬停动画 */
 }
 
-.post-item:hover {
+/* .post-item:hover {
   transform: scale(1.02); /* 鼠标悬停时轻微放大 */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 鼠标悬停时增加阴影 */
-}
+} */
 
 
 /* 单个文章容器 */
