@@ -2,6 +2,16 @@
 layout: page
 title: 所有文章
 ---
+
+<script src="/js/anchor.min.js"></script>
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script>
+  $(function() {
+      anchors.options.visible = 'hover'; 
+      anchors.add('.post-content > h1, h2, h3, h4, h5, h6');
+  });
+</script>
+
 <div style="text-align: right; display: block;">
   按 <a href="/posts-date.html">时间</a> | <a href="/posts-category.html">类别</a> | <b><a href="/posts-tag.html">标签</a></b> 排序
 </div>
