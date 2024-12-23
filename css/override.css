@@ -64,7 +64,7 @@ hr {
 }
 
 .post-item {
-  margin: 0 0 20px 0; /* 增加下方间距为 20px */
+  margin: 0 0 15px 0; /* 增加下方间距为 20px */
   padding: 15px; /* 内容的内边距 */
   border: 2px dashed #ccc; /* 虚线边框 */
   border-radius: 10px; /* 圆角 */
