@@ -8,7 +8,7 @@ layout: default
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
 
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" style="color: rgb(234, 234, 234);">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {%- assign date_format = site.minima.date_format | default: "%Y-%-m-%-d %-H:%-M" -%}
         <i class="fas fa-calendar-alt"> </i>
         {{ page.date | date: date_format }}
@@ -16,7 +16,7 @@ layout: default
     
       {%- if page.categories -%}
       <i class="far fa-folder-open has-text-grey"> </i>
-      <span class="post-categories" style="color: rgb(234, 234, 234);">
+      <span class="post-categories">
         {% for category in page.categories %}
           <a href="{{ site.baseurl }}/posts-category.html#{{ category | slugify }}" class="post-category">{{ category }}</a>{% if forloop.last == false %}, {% endif %}
         {% endfor %}
@@ -25,7 +25,7 @@ layout: default
 
       {%- if page.tags -%}
       <i class="fas fa-tag"> </i>
-      <span class="post-tags" style="color: rgb(234, 234, 234);">
+      <span class="post-tags">
           {% for tag in page.tags %}
             <a href="{{ site.baseurl }}/posts-tag.html#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>{% if forloop.last == false %}, {% endif %}
           {% endfor %}
