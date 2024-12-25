@@ -1,6 +1,5 @@
 .wrapper {
-  width:1000px !important;
-  margin:0 auto;
+  max-width:1000px !important;
 }
 
 hr {
