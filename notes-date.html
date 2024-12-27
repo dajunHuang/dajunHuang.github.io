@@ -8,7 +8,7 @@ title: 所有图文
 {%- assign notesByYearMonth = allnotes | group_by_exp:"allnotes", "allnotes.date | date: '%Y 年 %-m 月'"  %}
 
 {%- for yearMonth in notesByYearMonth %}
-  <h3>{{ yearMonth.name }}</h3>
+  <h3><i class="fas fa-calendar-alt"> </i> {{ yearMonth.name }}</h3>
   <ul>
     {%- for note in yearMonth.items %}
     <li><a href="{{ note.url }}">{{ note.title }}</a></li>
