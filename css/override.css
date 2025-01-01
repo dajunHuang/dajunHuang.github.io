@@ -105,6 +105,7 @@ hr {
   height: 120px; /* 固定高度 */
   overflow: hidden; /* 超出部分隐藏 */
   border-radius: 8px; /* 可选，添加圆角效果 */
+  margin-left: auto; /* 图片容器向右对齐 */
 }
 
 /* 图片样式 */
