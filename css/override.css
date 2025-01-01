@@ -70,7 +70,7 @@ hr {
 .post-item {
   margin: 0 0 15px 0; /* 增加下方间距为 20px */
   padding: 15px; /* 内容的内边距 */
-  border: 2px #ccc; /* 虚线边框 */
+  border: 2px solid #ccc; /* 虚线边框 */
   border-radius: 10px; /* 圆角 */
   background-color: #f9f9f9; /* 可选：背景色 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 可选：阴影效果 */
