@@ -1,7 +1,9 @@
 ---
 layout: page
-title: 关于我 (About Me)
+title: 关于 (About)
 ---
+
+## 关于我
 
 <img src="assets\pic\photo.jpg" alt="会换掉的" style="float: right; margin-left: 10px; width: 175px;">
 
