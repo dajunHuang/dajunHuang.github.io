@@ -93,7 +93,7 @@ hr {
 /* 图片容器 */
 .post-images {
   width: 175px; /* 固定宽度 */
-  border: 2px solid #ccc; /* 虚线边框 */
+  border: 1px solid #ccc; /* 虚线边框 */
   height: 175px; /* 固定高度 */
   overflow: hidden; /* 超出部分隐藏 */
   border-radius: 8px; /* 可选，添加圆角效果 */
@@ -144,7 +144,7 @@ hr {
 }
 .in-post-image {
   height: 350px;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   object-fit: contain;
   border-radius: 8px; /* 可选，圆角效果 */
 }
