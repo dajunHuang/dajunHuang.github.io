@@ -2,7 +2,7 @@
 layout: posts
 title: CUDA Binary Utilities 使用
 description: 如何使用 nvcc 和 CUDA Binary Utilities 得到 cuda 代码的 PTX 和 SASS信息
-date: 2025-03-29 19:05:00
+date: 2025-03-28 19:05:00
 category:
 - Code
 tags:
