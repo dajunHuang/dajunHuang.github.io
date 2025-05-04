@@ -30,8 +30,12 @@ fatbin包含PTX和cubin(SASS)，是否以及如何生成ELF文件中的PTX和SAS
 
 cuobjdump【2】可以从编译得到的可执行文件中提取信息。`-sass`选项反编译得到fatbin中的sass代码，`-ptx`得到fatbin中的ptx代码，和nvcc得到的一样，`-fatbin`得到一个fatbin包含内容的列表，如下图，`-elf`得到可执行文件或nvcc产出的cubin文件的二进制信息。
 
+nvdisasm 只用来处理nvcc编译得到的cubin文件，主要提取SASS的信息。`-bbcfg`选项生成控制流图，不加参数或`-g`提取带行号的反汇编信息。
+
 <img src="/assets/pic/posts/HPC/2025-03-28-cubinutils/image-20250329190232712.png" alt="image-20250329190232712" style="zoom:50%;" />
 
 【1】[Code Yarns – How to specify architecture to compile CUDA code](https://codeyarns.com/tech/2014-03-03-how-to-specify-architecture-to-compile-cuda-code.html)
 
-【2】[1. Overview — CUDA Binary Utilities 12.8 documentation](https://docs.nvidia.com/cuda/cuda-binary-utilities/index.html#cuobjdump)
+【2】[cuobjdump — CUDA Binary Utilities 12.9 documentation](https://docs.nvidia.com/cuda/cuda-binary-utilities/index.html#cuobjdump)
+
+【3】[cuobjdump — CUDA Binary Utilities 12.9 documentation](https://docs.nvidia.com/cuda/cuda-binary-utilities/index.html#nvdisasm)
