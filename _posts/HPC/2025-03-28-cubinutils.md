@@ -4,23 +4,23 @@ title: CUDA Binary Utilities 使用
 description: 如何使用 nvcc 和 CUDA Binary Utilities 得到 cuda 代码的 PTX 和 SASS信息
 date: 2025-03-28 19:05:00
 category:
-- Code
+- HPC
 tags:
 - CUDA
 - PTX
 - SASS
 permalink: 2025-03-29-cubinutils
 published: true
-image: /assets/pic/posts/Code/2025-03-28-cubinutils/image-20250329174614899.png
+image: /assets/pic/posts/HPC/2025-03-28-cubinutils/image-20250329174614899.png
 ---
 
 一个CUDA程序中既有主机端(Host)代码，也有设备端(Device)代码，设备端代码就是`__global__`打头的核函数，主机端代码是程序中除核函数外的所有部分。用`nvcc -arch=native hello.cu -o hello`命令编译得到elf可执行文件，再用`readelf -h hello`检查文件的段表可以得到：
 
-<img src="/assets/pic/posts/Code/2025-03-28-cubinutils/image-20250329180550711.png" alt="image-20250329180550711" style="zoom:50%;" />
+<img src="/assets/pic/posts/HPC/2025-03-28-cubinutils/image-20250329180550711.png" alt="image-20250329180550711" style="zoom:50%;" />
 
 可执行文件包含的内容可以简略地表示成：
 
-<img src="/assets/pic/posts/Code/2025-03-28-cubinutils/image-20250329174614899.png" alt="image-20250329174614899" style="zoom: 40%;" />
+<img src="/assets/pic/posts/HPC/2025-03-28-cubinutils/image-20250329174614899.png" alt="image-20250329174614899" style="zoom: 40%;" />
 
 nvcc编译得到的ELF文件中，`.init`，`.text`等段是主机程序代码，`.nv_fatbin`等段放着cuda设备端代码相关的fatbin。当cuda程序主机代码启动时，cuda runtime会处理嵌入在可执行文件中的fatbinary，获得合适的GPU镜像，然后执行cuda设备端的程序。
 
@@ -30,7 +30,7 @@ fatbin包含PTX和cubin(SASS)，是否以及如何生成ELF文件中的PTX和SAS
 
 cuobjdump【2】可以从编译得到的可执行文件中提取信息。`-sass`选项反编译得到fatbin中的sass代码，`-ptx`得到fatbin中的ptx代码，和nvcc得到的一样，`-fatbin`得到一个fatbin包含内容的列表，如下图，`-elf`得到可执行文件或nvcc产出的cubin文件的二进制信息。
 
-<img src="/assets/pic/posts/Code/2025-03-28-cubinutils/image-20250329190232712.png" alt="image-20250329190232712" style="zoom:50%;" />
+<img src="/assets/pic/posts/HPC/2025-03-28-cubinutils/image-20250329190232712.png" alt="image-20250329190232712" style="zoom:50%;" />
 
 【1】[Code Yarns – How to specify architecture to compile CUDA code](https://codeyarns.com/tech/2014-03-03-how-to-specify-architecture-to-compile-cuda-code.html)
 
