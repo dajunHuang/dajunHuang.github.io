@@ -25,7 +25,7 @@ collections:
 header_pages:
   - indexs.md
   - posts-date.html
-  - notes-date.html
+  # - notes-date.html
   - about.md
 
 rss: rss
