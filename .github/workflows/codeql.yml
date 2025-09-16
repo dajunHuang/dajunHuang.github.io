@@ -3,9 +3,15 @@ name: "CodeQL"
 on:
   push:
     branches: ["master"]
-    paths: ["_javascript/**/*.js"]
+    paths:
+      - "_javascript/**/*.js"
+      - ".github/codeql/**"
+      - ".github/workflows/codeql.yml"
   pull_request:
-    paths: ["_javascript/**/*.js"]
+    paths:
+      - "_javascript/**/*.js"
+      - ".github/codeql/**"
+      - ".github/workflows/codeql.yml"
 
 jobs:
   analyze:
