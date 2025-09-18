@@ -5,11 +5,12 @@ author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Blogging, Demo]
 tags: [typography]
-pin: true
+# pin: true
 math: true
 mermaid: true
+published: true
 image:
-  path: /commons/devices-mockup.png
+  path: /assets/img/2025-03-28-cubinutils/image-20250329180550711.png
   lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
@@ -54,7 +55,7 @@ Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas int
 - [ ] Job
   - [x] Step 1
   - [x] Step 2
-  - [ ] Step 3
+  - [x] Step 3
 
 ### Description list
 
@@ -99,7 +100,7 @@ Moon
 
 ## Footnote
 
-Clicking the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
+Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
 
 ## Inline code
 
@@ -113,8 +114,7 @@ Here is the `/path/to/the/file.extend`{: .filepath}.
 
 ### Common
 
-<!-- markdownlint-disable-next-line MD040 -->
-```
+```text
 This is a common code snippet, without syntax highlight and line number.
 ```
 
@@ -167,29 +167,29 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
 ### Default (with caption)
 
-![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" }
+![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: width="972" height="589" }
 _Full screen width and center alignment_
 
 ### Left aligned
 
-![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" .w-75 .normal}
+![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: width="972" height="589" .w-75 .normal}
 
 ### Float to left
 
-![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" .w-50 .left}
+![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: width="972" height="589" .w-50 .left}
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
 
 ### Float to right
 
-![Desktop View](/posts/20190808/mockup.png){: width="972" height="589" .w-50 .right}
+![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: width="972" height="589" .w-50 .right}
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.
 
 ### Dark/Light mode & Shadow
 
 The image below will toggle dark/light mode based on theme preference, notice it has shadows.
 
-![light mode only](/posts/20190808/devtools-light.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
-![dark mode only](/posts/20190808/devtools-dark.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+![light mode only](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
 ## Video
 

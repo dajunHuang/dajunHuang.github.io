@@ -5,9 +5,10 @@ date: 2019-08-08 14:10:00 +0800
 categories: [Blogging, Tutorial]
 tags: [writing]
 render_with_liquid: false
+published: true
 ---
 
-This tutorial will guide you on how to write a post in the _Chirpy_ template, and it's worth reading even if you've used Jekyll before, as many features require specific variables to be set.
+This tutorial will guide you how to write a post in the _Chirpy_ template, and it's worth reading even if you've used Jekyll before, as many features require specific variables to be set.
 
 ## Naming and Path
 
@@ -140,7 +141,7 @@ The option `site.cdn` and `page.media_subpath` can be used individually or in co
 Add italics to the next line of an image, then it will become the caption and appear at the bottom of the image:
 
 ```markdown
-![img-description](/path/to/image)
+![img-description](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png)
 _Image Caption_
 ```
 {: .nolineno}
@@ -150,7 +151,7 @@ _Image Caption_
 To prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image.
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
+![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: width="700" height="400" }
 ```
 {: .nolineno}
 
@@ -160,7 +161,7 @@ To prevent the page content layout from shifting when the image is loaded, we sh
 Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: w="700" h="400" }
+![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: w="700" h="400" }
 ```
 {: .nolineno}
 
@@ -173,24 +174,24 @@ By default, the image is centered, but you can specify the position by using one
 
 - **Normal position**
 
-  The image will be left aligned in the below sample:
+  Image will be left aligned in below sample:
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .normal }
+  ![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: .normal }
   ```
   {: .nolineno}
 
 - **Float to the left**
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .left }
+  ![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: .left }
   ```
   {: .nolineno}
 
 - **Float to the right**
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .right }
+  ![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: .right }
   ```
   {: .nolineno}
 
@@ -199,8 +200,8 @@ By default, the image is centered, but you can specify the position by using one
 You can make images follow theme preferences in dark/light mode. This requires you to prepare two images, one for dark mode and one for light mode, and then assign them a specific class (`dark` or `light`):
 
 ```markdown
-![Light mode only](/path/to/light-mode.png){: .light }
-![Dark mode only](/path/to/dark-mode.png){: .dark }
+![Light mode only](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: .light }
+![Dark mode only](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: .dark }
 ```
 
 #### Shadow
@@ -208,7 +209,7 @@ You can make images follow theme preferences in dark/light mode. This requires y
 The screenshots of the program window can be considered to show the shadow effect:
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: .shadow }
+![Desktop View](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: .shadow }
 ```
 {: .nolineno}
 
