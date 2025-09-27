@@ -11,7 +11,7 @@ toc: true
 # image: /assets/img/2025-03-28-cubinutils/image-20250329174614899.png
 ---
 
-一个CUDA程序中既有主机端（Host）代码，也有设备端（Device）代码，设备端代码就是 `__global__` 打头的核函数，主机端代码是程序中除核函数外的所有部分。用 `nvcc -arch=native hello.cu -o hello` 命令编译得到 elf 可执行文件，再用 `readelf -h hello` 检查文件的段表可以得到：
+一个 CUDA 程序中既有主机端（Host）代码，也有设备端（Device）代码，设备端代码就是 `__global__` 打头的核函数，主机端代码是程序中除核函数外的所有部分。用 `nvcc -arch=native hello.cu -o hello` 命令编译得到 elf 可执行文件，再用 `readelf -h hello` 检查文件的段表可以得到：
 
 ![](/assets/img/2025-03-28-cubinutils/image-20250329180550711.png){: .rounded-10 width="400"}
 
