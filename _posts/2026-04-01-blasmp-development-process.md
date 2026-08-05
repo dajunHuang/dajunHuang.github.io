@@ -7,7 +7,6 @@ category: [Experience, HPC]
 tags: [AI Generated, BLASMp, Multi-GPU, BLAS3]
 published: true
 toc: true
-published: false
 image:
   path: /assets/img/2026-04-01-blasmp-development-process/image.png
   alt: GEMM 通信与计算的完美重叠
@@ -19,8 +18,6 @@ image:
 > 因为 Code Agent 不仅能迅速总结仓库的提交历史，还能把历史和我开发过程中留下的笔记（private）相对应，所以原谅我选择用它来总结生成这篇文章。
 {: .prompt-info }
 
-> Code Agent 拥有独立的神经网络，它肯定是无从得知开发过程中我自己这个神经网络是有多么受挫并总结出来的。BLASMp 导致的磨难提醒我更好地选择进行科研的方式。
-{: .prompt-danger }
 
 本文把 BLASMp 的开发过程整理为一条可复用的工程路径，信息来源包括：
 
